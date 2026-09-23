@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gasper Legal — Asset, Income &amp; Budget Checklists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16201C; --ink-soft:#4B5A52; --ink-faint:#7C8A82;
+  --paper:#FCFCFA; --card:#FFFFFF;
+  --ledger:#EAEFE6; --ledger-deep:#DCE4D6; --rule:#C6CFC1;
+  --stamp:#9E2B2B; --stamp-tint:#FAF0EE;
+  --ok:#2C6B4C; --ok-tint:#EDF4EF;
+  --gold:#8A6A17; --gold-tint:#FAF5E6;
+  --slate:#2F5D7C; --slate-tint:#ECF2F6;
+  --teal:#1F6F72; --teal-tint:#E8F3F2;
+  --plum:#6B3F6E; --plum-tint:#F4EEF4;
+  --accent:var(--ok); --accent-tint:var(--ok-tint);
+  --max:960px;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E6ECE8; --ink-soft:#B3C0B8; --ink-faint:#86958C;
+    --paper:#131A17; --card:#18211D;
+    --ledger:#1E2A25; --ledger-deep:#26352E; --rule:#34443C;
+    --stamp:#E08A80; --stamp-tint:#2E1D1B;
+    --ok:#7FC3A0; --ok-tint:#1A2B23;
+    --gold:#D9B45E; --gold-tint:#2A2518;
+    --slate:#8DB8D6; --slate-tint:#1A2630;
+    --teal:#7CC7C4; --teal-tint:#172A2A;
+    --plum:#C9A2CB; --plum-tint:#2A1F2A;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E6ECE8; --ink-soft:#B3C0B8; --ink-faint:#86958C;
+  --paper:#131A17; --card:#18211D;
+  --ledger:#1E2A25; --ledger-deep:#26352E; --rule:#34443C;
+  --stamp:#E08A80; --stamp-tint:#2E1D1B;
+  --ok:#7FC3A0; --ok-tint:#1A2B23;
+  --gold:#D9B45E; --gold-tint:#2A2518;
+  --slate:#8DB8D6; --slate-tint:#1A2630;
+  --teal:#7CC7C4; --teal-tint:#172A2A;
+  --plum:#C9A2CB; --plum-tint:#2A1F2A;
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+.mono{font-family:var(--mono)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.navin{max-width:var(--max);margin:0 auto;padding:10px 24px;display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.navmark{font-family:var(--sans);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:12px;white-space:nowrap}
+.tab{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink-soft);background:none;border:1px solid transparent;border-radius:4px;padding:6px 10px;white-space:nowrap}
+.tab:hover{background:var(--ledger)}
+.tab[aria-selected="true"]{color:var(--paper);background:var(--ink)}
+.tab .code{font-family:var(--mono);font-weight:500;font-size:11px;opacity:.7;margin-right:5px}
+
+/* cover */
+.cover{padding:56px 0 40px;border-bottom:1px solid var(--rule)}
+.cover h1{font-family:var(--sans);font-weight:800;font-size:clamp(34px,6vw,54px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px;max-width:14ch}
+.cover .lede{font-size:19px;color:var(--ink-soft);max-width:60ch}
+.rules{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-top:2px solid var(--ink)}
+.rule-item{padding:16px 18px 18px 0;border-bottom:1px solid var(--rule)}
+.rule-item:nth-child(odd){padding-right:24px}
+.rule-item b{font-family:var(--sans);font-size:14.5px;display:block;margin-bottom:3px}
+.rule-item p{font-size:15px;color:var(--ink-soft)}
+.index{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.idx{text-align:left;background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--c);border-radius:3px;padding:16px 16px 18px;color:var(--ink)}
+.idx:hover{background:var(--ledger)}
+.idx .mono{font-size:12px;color:var(--c)}
+.idx h3{font-family:var(--sans);font-weight:800;font-size:20px;margin:4px 0 6px}
+.idx p{font-size:14px;color:var(--ink-soft);line-height:1.45}
+
+/* sheet */
+.sheet{display:none;padding:34px 0 60px}
+.sheet.active{display:block}
+.sheethead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--accent);padding-bottom:14px}
+.sheethead .code{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500}
+.sheethead h2{font-family:var(--sans);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1.05;letter-spacing:-.015em;margin-top:4px}
+.sheethead .sub{font-size:15.5px;color:var(--ink-soft);margin-top:4px}
+.legend{display:flex;gap:16px;margin-top:8px;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border:1.5px solid var(--ink-soft);border-radius:2px;display:inline-block}
+.legend i.r{border-radius:50%}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:12.5px;font-weight:700;border-radius:4px;padding:8px 12px;border:1px solid var(--ink);background:var(--card);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{filter:brightness(.95)}
+.btn.quiet{border-color:var(--rule);color:var(--ink-soft)}
+
+.matter{margin-top:18px;background:var(--ledger);border:1px solid var(--ledger-deep);border-radius:3px;padding:14px 16px 6px}
+.matter .ttl{font-family:var(--sans);font-weight:700;font-size:13px;margin-bottom:6px}
+
+.first{margin-top:18px;border:2px solid var(--stamp);border-radius:3px;background:var(--stamp-tint);padding:14px 16px}
+.first .ttl{font-family:var(--sans);font-weight:800;font-size:14px;color:var(--stamp);margin-bottom:8px}
+.first .tasks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:6px 20px}
+
+.sec{margin-top:30px}
+.sechead{display:flex;align-items:baseline;justify-content:center;gap:10px;background:var(--accent-tint);border-top:2.5px solid var(--accent);border-bottom:1px solid var(--accent);padding:8px 14px;margin-bottom:14px;border-radius:2px;text-align:center}
+.sechead .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500}
+.sechead h3{font-family:var(--sans);font-weight:800;font-size:18.5px;letter-spacing:.005em}
+
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px 16px}
+.fld{grid-column:span var(--w,3);min-width:0;break-inside:avoid}
+.fld > label,.fld > .lbl{display:block;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink-soft);line-height:1.3;margin-bottom:3px}
+.fld input[type=text],.fld textarea{width:100%;font-family:var(--serif);font-size:15.5px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--rule);padding:4px 2px 3px;border-radius:0}
+.fld textarea{border:1px solid var(--rule);border-radius:3px;padding:6px 8px;resize:vertical;line-height:1.5;
+  background-image:repeating-linear-gradient(transparent,transparent 23.25px,var(--ledger-deep) 23.25px,var(--ledger-deep) 24.25px);background-attachment:local;background-position:0 6px}
+.fld input[type=text]:focus,.fld textarea:focus{outline:none;border-color:var(--accent);background-color:var(--accent-tint)}
+.fld .hint{font-size:12.5px;color:var(--ink-faint);font-style:italic;margin-top:2px;line-height:1.35}
+
+.chips{display:flex;flex-wrap:wrap;gap:4px 14px;padding-top:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13.5px;color:var(--ink);cursor:pointer;user-select:none;padding:2px 0;line-height:1.3}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip .box{width:15px;height:15px;flex:none;border:1.5px solid var(--ink-soft);border-radius:2px;display:grid;place-items:center;background:var(--card)}
+.chip.round .box{border-radius:50%}
+.chip input:checked + .box{background:var(--accent);border-color:var(--accent)}
+.chip input:checked + .box::after{content:"";width:8px;height:4px;border:2px solid var(--paper);border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.chip input:focus-visible + .box{outline:2px solid var(--accent);outline-offset:2px}
+.task{font-family:var(--serif);font-size:15px}
+.task .box{border-color:var(--stamp)}
+.task input:checked + .box{background:var(--stamp);border-color:var(--stamp)}
+
+.note{grid-column:1/-1;border-left:4px solid var(--gold);background:var(--gold-tint);padding:9px 13px;font-size:14.5px;line-height:1.5;border-radius:0 3px 3px 0}
+.note.warn{border-color:var(--stamp);background:var(--stamp-tint)}
+.note b{font-family:var(--sans);font-size:13px}
+.subhead{grid-column:1/-1;font-family:var(--sans);font-weight:700;font-size:14px;margin-top:6px;padding-top:8px;border-top:1px dashed var(--rule);color:var(--ink)}
+
+.explain{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--card)}
+.explain div{padding:12px 14px;border-right:1px solid var(--rule)}
+.explain div:last-child{border-right:0}
+.explain b{font-family:var(--sans);font-size:13.5px;display:block;color:var(--accent)}
+.explain p{font-size:14px;color:var(--ink-soft);line-height:1.45;margin-top:3px}
+
+.tbl{grid-column:1/-1;overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;min-width:640px}
+.tbl th{font-family:var(--sans);font-size:11.5px;font-weight:700;text-align:left;color:var(--ink-soft);padding:6px 6px;border-bottom:1.5px solid var(--ink);background:var(--ledger)}
+.tbl td{border-bottom:1px solid var(--rule);padding:0 4px;vertical-align:middle}
+.tbl td:first-child{font-family:var(--sans);font-size:13px;font-weight:600;white-space:nowrap;padding-right:10px}
+.tbl input{width:100%;border:0;background:transparent;font-family:var(--serif);font-size:14.5px;color:var(--ink);padding:7px 2px}
+.tbl input:focus{outline:none;background:var(--accent-tint)}
+
+.steplist{grid-column:1/-1;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 18px;background:var(--accent-tint);border:1px dashed var(--accent);border-radius:3px;padding:10px 12px}
+.settled{grid-column:1/-1;border:2px solid var(--ink);border-radius:3px;padding:10px 14px;font-size:14.5px;line-height:1.5;background:var(--card)}
+.settled b{font-family:var(--sans);font-size:13.5px}
+.tbl tfoot td{font-family:var(--sans);font-weight:700;font-size:13px;background:var(--ledger);border-top:1.5px solid var(--ink);border-bottom:0;padding:7px 6px}
+.fld input.auto{font-family:var(--sans);font-weight:700;background:var(--ledger);border-bottom:1.5px solid var(--ink);padding-left:6px}
+.signoff{margin-top:30px;background:var(--ledger);border-top:3px solid var(--ink);padding:16px 16px 10px;border-radius:0 0 3px 3px}
+
+footer{border-top:1px solid var(--rule);padding:22px 0 40px;color:var(--ink-faint);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer .fm{font-family:var(--sans);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-size:12px}
+
+/* export panel */
+.panel{position:fixed;inset:0;z-index:60;background:rgba(10,15,12,.55);display:none;align-items:center;justify-content:center;padding:20px}
+.panel.open{display:flex}
+.panel .inner{background:var(--card);max-width:640px;width:100%;max-height:86vh;display:flex;flex-direction:column;border-radius:4px;border-top:5px solid var(--accent);padding:18px}
+.panel h4{font-family:var(--sans);font-weight:800;font-size:18px}
+.panel p{font-size:14px;color:var(--ink-soft);margin:4px 0 10px}
+.panel textarea{flex:1;min-height:300px;width:100%;font-family:var(--mono);font-size:12.5px;line-height:1.5;border:1px solid var(--rule);border-radius:3px;padding:10px;background:var(--paper);color:var(--ink)}
+.panel .row{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;align-items:center}
+.panel .msg{font-family:var(--sans);font-size:12.5px;color:var(--ok);margin-right:auto}
+
+@media (max-width:640px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .fld{grid-column:span 2}
+  .fld.w1{grid-column:span 1}
+  body{font-size:16px}
+  .cover{padding-top:36px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- print ---------- */
+@page{size:letter;margin:.45in .5in .5in}
+@media print{
+  :root{--ink:#16201C;--ink-soft:#4B5A52;--ink-faint:#7C8A82;--paper:#FFFFFF;--card:#FFFFFF;--ledger:#EAEFE6;--ledger-deep:#DCE4D6;--rule:#B9C3B3;--stamp:#9E2B2B;--stamp-tint:#FAF0EE;--ok:#2C6B4C;--ok-tint:#EDF4EF;--gold:#8A6A17;--gold-tint:#FAF5E6;--slate:#2F5D7C;--slate-tint:#ECF2F6;--teal:#1F6F72;--teal-tint:#E8F3F2;--plum:#6B3F6E;--plum-tint:#F4EEF4;padding:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:#fff}
+  body{font-size:10pt;line-height:1.4}
+  nav,.actions,footer,.panel,.noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .cover{display:none;padding:0;border:0}
+  body.print-all .cover{display:block;break-after:page;padding-top:.3in}
+  .sheet{display:none;padding:0}
+  body.print-one .sheet.active{display:block}
+  body.print-all .sheet{display:block;break-before:page}
+  body.print-all .cover + .sheets .sheet:first-child{break-before:auto}
+  .sheethead h2{font-size:24pt}
+  .sheethead .sub{font-size:10pt}
+  .legend{font-size:8pt;margin-top:3pt}.legend i{width:8pt;height:8pt;border-width:1pt}
+  .sec{margin-top:10pt;break-inside:auto}
+  .sechead{margin-bottom:7pt;padding:4.5pt 8pt;break-after:avoid;border-top-width:1.6pt}
+  .sechead h3{font-size:12.5pt}
+  .grid{grid-template-columns:repeat(6,1fr)!important;gap:4pt 12pt}
+  .fld{grid-column:span var(--w,3)!important}
+  .fld > label,.fld > .lbl{font-size:7.6pt;margin-bottom:1pt}
+  .fld input[type=text]{font-size:10pt;padding:2pt 1pt 1pt;min-height:16pt;border-bottom-color:#9AA79A}
+  .fld textarea{font-size:10pt;resize:none;border-color:#9AA79A;background-image:repeating-linear-gradient(transparent,transparent 17pt,#D5DDD0 17pt,#D5DDD0 18pt);background-position:0 4pt;line-height:18pt;padding:2pt 6pt}
+  .chip{font-size:8.8pt}
+  .chip .box{width:9.5pt;height:9.5pt;border-width:1pt}
+  .chips{gap:1pt 9pt}
+  .task{font-size:9.4pt}
+  .note{font-size:8.8pt;padding:5pt 9pt}
+  .note b{font-size:8.4pt}
+  .explain b{font-size:8.8pt}.explain p{font-size:8.4pt}.explain div{padding:6pt 8pt}
+  .tbl{overflow:visible}.tbl table{min-width:0}
+  .tbl th{font-size:7.6pt;padding:3pt 4pt}
+  .tbl td{font-size:8.6pt}.tbl td:first-child{font-size:8.4pt}
+  .tbl input{font-size:9.4pt;padding:4pt 2pt}
+  .matter{padding:7pt 10pt 3pt;margin-top:9pt}
+  .first{padding:7pt 10pt;margin-top:9pt;break-inside:avoid}
+  .first .tasks{grid-template-columns:1fr 1fr;gap:2pt 14pt}
+  .signoff{margin-top:10pt;break-inside:avoid;padding:7pt 10pt 3pt}
+  .signoff textarea{min-height:0;height:26pt}
+  .subhead{font-size:9pt;break-after:avoid}
+  .steplist{grid-template-columns:1fr 1fr!important;gap:2pt 12pt;padding:5pt 8pt}
+  .settled{font-size:8.8pt;padding:5pt 9pt}.settled b{font-size:8.6pt}
+  .tbl tfoot td{font-size:8.4pt;padding:4pt}
+  .tbl{break-inside:avoid}
+  .rules{grid-template-columns:1fr 1fr}
+  .rule-item p{font-size:9.6pt}.rule-item b{font-size:10pt}
+  .cover h1{font-size:30pt;margin:8pt 0 8pt;max-width:none}.cover .lede{font-size:11pt}
+  .rules{margin-top:14pt}.rule-item{padding:7pt 12pt 8pt 0}
+  .index{margin-top:16pt;gap:8pt}.idx{padding:8pt 10pt 10pt}
+  body.print-all .cover{padding-top:0}
+  .index{grid-template-columns:repeat(3,1fr)}
+  .idx h3{font-size:13pt}.idx p{font-size:8.6pt}
+}
+</style>
+</head>
+<body>
+
+<nav class="noprint" aria-label="Checklists">
+  <div class="navin" role="tablist">
+    <span class="navmark">Gasper Legal</span>
+    <button class="tab" role="tab" data-go="overview" aria-selected="true">Overview</button>
+    <button class="tab" role="tab" data-go="re"><span class="code">A1</span>Real Estate</button>
+    <button class="tab" role="tab" data-go="veh"><span class="code">A2</span>Vehicle</button>
+    <button class="tab" role="tab" data-go="fin"><span class="code">A3</span>Financial Account</button>
+    <button class="tab" role="tab" data-go="pet"><span class="code">A4</span>Pet</button>
+    <button class="tab" role="tab" data-go="inc"><span class="code">A5</span>Income</button>
+    <button class="tab" role="tab" data-go="bud"><span class="code">A6</span>Monthly Budget</button>
+  </div>
+</nav>
+
+<main>
+<header class="cover wrap" id="overview">
+  <div class="eyebrow">Staff field checklists · Guardianship &amp; probate</div>
+  <h1>Asset, Income &amp; Budget Checklists</h1>
+  <p class="lede">The official firm checklists for the assets we handle most, plus every ward’s income and monthly budget. Each one walks you through what we need to know, in the order you'll usually find it out, so nothing gets missed between the first phone call and the BusinessMap card.</p>
+
+  <div class="rules">
+    <div class="rule-item"><b>One sheet per asset.</b><p>Two cars means two vehicle sheets. A brokerage account and a checking account at the same bank are two financial sheets.</p></div>
+    <div class="rule-item"><b>Mark “Unknown” instead of leaving it blank.</b><p>A blank looks like nobody asked. Unknown tells the next person it still needs an answer.</p></div>
+    <div class="rule-item"><b>Never write down secrets.</b><p>No full account numbers, PINs, passwords, lockbox or alarm codes, or crypto seed phrases. Write where the information is kept, not the information itself.</p></div>
+    <div class="rule-item"><b>Get it in writing.</b><p>Balances, insurance status, and payoffs told to you over the phone get confirmed by statement, letter, or email before they go on an inventory.</p></div>
+    <div class="rule-item"><b>Nothing moves without a record.</b><p>Any item, key, title, vehicle, or animal that changes hands gets logged: what, who, when, and where it went.</p></div>
+    <div class="rule-item"><b>Red box items come first.</b><p>Each sheet opens with the things that can’t wait. Do those before anything else and flag the attorney on any you can’t complete.</p></div>
+    <div class="rule-item"><b>Know where the records are.</b><p>Every sheet asks what records we have and whether they’re in the hard file, scanned into Actionstep, or both.</p></div>
+    <div class="rule-item"><b>Every asset ends “Settled.”</b><p>Settled means 100% done: nothing left to do and we’ll never touch it again. Until then it stays open on BusinessMap.</p></div>
+  </div>
+
+  <div class="index">
+    <button class="idx" style="--c:var(--ok)" data-go="re"><span class="mono">GL-A1</span><h3>Real Estate</h3><p>Houses, condos, mobile homes, and land. Access, occupancy, insurance, utilities, condition, contents, and the plan.</p></button>
+    <button class="idx" style="--c:var(--slate)" data-go="veh"><span class="mono">GL-A2</span><h3>Vehicle</h3><p>Cars, trucks, motorcycles, RVs, boats, and trailers. Keys, title, insurance, condition, and value.</p></button>
+    <button class="idx" style="--c:var(--gold)" data-go="fin"><span class="mono">GL-A3</span><h3>Financial Account</h3><p>Bank, investment, retirement, annuity, and crypto. Who holds it, who manages it, who’s on it, and what it’s worth.</p></button>
+    <button class="idx" style="--c:var(--stamp)" data-go="pet"><span class="mono">GL-A4</span><h3>Pet</h3><p>Every animal in our care. Who has it today, its health and vet, behavior, and where it goes next.</p></button>
+    <button class="idx" style="--c:var(--teal)" data-go="inc"><span class="mono">GL-A5</span><h3>Income</h3><p>Every source of money coming in for a ward. Gross and net, where it lands, and getting it under our control.</p></button>
+    <button class="idx" style="--c:var(--plum)" data-go="bud"><span class="mono">GL-A6</span><h3>Monthly Budget</h3><p>What the ward needs each month: housing, bills, health care, personal needs, pets. Totals itself on screen.</p></button>
+  </div>
+  <p class="noprint" style="margin-top:22px;font-size:14px;color:var(--ink-faint)">On screen, fill in a sheet and use <b>Copy for BusinessMap</b> to get a clean summary for the asset card. Print any sheet blank or filled in.
+    <button class="btn quiet" id="printAll" style="margin-left:6px">Print all six blank</button></p>
+</header>
+
+<div class="sheets wrap" id="sheets"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><div class="fm">Gasper Legal</div><p style="margin-top:8px">Asset, Income &amp; Budget Checklists GL-A1 through GL-A6. Official firm forms. Direct questions to Christopher Gasper.</p></div>
+    <div class="mono" style="font-size:12px">Rev. 09/2026</div>
+  </div>
+</footer>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+  <div class="inner">
+    <h4 id="panelTitle">Summary for BusinessMap</h4>
+    <p>Only the answered fields are included. Paste this into the asset card’s description or a comment.</p>
+    <textarea id="panelText" readonly></textarea>
+    <div class="row"><span class="msg" id="panelMsg"></span><button class="btn quiet" id="panelClose">Close</button><button class="btn primary" id="panelCopy">Copy text</button></div>
+  </div>
+</div>
+
+<script>
+const YN=['Yes','No','Unknown'];
+const YNA=['Yes','No','N/A'];
+
+/* Field shorthand:
+   {f:label,w,h}  text field (w = columns of 6, h = hint)
+   {c:label,o:[],m:multi,w} choice boxes
+   {a:label,r:rows} lined notes area
+   {s:text} sub-heading     {tip:text} gold note     {warn:text} red note
+   {x:[[title,text],...]} explainer strip   {t:{cols,rows}} table                     */
+
+const MATTER=[
+  {f:'Matter / case name',w:3},{f:'Case no.',w:1},{f:'County',w:2,},
+  {c:'Matter type',o:['Guardianship','Estate','Trust','Other'],w:3},
+  {c:'Our role',o:['Guardian of estate','Fiduciary / administrator','Counsel','Trustee'],w:3},
+  {f:'Ward / decedent',w:2},{f:'Date of death or appointment',w:2,h:'This is the valuation date for the inventory.'},{f:'Assigned staff',w:2}
+];
+
+const SIGNOFF=[
+  {a:'Red flags and anything urgent',r:2},
+  {f:'Next step',w:3},{f:'Who owns it',w:1},{f:'Due',w:2},
+  {f:'Completed by',w:2},{f:'Date',w:1},{f:'Attorney reviewed',w:2},{f:'Date',w:1},
+  {c:'Entered in BusinessMap',o:['Yes'],w:2},{f:'Date entered',w:1},{c:'Photos / documents uploaded',o:['Yes','None to upload'],w:3}
+];
+
+const INS={warn:'<b>Whose name the insurance is in:</b> always the estate or the guardianship. Never the attorney personally, never Gasper Legal, never a staff member. A fiduciary can be named only in their fiduciary capacity, for example “Jane Doe, Administrator of the Estate of John Doe,” so they carry no personal responsibility. If a policy lists anyone individually, flag it to the attorney.'};
+const STATUS=['Not started','In progress','Waiting on institution / third party','Waiting on court','Settled'];
+const WHO=['Guardian / fiduciary decides','Needs court approval','Someone else controls it','Ask attorney'];
+function controlSec(o){return {t:o.title||'Control, plan, and status',rows:[
+  {c:o.q||'Do we have control of it',o:['Yes','Partly','No','Unknown'],w:6},
+  {s:'If not, steps to get control'},
+  {k:o.steps,kl:'Steps done'},
+  {f:'Date started / last follow-up',w:2},{f:'Who controls it now, if not us',w:4},
+  {c:'Who decides the next step',o:WHO,w:6},
+  ...(o.extra||[]),
+  {c:'Disposition',o:o.disp,w:6},
+  {c:'Status',o:STATUS,w:6},
+  {settled:o.settled||'Settled means we are 100% done with this asset. Nothing is left to do and we will never need to touch it again. Usually it has been sold, cashed out, distributed to next of kin, or confirmed as not ours to manage. If any follow-up remains, it is not settled.'},
+  {f:'Date settled',w:2},{f:'How it was settled',w:4}
+]}}
+function recordsSec(list){return {t:'Records',rows:[
+  {c:'Do we have records',o:['Yes','Some','None yet'],w:6},
+  {c:'What we have',o:list,m:1,w:6},
+  {c:'Where they are',o:['Hard file','Scanned into Actionstep','Institution portal only','Not yet obtained'],m:1,w:6},
+  {f:'Records still needed, and from whom',w:4},{f:'Date requested',w:2}
+]}}
+const BCOLS=['Expense','Monthly $','Paid to','How paid','Notes'];
+const bt=rows=>({t:{cols:BCOLS,rows,sum:1,kind:'exp'}});
+
+const SHEETS=[
+{id:'re',code:'GL-A1',title:'Real Estate',accent:'--ok',tint:'--ok-tint',
+ sub:'One sheet per property. Houses, condos, mobile homes, rental property, and vacant land.',
+ first:['Secure the property: keys in hand, doors and windows locked','Confirm insurance is active and the insurer knows the home is vacant','Check for people or animals inside before anyone leaves','Photograph or video every room before anything is moved','Secure firearms, cash, jewelry, medications, and original documents (attorney directs how)','Keep heat on in cold months or confirm the home is winterized'],
+ secs:[
+ {t:'Property identification',rows:[
+   {f:'Street address',w:4},{f:'City, state, ZIP',w:2},
+   {f:'County',w:2},{f:'Parcel number(s)',w:2},{f:'Auditor’s value and tax year',w:2},
+   {c:'Property type',o:['Single-family','Condo','Multi-family','Mobile / manufactured','Vacant land','Commercial'],w:6},
+   {f:'Title holder(s), exactly as on the deed',w:6},
+   {c:'How it’s titled',o:['Sole name','Joint with survivorship','TOD designation recorded','Trust-owned','Life estate','Unknown'],m:1,w:6},
+   {f:'TOD beneficiary / other owners',w:6},
+   {tip:'<b>Before the first visit:</b> pull the county auditor and recorder records. A recorded transfer-on-death affidavit (R.C. 5302.22) or survivorship deed can mean the property passes outside probate. Flag it to the attorney before anything else is planned.'}
+ ]},
+ {t:'Access and security',rows:[
+   {c:'Keys obtained',o:YN,w:2},{f:'How many keys, and where they’re kept',w:4},
+   {f:'Who else has a key',w:3},{f:'Garage opener, mailbox, gate, outbuilding keys',w:3},
+   {c:'Lockbox installed',o:YNA,w:2},{f:'Where the lockbox code is kept (not the code)',w:4},
+   {c:'Locks changed',o:['Yes','No','Not needed'],w:3},{f:'Date changed and by whom',w:3},
+   {c:'Alarm / security system',o:['None','Active','Inactive','Unknown'],w:3},{f:'Alarm company and phone',w:3},
+   {f:'Neighbor or contact watching the property (name and phone)',w:6}
+ ]},
+ {t:'Occupancy',rows:[
+   {c:'Who is living there',o:['Vacant','The ward','Family member','Tenant','Unauthorized occupant','Unknown'],m:1,w:6},
+   {f:'Occupant name(s) and relationship',w:4},{f:'Phone',w:2},
+   {c:'Written lease',o:YNA,w:2},{f:'Rent amount and due date',w:2},{f:'Rent paid to',w:2},
+   {c:'Rent currently being paid',o:YNA,w:2},{f:'Security deposit amount and who holds it',w:4},
+   {c:'Could the ward return home?',o:['Yes','No','Unknown','N/A (estate)'],w:6,h:'Guardianship only. This changes the whole plan for the house.'},
+   {warn:'<b>Never</b> tell an occupant to leave, change the locks on an occupied home, or promise anyone they can stay. Get the facts and bring them to the attorney. In an estate, a surviving spouse may have a right to remain in the home (R.C. 2106.10).'}
+ ]},
+ {t:'Insurance',rows:[
+   {f:'Insurance company',w:3},{f:'Policy number',w:3},
+   {f:'Agent name and phone',w:3},{c:'Policy status',o:['Active','Lapsed','Cancelled','Unknown'],w:3},
+   {f:'Premium and paid through',w:3},{f:'Named insured',w:3},
+   {c:'Insurer notified of death / guardianship',o:YN,w:3},{f:'Date notified and by whom',w:3},
+   {c:'Insurer told the home is vacant',o:YNA,w:3},{c:'Vacant-dwelling policy needed',o:YN,w:3},
+   {c:'Named insured is the estate / guardianship',o:YN,w:3},{c:'Flood or other coverage',o:['Yes','No','Unknown'],w:3},
+   INS,
+   {warn:'Many homeowner policies restrict or drop coverage once a home sits vacant for a set period, often 30 to 60 days. Get the agent’s answer in writing and calendar the date.'}
+ ]},
+ {t:'Mortgage, liens, taxes, and association',rows:[
+   {c:'Mortgage',o:YN,w:2},{f:'Lender / servicer',w:2},{f:'Loan no. (last 4 only)',w:2},
+   {f:'Monthly payment',w:2},{c:'Loan status',o:['Current','Behind','Foreclosure filed','Unknown'],w:4},
+   {f:'Payoff amount and as-of date',w:3},{c:'Taxes and insurance escrowed',o:YN,w:3},
+   {c:'Reverse mortgage',o:YN,w:2},{c:'HELOC or second mortgage',o:YN,w:2},{c:'Other liens',o:['Tax lien','Judgment','Mechanic’s','Medicaid','None known'],m:1,w:6},
+   {f:'Lien details',w:6},
+   {c:'Real estate taxes',o:['Current','Delinquent','Unknown'],w:3},{f:'Amount owed and next due date',w:3},
+   {c:'HOA / condo association',o:YNA,w:2},{f:'Association name and contact',w:2},{f:'Dues, and current or behind',w:2},
+   {warn:'<b>Reverse mortgages</b> come due on a strict timeline after death or a permanent move out. Flag to the attorney the same day you learn of one.'}
+ ]},
+ {t:'Utilities and mail',rows:[
+   {t:{cols:['Utility','Provider','Account in whose name','On / off','Current / past due','Who’s paying'],
+       rows:['Electric','Gas','Water / sewer','Trash','Internet / phone / cable','Propane / oil']}},
+   {c:'Winterized',o:['Yes','No','Not needed'],w:2},{f:'Date and by whom',w:4},
+   {c:'Mail forwarded',o:['To firm','To family','No','Unknown'],w:3},{f:'USPS forward filed (date)',w:3}
+ ]},
+ {t:'Condition: exterior and grounds',rows:[
+   {c:'Overall exterior',o:['Good','Fair','Poor','Unsafe'],w:6},
+   {f:'Roof',w:2},{f:'Siding / exterior walls',w:2},{f:'Windows and doors',w:2},
+   {c:'Yard',o:['Maintained','Overgrown','Needs service'],w:3},{f:'Lawn and snow service arranged with',w:3},
+   {c:'Fence',o:['None','Good','Damaged'],w:2},{c:'Pool / hot tub',o:['None','Secured','Not secured'],w:2},{c:'Outbuildings',o:['None','Shed','Detached garage','Barn'],m:1,w:2},
+   {c:'Signs of break-in or vandalism',o:YN,w:3},{c:'Code violation or notice posted',o:YN,w:3},
+   {a:'Exterior damage, hazards, trees, drainage, anything else',r:2}
+ ]},
+ {t:'Condition: interior',rows:[
+   {c:'Overall interior',o:['Good','Fair','Poor','Uninhabitable'],w:6},
+   {c:'Water leaks / damage',o:YN,w:2},{c:'Mold',o:YN,w:2},{c:'Pests / rodents',o:YN,w:2},
+   {c:'Furnace / A/C works',o:YN,w:2},{c:'Water heater works',o:YN,w:2},{c:'Smoke / CO detectors work',o:YN,w:2},
+   {c:'Plumbing issues',o:YN,w:2},{c:'Electrical issues',o:YN,w:2},{c:'Odor / biohazard',o:YN,w:2},
+   {c:'Clutter level',o:['Normal','Heavy','Hoarding'],w:6},
+   {c:'Hazards found',o:['Firearms','Ammunition','Medications','Sharps','Oxygen tanks','Chemicals'],m:1,w:6},
+   {a:'Repairs needed and rough cost, if known',r:2}
+ ]},
+ {t:'Contents and personal property',rows:[
+   {c:'How full is the home',o:['Empty','Lightly furnished','Fully furnished','Excessive'],w:6},
+   {c:'What’s there, roughly',o:['Furniture','Appliances','Electronics','Jewelry','Cash','Firearms','Art / collectibles','Tools / equipment','Clothing'],m:1,w:6},
+   {a:'Items that look valuable (describe)',r:2},
+   {c:'Documents found',o:['Will / trust','Deeds','Vehicle titles','Bank / brokerage statements','Tax returns','Insurance policies','Checkbooks','Stock certificates','Safe deposit key'],m:1,w:6},
+   {f:'Where the documents were taken and stored',w:6},
+   {c:'Vehicles on the property',o:['Yes (start a GL-A2 for each)','No'],w:3},{c:'Pets on the property',o:['Yes (start a GL-A4 for each)','No'],w:3},
+   {c:'Photos / video taken',o:YN,w:2},{f:'Date and where saved',w:4},
+   {s:'Items removed from the home'},
+   {t:{cols:['Item','Removed by','Date','Where it is now'],rows:['1','2','3','4']}},
+   {f:'Family requests for items (note them, promise nothing)',w:6}
+ ]},
+ {t:'Title, value, and sale',rows:[
+   {c:'Title search ordered',o:YN,w:2},{f:'Title company and date ordered',w:4},
+   {f:'Date received',w:2},{f:'Liens or issues found',w:4},
+   {c:'Value source',o:['Auditor','Appraisal','Realtor CMA','Court appraiser'],m:1,w:4},{f:'Value and date',w:2},
+   {c:'Land sale filed',o:['Yes','No','Not needed'],w:2},{f:'Land sale case no.',w:2},{f:'Date filed',w:2},
+   {f:'Lienholder / heir consents and service status',w:6},
+   {f:'Listing agent and phone',w:3},{f:'Listed date and price',w:3},
+   {f:'Purchase contract (buyer, price, date)',w:3},{f:'Court approval of sale (date)',w:3},
+   {f:'Closing date',w:2},{f:'Net proceeds deposited to',w:4},
+   {warn:'Do not list the property, sign a listing agreement, or accept an offer until the attorney confirms the court authority is in place.'}
+ ]},
+ controlSec({steps:['Keys in hand','Locks changed (if needed)','Insurance in the estate / guardianship’s name','Utilities moved to the fiduciary','Mail and tax bills sent to the firm','Occupant situation resolved'],
+   disp:['Ward living there','Keep and maintain','Sell','Rent it out','Transfer / distribute to next of kin','Certificate of transfer','Leave alone (not ours)','Undecided']}),
+ recordsSec(['Deed','Tax bills','Insurance declarations','Mortgage statements','Utility bills','HOA documents','Lease','Title search','Appraisal / CMA','Photos'])
+ ]},
+
+{id:'veh',code:'GL-A2',title:'Vehicle',accent:'--slate',tint:'--slate-tint',
+ sub:'One sheet per vehicle. Cars, trucks, motorcycles, RVs, boats, trailers, golf carts, and ATVs.',
+ first:['Find the vehicle and the keys','Make sure nobody is driving it without our approval','Confirm it’s insured, or keep it parked','Secure the title','Photograph all four sides, the odometer, and the VIN plate','If it’s in a tow or storage lot, tell the attorney today (fees add up daily)'],
+ secs:[
+ {t:'Identify the vehicle',rows:[
+   {c:'Type',o:['Car','Truck / SUV / van','Motorcycle','RV / camper','Boat','Trailer','Golf cart / ATV','Other'],w:6},
+   {f:'Year',w:1},{f:'Make',w:2},{f:'Model and trim',w:2},{f:'Color',w:1},
+   {f:'VIN (full)',w:4},{f:'Plate and state',w:2},
+   {f:'Registration expires',w:2},{f:'Odometer reading',w:2},{f:'Date read',w:2},
+   {tip:'Read the VIN off the vehicle itself (driver’s side dash or door jamb) and confirm it matches the title. Boats and campers can have separate titles for the trailer or motor, so check for each.'}
+ ]},
+ {t:'Location, keys, and use',rows:[
+   {c:'Where it is',o:['Ward / decedent’s home','Care facility','Family member','Tow / storage lot','Repair shop','Missing','Unknown'],w:6},
+   {f:'Address',w:4},{f:'Who has possession',w:2},
+   {c:'Storage fees running',o:YNA,w:2},{f:'Daily rate and who’s owed',w:4},
+   {c:'Keys obtained',o:YN,w:2},{f:'Number of keys / fobs',w:2},{f:'Who else has a key',w:2},
+   {c:'Anyone driving it since the death / appointment',o:YN,w:3},{f:'Who, and with whose permission',w:3},
+   {c:'Reported stolen',o:YNA,w:2},{f:'Police report details',w:4}
+ ]},
+ {t:'Title, ownership, and loan',rows:[
+   {c:'Title in hand',o:YN,w:2},{f:'Where the title is kept now',w:4},
+   {f:'Name(s) on the title, exactly',w:6},
+   {c:'How it’s titled',o:['Sole name','Joint “and”','Joint “or”','With survivorship','TOD beneficiary'],m:1,w:6},
+   {f:'TOD beneficiary named',w:3},{c:'Duplicate title needed',o:YN,w:3},
+   {c:'Lien on the title',o:YN,w:2},{f:'Lienholder / lender',w:4},
+   {f:'Monthly payment',w:2},{c:'Loan status',o:['Current','Behind','Unknown'],w:2},{f:'Payoff and as-of date',w:2},
+   {tip:'A transfer-on-death beneficiary on an Ohio title (R.C. 2131.13) can take the vehicle outside probate. In an estate, ask the attorney whether the surviving spouse vehicle transfer (R.C. 2106.18) applies before doing anything with the title.'}
+ ]},
+ {t:'Insurance and registration',rows:[
+   {c:'Insured',o:YN,w:2},{f:'Insurance company',w:2},{f:'Policy number',w:2},
+   {f:'Agent name and phone',w:3},{f:'Paid through',w:3},
+   {c:'Insurer notified of death / guardianship',o:YN,w:3},{f:'Date notified',w:3},
+   {c:'Named insured is the estate / guardianship',o:YN,w:6},
+   {c:'Coverage plan',o:['Keep full coverage','Storage / comprehensive only','Cancel after sale'],w:6},
+   INS,
+   {warn:'An uninsured vehicle does not move, and nobody drives it on our authority, until the attorney approves it and coverage is confirmed.'}
+ ]},
+ {t:'Condition',rows:[
+   {c:'Does it run',o:['Yes','No','Not tested'],w:3},{c:'Safe to drive',o:YN,w:3},
+   {c:'Battery',o:['Good','Dead','Unknown'],w:2},{c:'Tires',o:['Good','Worn','Flat'],w:2},{c:'Warning lights',o:YN,w:2},
+   {c:'Body damage',o:['None','Minor','Major'],w:3},{c:'Interior',o:['Good','Fair','Poor'],w:3},
+   {c:'Open safety recalls (NHTSA VIN check)',o:YN,w:6},
+   {a:'Known mechanical problems or damage',r:2},
+   {c:'Found inside',o:['Personal items','Disability placard','Toll transponder','Garage opener','Documents','Nothing'],m:1,w:6},
+   {f:'Items removed from the vehicle and where they went',w:6}
+ ]},
+ {t:'Value and sale',rows:[
+   {c:'Value source',o:['KBB','NADA / J.D. Power','Dealer quote','Appraisal'],m:1,w:4},{f:'Value and date',w:2},
+   {c:'Court approval needed',o:['Yes','No','Ask attorney'],w:3},{f:'Buyer / sale method',w:3},
+   {f:'Sale price and date',w:2},{f:'Title transferred (date)',w:2},{f:'Plates returned / transferred',w:2},
+   {f:'Insurance cancelled (date)',w:2},{f:'Proceeds deposited to',w:4}
+ ]},
+ controlSec({steps:['Keys in hand','Title in hand','Vehicle moved to a safe spot','Insurance confirmed in the estate / guardianship’s name','Nobody driving without approval'],
+   extra:[{f:'If it’s being driven: by whom, and who approved it',w:6},{f:'If it’s going to a shop or dealer: where, and for what',w:6}],
+   disp:['Keep in use','Store it','Repair, then sell','Sell to dealer','Private sale','Auction','Transfer / distribute to next of kin','Donate','Scrap','Undecided']}),
+ recordsSec(['Title','Registration','Insurance card','Loan statements','Repair records','Valuation printout','Photos'])
+ ]},
+
+{id:'fin',code:'GL-A3',title:'Financial Account',accent:'--gold',tint:'--gold-tint',
+ sub:'One sheet per account. Bank, investment, retirement, annuity, insurance, and digital assets.',
+ first:['Notify the institution and submit our letters of authority','Shut off outside access: cards, online banking, checks, any POA agent','Get the balance on the date of death or appointment (the inventory number)','List every automatic deposit and automatic payment','Look back 12 months for large or unusual withdrawals or changes'],
+ secs:[
+ {t:'What kind of asset',rows:[
+   {c:'Bank',o:['Checking','Savings','Money market','CD'],w:6},
+   {c:'Investment',o:['Brokerage','Managed account','Stocks','Paper stock certificates','Bonds','U.S. savings bonds','Mutual funds','ETFs'],w:6},
+   {c:'Retirement',o:['401(k)','403(b)','457','Traditional IRA','Roth IRA','Inherited IRA','SEP / SIMPLE','Pension'],w:6},
+   {c:'Other',o:['Annuity','Life insurance','HSA','529','Cryptocurrency','Other'],w:6},
+   {f:'If other, describe',w:6},
+   {tip:'<b>Where to look for more accounts:</b> mail, tax returns and 1099s, check registers, statements showing transfers, email, and the Ohio unclaimed funds search.'}
+ ]},
+ {t:'Who holds it, who runs it',rows:[
+   {x:[['Custodian','The company that actually holds the money. Its name is on the statement and it does transfers and retitling. Example: Charles Schwab.'],['Manager / advisor','The person or firm making investment decisions. Often a local advisor using the custodian’s platform. They answer questions but usually can’t move money.'],['Brand / origin','Where the account started or the name the family knows it by. Example: a Wells Fargo Advisors account now held at another custodian.']]},
+   {f:'Custodian (holds the assets)',w:3},{f:'Custodian phone / fiduciary services dept.',w:3},
+   {f:'Manager / advisor firm',w:3},{f:'Advisor name, phone, email',w:3},
+   {f:'Brand or name the family uses, if different',w:3},{f:'Branch or local office',w:3},
+   {c:'Statements go to',o:['Home address','Email','Advisor','Firm','Unknown'],w:4},{c:'Address changed to firm',o:YN,w:2}
+ ]},
+ {t:'Account details and ownership',rows:[
+   {f:'Account number (last 4 only)',w:2},{f:'Full number is stored in',w:4,h:'The secure file or BusinessMap. Never on this sheet.'},
+   {f:'Account title, exactly as it appears on the statement',w:6},
+   {c:'Ownership',o:['Sole','Joint with survivorship','POD','TOD','Trust-owned','Guardianship account','Estate account','Custodial (UTMA)','SSA rep payee'],m:1,w:6},
+   {f:'Other owner(s) on the account',w:3},{f:'Authorized signers / POA agent',w:3},
+   {c:'Beneficiary designation',o:YN,w:2},{f:'Beneficiaries and percentages',w:4},
+   {c:'Confirmed in writing by the institution',o:YN,w:6},
+   {warn:'Joint, POD, TOD, and beneficiary-designated accounts may pass outside probate, and in a guardianship a joint owner may claim the money is theirs. Do not assume either way. Record exactly what the institution says and flag it to the attorney.'}
+ ]},
+ {t:'Balance and value',rows:[
+   {f:'Balance on date of death / appointment',w:3,h:'This is the inventory value.'},{f:'Source of that balance',w:3},
+   {f:'Latest balance',w:2},{f:'As-of date',w:2},{c:'Source',o:['Statement','Letter','Online','Verbal only'],w:2},
+   {a:'Holdings (positions, CD rate and maturity, bond maturities, policy face value)',r:2},
+   {c:'CD auto-renews',o:YNA,w:2},{c:'Cost basis available',o:YN,w:2},{c:'Loan or margin against it',o:YN,w:2}
+ ]},
+ {t:'Cards, checks, and outside access',rows:[
+   {c:'Account frozen',o:YN,w:3},{c:'We have online access',o:YN,w:3},
+   {c:'Debit / credit cards secured or cancelled',o:YNA,w:3},{c:'Blank checks secured',o:YNA,w:3},
+   {c:'Former POA agent notified of our appointment',o:YNA,w:6},
+   {c:'Safe deposit box here',o:YN,w:2},{f:'Box number and where the key is',w:4}
+ ]},
+ {t:'Money in and money out',rows:[
+   {t:{cols:['','Source or payee','Amount','How often','Keep / stop'],rows:['Deposit','Deposit','Deposit','Payment','Payment','Payment']}},
+   {c:'Social Security rep payee involved',o:YNA,w:3},{c:'RMD due this year',o:['Yes','No','Ask attorney'],w:3},
+   {f:'Where tax forms (1099s) are going',w:6},
+   {c:'Unusual activity in the last 12 months',o:YN,w:6},
+   {a:'Describe: large withdrawals, new joint owner or beneficiary, transfers to family, closed accounts',r:2}
+ ]},
+ {t:'Beneficiaries, claims, and disputes',rows:[
+   {f:'Who is claiming or expected to receive it',w:6},
+   {c:'Dispute or competing claim',o:YN,w:3},{c:'Levy, garnishment, or creditor hold',o:YN,w:3},
+   {c:'Affects Medicaid or other benefits',o:['Yes','No','Ask attorney'],w:6},
+   {a:'Details',r:2}
+ ]},
+ {t:'Crypto and digital assets',rows:[
+   {tip:'Complete only if this account is cryptocurrency or another digital asset. <b>Never</b> log in, move, or test a wallet without the attorney’s direction, and never write a seed phrase or password anywhere.'},
+   {c:'Held',o:['On an exchange','Hardware wallet','Software / phone wallet','Paper wallet','Unknown'],m:1,w:6},
+   {f:'Exchange or wallet name',w:3},{f:'Coins and approximate amounts',w:3},
+   {f:'Where the device or recovery phrase is physically located',w:6},
+   {f:'Who else knows how to access it',w:6}
+ ]},
+ controlSec({steps:['Contacted the institution','Got their forms','Filled out the forms','Sent letters of authority (and death certificate or court entry)','Followed up','Retitled or access confirmed'],
+   extra:[{c:'Retitled to estate / guardianship',o:YN,w:3},{f:'New account (last 4)',w:3}],
+   disp:['Maintain as is','Leave alone (not ours to touch)','Move to guardianship / estate account','Move to a new advisor','Move to a new bank','Cash out / liquidate','Convert (to cash or another holding)','Roll over','Distribute to beneficiary / next of kin','Undecided']}),
+ recordsSec(['Statements','1099s / tax forms','Beneficiary forms','Account agreement','Letters we sent','Institution correspondence'])
+ ]},
+
+{id:'pet',code:'GL-A4',title:'Pet',accent:'--stamp',tint:'--stamp-tint',
+ sub:'One sheet per animal. We keep this current for as long as the animal is our responsibility.',
+ first:['Confirm the animal is safe, fed, and has water today','Know exactly who is caring for it right now','Never leave an animal alone in a vacant home','Find the vet records and any medications','Keep every receipt for food, boarding, and vet care'],
+ secs:[
+ {t:'Identify the animal',rows:[
+   {f:'Pet’s name',w:2},{c:'Species',o:['Dog','Cat','Bird','Fish','Reptile','Small animal','Horse / livestock','Other'],w:4},
+   {f:'Breed',w:2},{f:'Color and markings',w:2},{f:'Approx. weight',w:2},
+   {f:'Age or birth date',w:2},{c:'Sex',o:['Male','Female','Unknown'],w:2},{c:'Spayed / neutered',o:YN,w:2},
+   {c:'Microchip',o:YN,w:2},{f:'Chip number and registry',w:4},
+   {c:'Chip owner info updated',o:YNA,w:2},{c:'County dog license',o:['Yes','No','N/A'],w:2},{f:'License / rabies tag no.',w:2},
+   {c:'Photo taken',o:YN,w:6}
+ ]},
+ {t:'Where it is and who’s caring for it',rows:[
+   {c:'Where the pet is now',o:['At the home','With family / friend','Boarding','At the vet','Shelter','With the ward','Unknown'],w:6},
+   {f:'Caregiver name and relationship',w:3},{f:'Caregiver phone',w:3},
+   {f:'Caring for it since',w:2},{f:'Agreed to continue until',w:2},{f:'Address',w:2},
+   {c:'Who is paying for care',o:['Estate / guardianship','Caregiver','Family','Other'],w:4},{c:'Being reimbursed',o:YNA,w:2},
+   {f:'Food, diet, and feeding schedule',w:6},
+   {f:'Where the supplies are (food, leash, crate, litter, records)',w:6}
+ ]},
+ {t:'Health and vet',rows:[
+   {f:'Vet clinic',w:3},{f:'Vet phone',w:3},
+   {f:'Last visit',w:2},{c:'Vaccines current',o:YN,w:2},{c:'Records obtained',o:YN,w:2},
+   {t:{cols:['Medication','Dose','When given','Refill due'],rows:['1','2','3']}},
+   {a:'Health conditions and special needs',r:2},
+   {c:'Pet insurance',o:YN,w:2},{f:'Company and policy',w:2},{f:'Unpaid vet bill',w:2}
+ ]},
+ {t:'Behavior and safety',rows:[
+   {c:'Temperament',o:['Friendly','Shy','Fearful','Aggressive','Unknown'],w:6},
+   {c:'Bite or attack history',o:YN,w:2},{c:'Escape risk',o:YN,w:2},{c:'House-trained',o:YNA,w:2},
+   {c:'Gets along with',o:['Dogs','Cats','Children','Strangers','Unknown'],m:1,w:6},
+   {a:'Handling notes for the next caregiver',r:2},
+   {warn:'Any bite history or aggression goes to the attorney before the animal is placed with anyone. It’s a liability issue for the estate or guardianship.'}
+ ]},
+ {t:'Wishes and the plan',rows:[
+   {c:'Will or trust says what happens to the pet',o:YN,w:3},{f:'Caregiver named in the documents',w:3},
+   {f:'Ward’s or decedent’s known wishes',w:6},
+   {c:'Facility allows pets or visits',o:['Yes','No','N/A'],w:6,h:'Guardianship only. Visits with a pet can matter a great deal to a ward.'},
+   {f:'New owner name and phone',w:3},{f:'Date transferred',w:3},
+   {c:'Records, chip, and supplies handed over',o:YN,w:6}
+ ]},
+ controlSec({title:'Custody, plan, and status',q:'Is the pet in our custody or care',steps:['With a safe caregiver','Vet records obtained','Care costs set up for payment or reimbursement'],
+   disp:['Stay with ward','Stay with current caregiver','Rehome to family / next of kin','Rehome through rescue','Surrender to shelter','Undecided'],
+   settled:'Settled means the pet is permanently placed, records and chip are transferred, every expense is paid or reimbursed, and we will never need to deal with it again.'}),
+ recordsSec(['Vet records','Vaccination certificates','Microchip registration','License','Receipts','Photos'])
+ ]},
+
+{id:'inc',code:'GL-A5',title:'Income',accent:'--teal',tint:'--teal-tint',
+ sub:'One sheet per income source. This is for guardianships. Estates usually don’t have ongoing income.',
+ first:['Find out who pays it and where it lands today','Stop anyone else from receiving or cashing it','Start moving it into the guardianship account','For Social Security or VA money, start the payee process (letters of guardianship alone aren’t enough)','Get the award letter or latest benefit statement'],
+ secs:[
+ {t:'Source',rows:[
+   {c:'Type',o:['Social Security','SSDI','SSI','Pension','VA benefits','Annuity payments','IRA / RMD','Rental income','Wages','Trust distributions','Interest / dividends','Other'],w:6},
+   {f:'Payer / agency',w:3},{f:'Payer phone and address',w:3},
+   {f:'Claim or member ID (last 4 only)',w:2},{f:'Whose record it’s paid on',w:2,h:'Sometimes a spouse or survivor benefit.'},{f:'Start date / end date',w:2}
+ ]},
+ {t:'Amount',rows:[
+   {f:'Gross monthly',w:2},{f:'Net monthly (what actually lands)',w:2},{c:'How often',o:['Monthly','Quarterly','Yearly','Irregular'],w:2},
+   {t:{cols:['Deduction','Monthly $','Notes'],rows:['Medicare premium','Tax withholding','Health / other insurance','Garnishment or offset','Other'],sum:1,kind:'ded'}},
+   {f:'Pay date',w:2},{c:'Taxable',o:YN,w:2},{f:'Next change (COLA, RMD, end date)',w:2},
+   {tip:'Get both numbers. The budget runs on net. The accounting may need the gross and each deduction.'}
+ ]},
+ {t:'How it’s paid and where it goes',rows:[
+   {c:'Paid by',o:['Direct deposit','Paper check','Prepaid debit card','Paid straight to facility'],w:6},
+   {f:'Bank and account it goes into (last 4)',w:3},{f:'If paper checks: mailed to what address',w:3},
+   {c:'Whose account is that',o:['Guardianship account','Ward’s own account','Joint account','Facility','Payee account','Family member’s account','Unknown'],w:6},
+   {f:'Who is receiving or cashing it now',w:3},{c:'That account has a GL-A3 sheet',o:YN,w:3},
+   {c:'Counts toward Medicaid patient liability',o:['Yes','No','Unknown','N/A'],w:3},{f:'Patient liability amount and paid to',w:3}
+ ]},
+ controlSec({title:'Control, plan, and status',q:'Do we have control of this income',
+   steps:['Called the payer','Got their forms','Filled out the forms','Sent letters of guardianship and ID','Applied as rep payee / VA fiduciary (if needed)','Sent new deposit instructions','First deposit confirmed in guardianship account','Old account or payee stopped'],
+   extra:[{c:'Social Security rep payee / VA fiduciary',o:['We are','Someone else is','Applied','Not needed'],w:6},
+     {warn:'Social Security and the VA don’t take orders from a letter of guardianship. They appoint their own payee or fiduciary. Until we’re appointed, that money is not under our control.'}],
+   disp:['Deposit to guardianship account','Paid to facility (patient liability)','Continue as is','Stop the benefit','Repay an overpayment','Undecided'],
+   settled:'Settled means this income has ended (for example, at the ward’s death or when the benefit stops), every payment is accounted for, and nothing is owed back. Ongoing income is never settled.'}),
+ recordsSec(['Award letter','Benefit statement','SSA-1099 / 1099-R','Deposit records','Payee paperwork','Correspondence'])
+ ]},
+
+{id:'bud',code:'GL-A6',title:'Monthly Budget',accent:'--plum',tint:'--plum-tint',
+ sub:'One per ward. Build it at appointment and update it whenever something changes. Every amount is monthly: divide yearly bills by 12.',
+ first:['Find every recurring bill: mail, bank statements, autopays','Catch anything past due or facing a shutoff','Confirm where the ward lives now and what it costs','Ask the ward what matters to them: spending money, activities, habits','Check with the attorney whether expenses need court approval before we pay'],
+ secs:[
+ {t:'Living situation',rows:[
+   {c:'Where the ward lives',o:['Own home','Renting','Nursing facility','Assisted living','Group home','With family','Other'],w:6},
+   {c:'Medicaid',o:['Yes','No','Pending','Unknown'],w:3},{f:'Budget for (month and year)',w:3},
+   {f:'Facility or landlord name',w:6}
+ ]},
+ {t:'Monthly income',rows:[
+   {t:{cols:['Source','Gross $','Net $','Deposited to'],rows:['Social Security','Pension','VA','Annuity / IRA','Rental','Other'],sum:2,kind:'inc',totLabel:'Total net'}},
+   {tip:'Each source gets its own GL-A5 Income sheet with the details.'}
+ ]},
+ {t:'Housing',rows:[bt(['Rent','Mortgage','Facility / assisted living','Property taxes (if not escrowed)','HOA / condo dues','Repairs and upkeep','Lawn and snow'])]},
+ {t:'Utilities and phone',rows:[bt(['Electric','Gas','Water / sewer','Trash','Internet','Cable / streaming TV','Landline','Cell phone'])]},
+ {t:'Health care',rows:[bt(['Medicare Part B','Medicare Part D','Medigap supplement','Medicare Advantage','Other health insurance','Dental / vision','Copays and deductibles','Prescriptions','Over-the-counter medicine','Medical supplies / equipment','Glasses / hearing aids','Medicaid patient liability'])]},
+ {t:'Other insurance',rows:[bt(['Homeowner’s / renter’s','Auto','Life','Long-term care','Other'])]},
+ {t:'Transportation',rows:[bt(['Car payment','Gas','Maintenance / repairs','Registration','Rides / medical transport'])]},
+ {t:'Personal needs',rows:[
+   {c:'Personal spending allowance',o:['Medicaid personal needs allowance ($75 / month)','Custom amount'],w:4},{c:'Smokes or vapes',o:YN,w:2},
+   bt(['Groceries / food','Eating out','Toiletries','Personal spending allowance','Tobacco / vaping','Salon / barber','Clothing, shoes, coats (set aside)','Laundry','Subscriptions / magazines','Entertainment / activities','Gifts / holidays','Church / donations']),
+   {f:'Coming up: seasonal or one-time needs (winter coat, shoes, glasses)',w:6}
+ ]},
+ {t:'Pet care',rows:[
+   bt(['Food','Grooming','Vet','Medications','Boarding / sitter','License']),
+   {tip:'Each pet also gets a GL-A4 Pet sheet.'}
+ ]},
+ {t:'Debts and guardianship costs',rows:[bt(['Credit card(s)','Loan payments','Guardian bond premium','Court costs','Tax preparation','Other'])]},
+ {t:'One-time and special purchases',rows:[
+   {t:{cols:['Item','Estimated $','Needed by','Court approval needed'],rows:['1','2','3','4'],sum:1,kind:'one',totLabel:'Total one-time'}},
+   {c:'Pre-need funeral / burial plan in place',o:YN,w:6}
+ ]},
+ {t:'Summary',rows:[
+   {f:'Total monthly net income',w:2,auto:'income'},{f:'Total monthly expenses',w:2,auto:'expenses'},{f:'Monthly surplus or shortfall',w:2,auto:'diff'},
+   {f:'Reserve / cushion set aside',w:3},{c:'Court approval needed for this budget',o:['Yes','No','Ask attorney'],w:3},
+   {f:'Application to expend filed (date)',w:3},{f:'Approved (date)',w:3},
+   {warn:'A shortfall goes to the attorney right away. And don’t start any new recurring payment until the attorney confirms the court authority is in place.'}
+ ]},
+ recordsSec(['Bills','Lease / facility agreement','Insurance declarations','Receipts','Bank statements','Court-approved budget'])
+ ]}
+];
+
+/* ---------- render ---------- */
+let uid=0;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+function field(r,sid){
+  const id=sid+'-'+(uid++);
+  if(r.s) return `<div class="subhead">${r.s}</div>`;
+  if(r.tip) return `<div class="note">${r.tip}</div>`;
+  if(r.warn) return `<div class="note warn">${r.warn}</div>`;
+  if(r.x) return `<div class="explain">${r.x.map(([b,p])=>`<div><b>${b}</b><p>${p}</p></div>`).join('')}</div>`;
+  if(r.settled) return `<div class="settled"><b>What “Settled” means.</b> ${r.settled}</div>`;
+  if(r.k) return `<div class="chips steplist" data-l="${esc(r.kl||'Steps done')}" data-single="0">${r.k.map(t=>`<label class="chip"><input type="checkbox" value="${esc(t)}"><span class="box"></span>${t}</label>`).join('')}</div>`;
+  if(r.t){
+    const T=r.t, S=T.sum;
+    return `<div class="tbl"><table${S!=null?` data-sum="1" data-kind="${T.kind||''}"`:''}><thead><tr>${T.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${
+      T.rows.map(row=>`<tr><td>${row}</td>${T.cols.slice(1).map((c,ci)=>`<td><input type="text"${ci+1===S?' data-amt inputmode="decimal"':''} aria-label="${esc(row+' '+c)}" data-l="${esc(row+' — '+c)}"></td>`).join('')}</tr>`).join('')
+    }</tbody>${S!=null?`<tfoot><tr><td>${T.totLabel||'Total'}</td>${T.cols.slice(1).map((c,ci)=>`<td>${ci+1===S?'<span data-tot></span>':''}</td>`).join('')}</tr></tfoot>`:''}</table></div>`;
+  }
+  const w=r.w||3; const hint=r.h?`<div class="hint">${r.h}</div>`:'';
+  const wc=w<=1?' w1':'';
+  if(r.f) return `<div class="fld${wc}" style="--w:${w}"><label for="${id}">${r.f}</label><input type="text" id="${id}" data-l="${esc(r.f)}"${r.auto?` readonly class="auto" data-auto="${r.auto}"`:''}>${hint}</div>`;
+  if(r.a) return `<div class="fld" style="--w:6"><label for="${id}">${r.a}</label><textarea id="${id}" rows="${r.r||2}" data-l="${esc(r.a)}"></textarea>${hint}</div>`;
+  if(r.c){
+    const type=r.m?'checkbox':'checkbox'; const round=r.m?'':' round';
+    return `<div class="fld${wc}" style="--w:${w}" role="group" aria-label="${esc(r.c)}"><span class="lbl">${r.c}</span><div class="chips" data-l="${esc(r.c)}" data-single="${r.m?0:1}">${
+      r.o.map(o=>`<label class="chip${round}"><input type="${type}" value="${esc(o)}"><span class="box"></span>${o}</label>`).join('')
+    }</div>${hint}</div>`;
+  }
+  return '';
+}
+function sheetHTML(s){
+  let n=0;
+  const secs=s.secs.map(sec=>{n++;return `<section class="sec" data-sec="${esc(sec.t)}"><div class="sechead"><span class="n">${String(n).padStart(2,'0')}</span><h3>${sec.t}</h3></div><div class="grid">${sec.rows.map(r=>field(r,s.id)).join('')}</div></section>`}).join('');
+  return `<article class="sheet" id="${s.id}" style="--accent:var(${s.accent});--accent-tint:var(${s.tint})">
+    <div class="sheethead"><div><div class="code">${s.code}</div><h2>${s.title} Checklist</h2><p class="sub">${s.sub}</p><div class="legend"><span><i class="r"></i>Pick one</span><span><i></i>Check all that apply</span></div></div>
+      <div class="actions"><button class="btn primary" data-act="export">Copy for BusinessMap</button><button class="btn" data-act="print">Print</button><button class="btn quiet" data-act="clear">Clear</button></div></div>
+    <section class="matter" data-sec="Matter"><div class="ttl">Matter</div><div class="grid">${MATTER.map(r=>field(r,s.id)).join('')}</div></section>
+    <section class="first" data-sec="Do first"><div class="ttl">Do these first</div><div class="tasks chips" data-l="Do first (done)" data-single="0">${s.first.map(t=>`<label class="chip task"><input type="checkbox" value="${esc(t)}"><span class="box"></span>${t}</label>`).join('')}</div></section>
+    ${secs}
+    <section class="signoff" data-sec="Wrap-up"><div class="grid">${SIGNOFF.map(r=>field(r,s.id)).join('')}</div></section>
+  </article>`;
+}
+document.getElementById('sheets').innerHTML=SHEETS.map(sheetHTML).join('');
+
+/* single-select behavior */
+document.addEventListener('change',e=>{
+  const g=e.target.closest('.chips');
+  if(g && g.dataset.single==='1' && e.target.checked){
+    g.querySelectorAll('input').forEach(i=>{if(i!==e.target)i.checked=false});
+  }
+});
+
+/* totals */
+const num=v=>{const n=parseFloat(String(v).replace(/[$,\s]/g,''));return isNaN(n)?0:n};
+const fmt=n=>(n<0?'−$':'$')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+function recalc(){
+  let inc=0,exp=0,any=false;
+  document.querySelectorAll('table[data-sum]').forEach(t=>{
+    let s=0,has=false;t.querySelectorAll('input[data-amt]').forEach(i=>{if(i.value.trim()){has=true;s+=num(i.value)}});
+    t.querySelector('[data-tot]').textContent=has?fmt(s):'';
+    if(has&&(t.dataset.kind==='inc'||t.dataset.kind==='exp'))any=true;
+    if(t.dataset.kind==='inc')inc+=s; if(t.dataset.kind==='exp')exp+=s;
+  });
+  const set=(k,v)=>document.querySelectorAll(`[data-auto="${k}"]`).forEach(i=>i.value=any?fmt(v):'');
+  set('income',inc);set('expenses',exp);set('diff',inc-exp);
+}
+document.addEventListener('input',e=>{if(e.target.matches('input[data-amt]'))recalc()});
+document.addEventListener('change',e=>{
+  if(e.target.checked && e.target.value.startsWith('Medicaid personal needs')){
+    const i=e.target.closest('.sheet').querySelector('input[data-l="Personal spending allowance — Monthly $"]');
+    if(i&&!i.value){i.value='75';recalc()}
+  }
+});
+
+/* tabs */
+function go(id){
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===id));
+  document.querySelectorAll('.sheet').forEach(s=>s.classList.toggle('active',s.id===id));
+  document.getElementById('overview').style.display=id==='overview'?'':'none';
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+
+/* print */
+function doPrint(mode){
+  document.body.classList.remove('print-one','print-all');
+  document.body.classList.add(mode);
+  const ov=document.getElementById('overview'); const prev=ov.style.display;
+  if(mode==='print-all') ov.style.display='';
+  setTimeout(()=>{window.print();ov.style.display=prev;},50);
+}
+window.addEventListener('afterprint',()=>document.body.classList.remove('print-one','print-all'));
+document.getElementById('printAll').addEventListener('click',()=>{
+  const filled=[...document.querySelectorAll('.sheet input[type=text],.sheet textarea')].some(i=>i.value)||[...document.querySelectorAll('.sheet input[type=checkbox]')].some(i=>i.checked);
+  if(filled && !confirm('Some sheets have answers filled in. They will print with those answers. Continue?')) return;
+  doPrint('print-all');
+});
+
+/* export + clear */
+const panel=document.getElementById('panel'),ptext=document.getElementById('panelText'),pmsg=document.getElementById('panelMsg');
+function summarize(sheet){
+  const s=SHEETS.find(x=>x.id===sheet.id);
+  const out=[`${s.code} ${s.title.toUpperCase()} CHECKLIST`];
+  sheet.querySelectorAll('section[data-sec]').forEach(sec=>{
+    const lines=[];
+    sec.querySelectorAll('input[type=text],textarea,.chips').forEach(el=>{
+      if(el.classList && el.classList.contains('chips')){
+        const v=[...el.querySelectorAll('input:checked')].map(i=>i.value);
+        if(v.length) lines.push(el.dataset.single==='0'&&sec.dataset.sec==='Do first'?v.map(x=>'  [x] '+x).join('\n'):`${el.dataset.l}: ${v.join(', ')}`);
+      } else if(el.value && el.value.trim()){
+        lines.push(`${el.dataset.l}: ${el.value.trim()}`);
+      }
+    });
+    if(lines.length){out.push('');out.push('— '+sec.dataset.sec+' —');out.push(...lines)}
+  });
+  return out.length>1?out.join('\n'):'Nothing has been filled in on this sheet yet. Answer a few fields, then try again.';
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]'); if(!b) return;
+  const sheet=b.closest('.sheet');
+  if(b.dataset.act==='print') doPrint('print-one');
+  if(b.dataset.act==='clear'){ if(confirm('Clear every answer on this sheet?')){sheet.querySelectorAll('input[type=text],textarea').forEach(i=>i.value='');sheet.querySelectorAll('input[type=checkbox]').forEach(i=>i.checked=false);recalc();} }
+  if(b.dataset.act==='export'){ ptext.value=summarize(sheet); pmsg.textContent=''; panel.classList.add('open'); ptext.focus(); ptext.select(); }
+});
+document.getElementById('panelClose').addEventListener('click',()=>panel.classList.remove('open'));
+panel.addEventListener('click',e=>{if(e.target===panel)panel.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')panel.classList.remove('open')});
+document.getElementById('panelCopy').addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(ptext.value);pmsg.textContent='Copied.'}
+  catch(err){ptext.select();try{document.execCommand('copy');pmsg.textContent='Copied.'}catch(e2){pmsg.textContent='Select the text and copy it manually.'}}
+});
+</script>
+</body>
+</html>
