@@ -40,10 +40,15 @@ export async function proxy(request: NextRequest) {
 
   // Do not put code between createServerClient and getClaims: getClaims is
   // what refreshes an expired access token.
-  const { data } = await supabase.auth.getClaims()
+  const { data, error } = await supabase.auth.getClaims()
   let claims = data?.claims ?? null
+  let reason: 'expired' | 'inactive' | null = null
 
-  if (claims && sessionExpired(claims, remember)) {
+  if (claims && sessionExpired(claims, remember)) reason = 'expired'
+  // A deactivated user is banned in Supabase Auth; depending on the project's
+  // JWT keys that surfaces here (token check) or in requireUser (profile).
+  if (!claims && error?.code === 'user_banned') reason = 'inactive'
+  if (reason) {
     await supabase.auth.signOut({ scope: 'local' })
     response.cookies.delete(REMEMBER_COOKIE)
     claims = null
@@ -56,6 +61,7 @@ export async function proxy(request: NextRequest) {
     to.pathname = '/login'
     to.search = ''
     if (pathname !== '/') to.searchParams.set('next', pathname + search)
+    if (reason) to.searchParams.set('reason', reason)
     return redirectWithCookies(to, response)
   }
 

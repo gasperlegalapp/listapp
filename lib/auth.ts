@@ -30,9 +30,13 @@ export const requireUser = cache(async (opts: Options = {}) => {
   const claims = claimsData?.claims
   if (!claims) redirect('/login')
 
-  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
-  if (aal && aal.nextLevel === 'aal2' && aal.currentLevel !== 'aal2') redirect('/login/mfa')
-  if (env.mfaRequired && !opts.allowMissingMfa && aal?.nextLevel !== 'aal2') redirect('/account/security?required=1')
+  // Passing the token makes Supabase check enrolled factors with the auth
+  // server instead of trusting the user object cached in the cookie.
+  const { data: sessionData } = await supabase.auth.getSession()
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel(sessionData.session?.access_token)
+  if (!aal) redirect('/auth/signout?reason=expired')
+  if (aal.nextLevel === 'aal2' && aal.currentLevel !== 'aal2') redirect('/login/mfa')
+  if (env.mfaRequired && !opts.allowMissingMfa && aal.nextLevel !== 'aal2') redirect('/account/security?required=1')
 
   const { data: profile } = await supabase
     .from('profiles')

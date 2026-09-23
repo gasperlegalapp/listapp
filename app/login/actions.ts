@@ -54,7 +54,7 @@ export async function signIn(_: FormState, formData: FormData): Promise<FormStat
     ...(remember ? { maxAge: REMEMBER_MAX_AGE_S } : {}),
   })
 
-  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel(data.session.access_token)
   if (aal?.nextLevel === 'aal2' && aal.currentLevel !== 'aal2') {
     redirect(`/login/mfa?next=${encodeURIComponent(next)}`)
   }
