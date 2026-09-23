@@ -137,14 +137,17 @@ create table public.delete_log (
 create index delete_log_at_idx on public.delete_log (at desc);
 
 -- ---------------------------------------------------------------------------
--- login_attempts: for lockout. Only the server (secret key) touches this.
+-- login_attempts: lockout and reset throttling. Only the server (secret key)
+-- touches this. kind = 'password' (sign-in), 'mfa' (authenticator code), or
+-- 'reset' (reset email requested).
 -- ---------------------------------------------------------------------------
 create table public.login_attempts (
   id         bigint generated always as identity primary key,
+  kind       text not null default 'password' check (kind in ('password', 'mfa', 'reset')),
   email      text not null,
   ip         text,
   succeeded  boolean not null,
   at         timestamptz not null default now()
 );
-create index login_attempts_email_idx on public.login_attempts (email, at desc);
-create index login_attempts_ip_idx on public.login_attempts (ip, at desc);
+create index login_attempts_email_idx on public.login_attempts (kind, email, at desc);
+create index login_attempts_ip_idx on public.login_attempts (kind, ip, at desc);

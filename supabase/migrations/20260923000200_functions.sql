@@ -524,11 +524,11 @@ $$;
 
 -- ---------------------------------------------------------------------------
 -- Login lockout (server-only). Returns seconds until the caller may try again,
--- 0 if allowed. 5 failures for one email, or 20 from one IP, within 15
--- minutes locks for 15 minutes from the last failure. A success resets the
--- email counter.
+-- 0 if allowed. For a given kind ('password' or 'mfa'): 5 failures for one
+-- email, or 20 from one IP, within 15 minutes locks for 15 minutes from the
+-- last failure. A success resets the email counter.
 -- ---------------------------------------------------------------------------
-create or replace function public.login_lockout_seconds(p_email text, p_ip text)
+create or replace function public.login_lockout_seconds(p_email text, p_ip text, p_kind text default 'password')
 returns integer
 language sql
 stable
@@ -537,17 +537,17 @@ set search_path = ''
 as $$
   with last_ok as (
     select max(at) as at from public.login_attempts
-    where email = lower(p_email) and succeeded
+    where kind = p_kind and email = lower(p_email) and succeeded
   ),
   email_fail as (
     select count(*) as n, max(at) as last_at from public.login_attempts
-    where email = lower(p_email) and not succeeded
+    where kind = p_kind and email = lower(p_email) and not succeeded
       and at > now() - interval '15 minutes'
       and at > coalesce((select at from last_ok), '-infinity'::timestamptz)
   ),
   ip_fail as (
     select count(*) as n, max(at) as last_at from public.login_attempts
-    where p_ip is not null and ip = p_ip and not succeeded
+    where kind = p_kind and p_ip is not null and ip = p_ip and not succeeded
       and at > now() - interval '15 minutes'
   )
   select greatest(

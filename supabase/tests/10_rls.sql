@@ -171,7 +171,7 @@ do $$ begin
   begin perform public.revert_field((select max(id) from public.revisions));
     raise exception 'FAIL: staff reverted';
   exception when insufficient_privilege then raise notice 'PASS: staff cannot revert'; end;
-  begin perform public.login_lockout_seconds('x', 'y');
+  begin perform public.login_lockout_seconds('x', 'y', 'password');
     raise exception 'FAIL: staff called lockout fn';
   exception when insufficient_privilege then raise notice 'PASS: lockout function is server-only'; end;
   begin perform 1 from public.login_attempts;
@@ -347,6 +347,11 @@ insert into public.login_attempts (email, ip, succeeded) values ('staff@example.
 select test.ok(public.login_lockout_seconds('STAFF@example.com', '198.51.100.1') between 890 and 900,
                'five failures: email locked for ~15 minutes');
 insert into public.login_attempts (email, ip, succeeded, at) values ('staff@example.com', '203.0.113.9', true, now() + interval '1 second');
+select test.ok(public.login_lockout_seconds('staff@example.com', '198.51.100.1', 'mfa') = 0, 'password failures do not lock MFA');
+insert into public.login_attempts (email, ip, succeeded, at) values ('staff@example.com', '203.0.113.9', true, now() + interval '1 second');
 select test.ok(public.login_lockout_seconds('staff@example.com', '198.51.100.1') = 0, 'a success resets the email counter');
+insert into public.login_attempts (email, ip, succeeded)
+select 'other' || g || '@example.com', '203.0.113.50', false from generate_series(1, 20) g;
+select test.ok(public.login_lockout_seconds('new@example.com', '203.0.113.50') > 0, 'twenty failures from one IP lock that IP');
 
 \echo 'RLS tests complete.'

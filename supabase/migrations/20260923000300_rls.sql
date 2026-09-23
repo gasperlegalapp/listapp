@@ -43,7 +43,7 @@ grant execute on function private.app_role() to service_role;
 grant execute on function private.is_app_user(text) to service_role;
 grant execute on function private.check_soft_delete(timestamptz, timestamptz) to service_role;
 grant execute on function private.valid_option(text, integer) to service_role;
-grant execute on function public.login_lockout_seconds(text, text) to service_role;
+grant execute on function public.login_lockout_seconds(text, text, text) to service_role;
 
 -- Append-only, even for the secret key.
 revoke update, delete, truncate on public.revisions from service_role;
