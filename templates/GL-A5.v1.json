@@ -1,0 +1,1080 @@
+{
+  "format": 1,
+  "code": "GL-A5",
+  "slug": "inc",
+  "title": "Income",
+  "sub": "One sheet per income source. This is for guardianships. Estates usually don't have ongoing income.",
+  "accent": "teal",
+  "matter": [
+    {
+      "type": "text",
+      "key": "m_f01",
+      "label": "Matter / case name",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "m_f02",
+      "label": "Case no.",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "m_f03",
+      "label": "County",
+      "w": 2
+    },
+    {
+      "type": "choice",
+      "key": "m_f04",
+      "label": "Matter type",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardianship"
+        },
+        {
+          "key": "opt2",
+          "label": "Estate"
+        },
+        {
+          "key": "opt3",
+          "label": "Trust"
+        },
+        {
+          "key": "opt4",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "key": "m_f05",
+      "label": "Our role",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardian of estate"
+        },
+        {
+          "key": "opt2",
+          "label": "Fiduciary / administrator"
+        },
+        {
+          "key": "opt3",
+          "label": "Counsel"
+        },
+        {
+          "key": "opt4",
+          "label": "Trustee"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "m_f06",
+      "label": "Ward / decedent",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "m_f07",
+      "label": "Date of death or appointment",
+      "w": 2,
+      "hint": "This is the valuation date for the inventory."
+    },
+    {
+      "type": "text",
+      "key": "m_f08",
+      "label": "Assigned staff",
+      "w": 2
+    }
+  ],
+  "first": {
+    "type": "tasks",
+    "key": "first",
+    "label": "Do first (done)",
+    "options": [
+      {
+        "key": "opt1",
+        "label": "Find out who pays it and where it lands today"
+      },
+      {
+        "key": "opt2",
+        "label": "Stop anyone else from receiving or cashing it"
+      },
+      {
+        "key": "opt3",
+        "label": "Start moving it into the guardianship account"
+      },
+      {
+        "key": "opt4",
+        "label": "For Social Security or VA money, start the payee process (letters of guardianship alone aren't enough)"
+      },
+      {
+        "key": "opt5",
+        "label": "Get the award letter or latest benefit statement"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "key": "s01",
+      "n": 1,
+      "title": "Source",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s01_f01",
+          "label": "Type",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Social Security"
+            },
+            {
+              "key": "opt2",
+              "label": "SSDI"
+            },
+            {
+              "key": "opt3",
+              "label": "SSI"
+            },
+            {
+              "key": "opt4",
+              "label": "Pension"
+            },
+            {
+              "key": "opt5",
+              "label": "VA benefits"
+            },
+            {
+              "key": "opt6",
+              "label": "Annuity payments"
+            },
+            {
+              "key": "opt7",
+              "label": "IRA / RMD"
+            },
+            {
+              "key": "opt8",
+              "label": "Rental income"
+            },
+            {
+              "key": "opt9",
+              "label": "Wages"
+            },
+            {
+              "key": "opt10",
+              "label": "Trust distributions"
+            },
+            {
+              "key": "opt11",
+              "label": "Interest / dividends"
+            },
+            {
+              "key": "opt12",
+              "label": "Other"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f02",
+          "label": "Payer / agency",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s01_f03",
+          "label": "Payer phone and address",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s01_f04",
+          "label": "Claim or member ID (last 4 only)",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f05",
+          "label": "Whose record it's paid on",
+          "w": 2,
+          "hint": "Sometimes a spouse or survivor benefit."
+        },
+        {
+          "type": "text",
+          "key": "s01_f06",
+          "label": "Start date / end date",
+          "w": 2
+        }
+      ]
+    },
+    {
+      "key": "s02",
+      "n": 2,
+      "title": "Amount",
+      "rows": [
+        {
+          "type": "text",
+          "key": "s02_f01",
+          "label": "Gross monthly",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s02_f02",
+          "label": "Net monthly (what actually lands)",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s02_f03",
+          "label": "How often",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Monthly"
+            },
+            {
+              "key": "opt2",
+              "label": "Quarterly"
+            },
+            {
+              "key": "opt3",
+              "label": "Yearly"
+            },
+            {
+              "key": "opt4",
+              "label": "Irregular"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "key": "s02_t1",
+          "cols": [
+            "Deduction",
+            "Monthly $",
+            "Notes"
+          ],
+          "rows": [
+            "Medicare premium",
+            "Tax withholding",
+            "Health / other insurance",
+            "Garnishment or offset",
+            "Other"
+          ],
+          "sum": 1,
+          "kind": "ded"
+        },
+        {
+          "type": "text",
+          "key": "s02_f04",
+          "label": "Pay date",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s02_f05",
+          "label": "Taxable",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f06",
+          "label": "Next change (COLA, RMD, end date)",
+          "w": 2
+        },
+        {
+          "type": "tip",
+          "html": "Get both numbers. The budget runs on net. The accounting may need the gross and each deduction."
+        }
+      ]
+    },
+    {
+      "key": "s03",
+      "n": 3,
+      "title": "How it's paid and where it goes",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s03_f01",
+          "label": "Paid by",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Direct deposit"
+            },
+            {
+              "key": "opt2",
+              "label": "Paper check"
+            },
+            {
+              "key": "opt3",
+              "label": "Prepaid debit card"
+            },
+            {
+              "key": "opt4",
+              "label": "Paid straight to facility"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f02",
+          "label": "Bank and account it goes into (last 4)",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s03_f03",
+          "label": "If paper checks: mailed to what address",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s03_f04",
+          "label": "Whose account is that",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Guardianship account"
+            },
+            {
+              "key": "opt2",
+              "label": "Ward's own account"
+            },
+            {
+              "key": "opt3",
+              "label": "Joint account"
+            },
+            {
+              "key": "opt4",
+              "label": "Facility"
+            },
+            {
+              "key": "opt5",
+              "label": "Payee account"
+            },
+            {
+              "key": "opt6",
+              "label": "Family member's account"
+            },
+            {
+              "key": "opt7",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f05",
+          "label": "Who is receiving or cashing it now",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s03_f06",
+          "label": "That account has a GL-A3 sheet",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s03_f07",
+          "label": "Counts toward Medicaid patient liability",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            },
+            {
+              "key": "opt4",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f08",
+          "label": "Patient liability amount and paid to",
+          "w": 3
+        }
+      ]
+    },
+    {
+      "key": "s04",
+      "n": 4,
+      "title": "Control, plan, and status",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s04_f01",
+          "label": "Do we have control of this income",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Partly"
+            },
+            {
+              "key": "opt3",
+              "label": "No"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "subhead",
+          "text": "If not, steps to get control"
+        },
+        {
+          "type": "tasks",
+          "key": "s04_f02",
+          "label": "Steps done",
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Called the payer"
+            },
+            {
+              "key": "opt2",
+              "label": "Got their forms"
+            },
+            {
+              "key": "opt3",
+              "label": "Filled out the forms"
+            },
+            {
+              "key": "opt4",
+              "label": "Sent letters of guardianship and ID"
+            },
+            {
+              "key": "opt5",
+              "label": "Applied as rep payee / VA fiduciary (if needed)"
+            },
+            {
+              "key": "opt6",
+              "label": "Sent new deposit instructions"
+            },
+            {
+              "key": "opt7",
+              "label": "First deposit confirmed in guardianship account"
+            },
+            {
+              "key": "opt8",
+              "label": "Old account or payee stopped"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s04_f03",
+          "label": "Date started / last follow-up",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s04_f04",
+          "label": "Who controls it now, if not us",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s04_f05",
+          "label": "Who decides the next step",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Guardian / fiduciary decides"
+            },
+            {
+              "key": "opt2",
+              "label": "Needs court approval"
+            },
+            {
+              "key": "opt3",
+              "label": "Someone else controls it"
+            },
+            {
+              "key": "opt4",
+              "label": "Ask attorney"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f06",
+          "label": "Social Security rep payee / VA fiduciary",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "We are"
+            },
+            {
+              "key": "opt2",
+              "label": "Someone else is"
+            },
+            {
+              "key": "opt3",
+              "label": "Applied"
+            },
+            {
+              "key": "opt4",
+              "label": "Not needed"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "html": "Social Security and the VA don't take orders from a letter of guardianship. They appoint their own payee or fiduciary. Until we're appointed, that money is not under our control."
+        },
+        {
+          "type": "choice",
+          "key": "s04_f07",
+          "label": "Disposition",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Deposit to guardianship account"
+            },
+            {
+              "key": "opt2",
+              "label": "Paid to facility (patient liability)"
+            },
+            {
+              "key": "opt3",
+              "label": "Continue as is"
+            },
+            {
+              "key": "opt4",
+              "label": "Stop the benefit"
+            },
+            {
+              "key": "opt5",
+              "label": "Repay an overpayment"
+            },
+            {
+              "key": "opt6",
+              "label": "Undecided"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f08",
+          "label": "Status",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Not started"
+            },
+            {
+              "key": "opt2",
+              "label": "In progress"
+            },
+            {
+              "key": "opt3",
+              "label": "Waiting on institution / third party"
+            },
+            {
+              "key": "opt4",
+              "label": "Waiting on court"
+            },
+            {
+              "key": "opt5",
+              "label": "Settled"
+            }
+          ]
+        },
+        {
+          "type": "settled",
+          "text": "Settled means this income has ended (for example, at the ward's death or when the benefit stops), every payment is accounted for, and nothing is owed back. Ongoing income is never settled."
+        },
+        {
+          "type": "text",
+          "key": "s04_f09",
+          "label": "Date settled",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s04_f10",
+          "label": "How it was settled",
+          "w": 4
+        }
+      ]
+    },
+    {
+      "key": "s05",
+      "n": 5,
+      "title": "Records",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s05_f01",
+          "label": "Do we have records",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Some"
+            },
+            {
+              "key": "opt3",
+              "label": "None yet"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s05_f02",
+          "label": "What we have",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Award letter"
+            },
+            {
+              "key": "opt2",
+              "label": "Benefit statement"
+            },
+            {
+              "key": "opt3",
+              "label": "SSA-1099 / 1099-R"
+            },
+            {
+              "key": "opt4",
+              "label": "Deposit records"
+            },
+            {
+              "key": "opt5",
+              "label": "Payee paperwork"
+            },
+            {
+              "key": "opt6",
+              "label": "Correspondence"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s05_f03",
+          "label": "Where they are",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Hard file"
+            },
+            {
+              "key": "opt2",
+              "label": "Scanned into Actionstep"
+            },
+            {
+              "key": "opt3",
+              "label": "Institution portal only"
+            },
+            {
+              "key": "opt4",
+              "label": "Not yet obtained"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f04",
+          "label": "Records still needed, and from whom",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s05_f05",
+          "label": "Date requested",
+          "w": 2
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "type": "textarea",
+      "key": "w_f01",
+      "label": "Red flags and anything urgent",
+      "rows": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f02",
+      "label": "Next step",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "w_f03",
+      "label": "Who owns it",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f04",
+      "label": "Due",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f05",
+      "label": "Completed by",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f06",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f07",
+      "label": "Attorney reviewed",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f08",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f09",
+      "label": "Entered in BusinessMap",
+      "w": 2,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "w_f10",
+      "label": "Date entered",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f11",
+      "label": "Photos / documents uploaded",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        },
+        {
+          "key": "opt2",
+          "label": "None to upload"
+        }
+      ]
+    }
+  ],
+  "keys": {
+    "m_f01": {
+      "t": "text"
+    },
+    "m_f02": {
+      "t": "text"
+    },
+    "m_f03": {
+      "t": "text"
+    },
+    "m_f04": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f06": {
+      "t": "text"
+    },
+    "m_f07": {
+      "t": "text"
+    },
+    "m_f08": {
+      "t": "text"
+    },
+    "first": {
+      "t": "many",
+      "n": 5
+    },
+    "s01_f01": {
+      "t": "one",
+      "n": 12
+    },
+    "s01_f02": {
+      "t": "text"
+    },
+    "s01_f03": {
+      "t": "text"
+    },
+    "s01_f04": {
+      "t": "text"
+    },
+    "s01_f05": {
+      "t": "text"
+    },
+    "s01_f06": {
+      "t": "text"
+    },
+    "s02_f01": {
+      "t": "text"
+    },
+    "s02_f02": {
+      "t": "text"
+    },
+    "s02_f03": {
+      "t": "one",
+      "n": 4
+    },
+    "s02_t1_r1_c1": {
+      "t": "text"
+    },
+    "s02_t1_r1_c2": {
+      "t": "text"
+    },
+    "s02_t1_r2_c1": {
+      "t": "text"
+    },
+    "s02_t1_r2_c2": {
+      "t": "text"
+    },
+    "s02_t1_r3_c1": {
+      "t": "text"
+    },
+    "s02_t1_r3_c2": {
+      "t": "text"
+    },
+    "s02_t1_r4_c1": {
+      "t": "text"
+    },
+    "s02_t1_r4_c2": {
+      "t": "text"
+    },
+    "s02_t1_r5_c1": {
+      "t": "text"
+    },
+    "s02_t1_r5_c2": {
+      "t": "text"
+    },
+    "s02_f04": {
+      "t": "text"
+    },
+    "s02_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f06": {
+      "t": "text"
+    },
+    "s03_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s03_f02": {
+      "t": "text"
+    },
+    "s03_f03": {
+      "t": "text"
+    },
+    "s03_f04": {
+      "t": "one",
+      "n": 7
+    },
+    "s03_f05": {
+      "t": "text"
+    },
+    "s03_f06": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_f07": {
+      "t": "one",
+      "n": 4
+    },
+    "s03_f08": {
+      "t": "text"
+    },
+    "s04_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s04_f02": {
+      "t": "many",
+      "n": 8
+    },
+    "s04_f03": {
+      "t": "text"
+    },
+    "s04_f04": {
+      "t": "text"
+    },
+    "s04_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "s04_f06": {
+      "t": "one",
+      "n": 4
+    },
+    "s04_f07": {
+      "t": "one",
+      "n": 6
+    },
+    "s04_f08": {
+      "t": "one",
+      "n": 5
+    },
+    "s04_f09": {
+      "t": "text"
+    },
+    "s04_f10": {
+      "t": "text"
+    },
+    "s05_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f02": {
+      "t": "many",
+      "n": 6
+    },
+    "s05_f03": {
+      "t": "many",
+      "n": 4
+    },
+    "s05_f04": {
+      "t": "text"
+    },
+    "s05_f05": {
+      "t": "text"
+    },
+    "w_f01": {
+      "t": "text"
+    },
+    "w_f02": {
+      "t": "text"
+    },
+    "w_f03": {
+      "t": "text"
+    },
+    "w_f04": {
+      "t": "text"
+    },
+    "w_f05": {
+      "t": "text"
+    },
+    "w_f06": {
+      "t": "text"
+    },
+    "w_f07": {
+      "t": "text"
+    },
+    "w_f08": {
+      "t": "text"
+    },
+    "w_f09": {
+      "t": "one",
+      "n": 1
+    },
+    "w_f10": {
+      "t": "text"
+    },
+    "w_f11": {
+      "t": "one",
+      "n": 2
+    }
+  }
+}
