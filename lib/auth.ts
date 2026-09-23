@@ -24,7 +24,13 @@ type Options = {
 // already bounced signed-out visitors; this re-checks, loads the profile
 // through RLS, and enforces deactivation and MFA. Postgres enforces the same
 // rules again in RLS, so a bug here fails closed.
-export const requireUser = cache(async (opts: Options = {}) => {
+export function requireUser(opts: Options = {}) {
+  return loadUser(!!opts.allowMissingMfa)
+}
+
+// Cached per request, keyed on a primitive so the layout and the page share
+// one lookup.
+const loadUser = cache(async (allowMissingMfa: boolean) => {
   const supabase = await createClient()
   const { data: claimsData } = await supabase.auth.getClaims()
   const claims = claimsData?.claims
@@ -36,7 +42,7 @@ export const requireUser = cache(async (opts: Options = {}) => {
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel(sessionData.session?.access_token)
   if (!aal) redirect('/auth/signout?reason=expired')
   if (aal.nextLevel === 'aal2' && aal.currentLevel !== 'aal2') redirect('/login/mfa')
-  if (env.mfaRequired && !opts.allowMissingMfa && aal.nextLevel !== 'aal2') redirect('/account/security?required=1')
+  if (env.mfaRequired && !allowMissingMfa && aal.nextLevel !== 'aal2') redirect('/account/security?required=1')
 
   const { data: profile } = await supabase
     .from('profiles')
