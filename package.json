@@ -10,12 +10,15 @@
     "lint": "eslint .",
     "templates:import": "tsx scripts/import-templates.ts",
     "test:db": "bash scripts/test-db.sh",
-    "test:e2e": "node tests/e2e/auth.e2e.mjs && node tests/e2e/lists.e2e.mjs"
+    "test:e2e": "node tests/e2e/auth.e2e.mjs && node tests/e2e/lists.e2e.mjs && node tests/e2e/output.e2e.mjs",
+    "test:unit": "node --import tsx --test tests/unit/*.test.ts tests/unit/*.test.tsx"
   },
   "dependencies": {
+    "@sparticuz/chromium": "153.0.0",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.1",
     "next": "^16.3.6",
+    "puppeteer-core": "25.12.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "resend": "^6.28.1",
@@ -31,5 +34,8 @@
     "supabase": "^2.117.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

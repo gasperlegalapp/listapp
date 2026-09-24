@@ -46,11 +46,24 @@ export class SaveQueue {
     )
   }
 
-  async flush(key: string): Promise<void> {
+  // Save everything typed so far, now, and wait for it. For actions that
+  // read the saved list back (the PDF). False if something would not save.
+  async flushAll(timeoutMs = 8000): Promise<boolean> {
+    const until = Date.now() + timeoutMs
+    while (this.busy() && Date.now() < until) {
+      const keys = [...this.pending.keys()].filter((k) => !this.inflight.has(k))
+      const results = await Promise.all(keys.map((k) => this.flush(k)))
+      if (results.includes(false)) return false
+      if (this.busy()) await new Promise((r) => setTimeout(r, 150))
+    }
+    return !this.busy()
+  }
+
+  async flush(key: string): Promise<boolean> {
     const t = this.timers.get(key)
     if (t) clearTimeout(t)
     this.timers.delete(key)
-    if (!this.pending.has(key) || this.inflight.has(key)) return
+    if (!this.pending.has(key) || this.inflight.has(key)) return true
     const value = this.pending.get(key) ?? null
     this.pending.delete(key)
     this.inflight.add(key)
@@ -66,12 +79,13 @@ export class SaveQueue {
       this.retryMs = 3000
       if (this.pending.has(key)) return this.flush(key)
       if (!this.busy()) this.onStatus({ kind: 'saved', at: new Date() })
-      return
+      return true
     }
     if (!this.pending.has(key)) this.pending.set(key, value)
     this.onStatus(res.signedOut ? { kind: 'signedout' } : { kind: 'error', msg: res.error })
     const d = this.retryMs
     this.retryMs = Math.min(d * 2, 60000)
     this.schedule(key, d)
+    return false
   }
 }
