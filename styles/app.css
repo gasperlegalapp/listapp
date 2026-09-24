@@ -111,3 +111,16 @@ fieldset{border:0;min-width:0}
 .photogrid .acts{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .photogrid .acts a{color:var(--slate);font-weight:600}
 
+/* admin: checklist versions */
+.steps{margin:4px 0 6px 20px;font-size:14.5px;color:var(--ink-soft)}
+.steps li{margin:2px 0}
+.fld input[type=file]{font-family:var(--sans);font-size:13px;max-width:100%}
+.pubitem{margin-top:18px;border-top:2.5px solid var(--accent);padding-top:8px}
+.pubitem h4{font-family:var(--sans);font-weight:800;font-size:15.5px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.pubitem h4 .mono{font-size:12px;color:var(--accent);font-weight:500}
+.diff{font-family:var(--mono);font-size:12px;line-height:1.5;border:1px solid var(--rule);border-radius:3px;background:var(--card);max-height:420px;overflow:auto;padding:6px 0;margin-top:8px}
+.diff div{white-space:pre-wrap;word-break:break-word;padding:0 10px}
+.diff .add{background:var(--ok-tint);color:var(--ok)}
+.diff .del{background:var(--stamp-tint);color:var(--stamp)}
+.diff .warn{font-weight:700;border-left:4px solid var(--stamp)}
+.diff .gap{color:var(--ink-faint)}
