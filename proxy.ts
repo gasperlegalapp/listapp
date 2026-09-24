@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
-import { REMEMBER_COOKIE, authCookieOptions, sessionExpired } from '@/lib/session-policy'
+import { REMEMBER_COOKIE, authCookieOptions, sessionAgeSeconds, sessionExpired } from '@/lib/session-policy'
 
 // Runs before every page and server action. Refreshes the Supabase session,
 // enforces the session lifetime, and sends signed-out visitors to /login with
@@ -48,6 +48,21 @@ export async function proxy(request: NextRequest) {
   // A deactivated user is banned in Supabase Auth; depending on the project's
   // JWT keys that surfaces here (token check) or in requireUser (profile).
   if (!claims && error?.code === 'user_banned') reason = 'inactive'
+
+  // Diagnostics for Vercel's logs: why a request that carried a session was
+  // refused. Error codes and ages only; never tokens or personal data.
+  const hadSession = request.cookies.getAll().some((c) => c.name.startsWith('sb-'))
+  if (hadSession && (!claims || reason)) {
+    console.warn('auth: session refused', {
+      path: request.nextUrl.pathname,
+      reason: reason ?? 'no-claims',
+      code: error?.code ?? null,
+      message: error?.message ?? null,
+      ageSeconds: data?.claims ? sessionAgeSeconds(data.claims) : null,
+      remember,
+    })
+  }
+
   if (reason) {
     await supabase.auth.signOut({ scope: 'local' })
     response.cookies.delete(REMEMBER_COOKIE)

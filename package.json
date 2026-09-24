@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "templates:import": "tsx scripts/import-templates.ts",
     "test:db": "bash scripts/test-db.sh",
-    "test:e2e": "node tests/e2e/auth.e2e.mjs"
+    "test:e2e": "node tests/e2e/auth.e2e.mjs && node tests/e2e/lists.e2e.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
