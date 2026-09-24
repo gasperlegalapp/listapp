@@ -13,7 +13,7 @@ none of them ever go into the repo, into email, or into chat.
 
 | Service | Plan | Why that plan | Roughly |
 |---|---|---|---|
-| Supabase | **Pro** | Daily backups, session time limits, leaked-password check. The free plan has no backup you can rely on and pauses idle projects. | $25/month |
+| Supabase | **Pro** | Daily backups, session time limits, leaked-password check, 100 GB of file storage for photos (the free plan has 1 GB). The free plan has no backup you can rely on and pauses idle projects. | $25/month |
 | Supabase add-on | Point-in-time recovery (optional) | Restore to any second, not just last night. Spec asks for it; it is the one real extra cost. Needs a larger compute size too. | check current pricing, ~$100+/month |
 | Vercel | **Pro** | Vercel's free Hobby plan is for non-commercial use only; a law firm is commercial. | $20/user/month (you need one user) |
 | Resend | Free | 3,000 emails/month, 100/day. Invites and resets only. | $0 |
@@ -155,7 +155,11 @@ send shows up as an error in the admin screen instead of vanishing.
    `CNAME` record; add it at your DNS host. Vercel issues the HTTPS
    certificate on its own once DNS resolves.
 6. Functions already run in Cleveland (`vercel.json`), next to the Ohio
-   database.
+   database. The Node.js version is pinned to 22 in `package.json`; leave the
+   project's Node setting alone.
+7. Nothing to set up for PDFs: the download route brings its own headless
+   Chromium. The first PDF after a quiet spell takes a few seconds longer
+   while it unpacks.
 
 From now on every merge to `main` deploys automatically.
 
@@ -225,6 +229,8 @@ the Users page.
 - [ ] Signups are off (section 4.1) and you have tried signing in with a
       wrong password five times to see the lockout.
 - [ ] You have tried a password reset end to end.
+- [ ] On a test matter: **Download PDF** gives the six-page GL-A1, and
+      **Add photos** works from a phone.
 
 ---
 
@@ -246,6 +252,21 @@ TEST_DATABASE_URL=postgres://postgres:postgres@localhost:54322/postgres npm run 
 ```
 
 `npm run test:db` creates and drops its own `listapp_test` database. Point it
-at a local server only. `npm run test:e2e` (see the header of
-`tests/e2e/auth.e2e.mjs`) drives a real browser through sign-in, invites,
-lockout and MFA; it creates users, so never point it at production.
+at a local server only. `npm run test:unit` needs nothing running.
+`npm run test:e2e` (see the header of each file in `tests/e2e/`) drives a
+real browser through sign-in, invites, lockout, MFA, the lists, PDFs, photo
+uploads (it needs the Storage API, which `npx supabase start` runs),
+checklist publishing and the delete log. It creates users and publishes
+checklist versions, so never point it at production.
+
+On a Mac, PDFs need a local Chrome: set `CHROMIUM_PATH` in `.env.local` (see
+`.env.example`). On Linux the bundled Chromium runs as is.
+
+---
+
+## Changing a checklist later
+
+**Checklists** in the top bar (admins only). Edit your master copy of
+`Gasper_Legal_Asset_Intake_Checklists.html`, upload it, read what changed,
+and publish. Lists already made keep their version; new lists use the new
+one. Keep the file you uploaded as the new master.
