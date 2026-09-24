@@ -22,14 +22,16 @@ look is the firm's reference HTML, ported unchanged.
 | `styles/checklists.css` | House CSS, verbatim from the reference |
 | `proxy.ts`, `lib/auth.ts` | Session refresh, lifetime, and the server-side gate every page uses |
 | `app/login`, `app/auth`, `app/account` | Sign-in, reset, invite acceptance, two-step sign-in |
-| `app/(app)` | The signed-in app |
+| `app/(app)` | The signed-in app: matters (`/`), a matter (`/cases/<id>`), a list (`/l/<id>`) |
+| `components/checklist/` | The form: renders a template version, field-level autosave, history panel |
+| `lib/templates/` | Template types, totals, the BusinessMap summary, history labels |
 
 ## Build order
 
 1. Foundation: schema, RLS, login, invites, roles. **Done.**
 2. Templates: import script, six templates seeded and versioned. **Done.**
-3. Matters and lists: create a matter, create a list, `/l/<id>` resolves.
-4. The form: render from template JSON, autosave, history.
+3. Matters and lists: create a matter, create a list, `/l/<id>` resolves. **Done.**
+4. The form: render from template JSON, autosave, history. **Done.**
 5. Output: copy for BusinessMap, print, PDF, photos.
 6. Admin: template versions, delete log.
 
