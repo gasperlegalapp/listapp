@@ -82,3 +82,9 @@ fieldset{border:0;min-width:0}
   .page > .sheet{padding-top:0}
   .fld input[readonly]:not(.auto){color:var(--ink)}
 }
+
+/* matters list: about ten rows visible, scrolls in its own box, headings pinned */
+.tblnote{font-family:var(--sans);font-size:12px;color:var(--ink-faint);margin:0 0 6px}
+.tbl.scrollbox{overflow:auto;border-bottom:1px solid var(--rule)}
+.tbl.scrollbox thead th{position:sticky;top:0;z-index:1}
+@media print{.tbl.scrollbox{max-height:none!important;overflow:visible}}
