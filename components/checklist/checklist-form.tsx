@@ -4,10 +4,9 @@ import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ActionForm } from '@/components/action-form'
 import { computeTotals } from '@/lib/templates/budget'
-import { MATTER_FROM_CASE } from '@/lib/templates/matter'
 import { summarize } from '@/lib/templates/summary'
-import type { ChoiceOption, Row, TemplateSchema } from '@/lib/templates/types'
-import { cellKey, type Value, type Values } from '@/lib/templates/values'
+import type { ChoiceOption, TemplateSchema } from '@/lib/templates/types'
+import type { Value, Values } from '@/lib/templates/values'
 import { fmtTime } from '@/lib/format'
 import {
   deleteInstance,
@@ -19,7 +18,9 @@ import {
 } from '@/app/(app)/l/[id]/actions'
 import { SaveQueue, type SaveStatus } from './save-queue'
 import { HistoryPanel } from './history-panel'
-import { NoteHtml } from './note-html'
+import { Sheet } from './sheet'
+import { Photos } from './photos'
+import type { Attachment } from '@/lib/attachments'
 
 type Props = {
   instanceId: string
@@ -29,6 +30,7 @@ type Props = {
   data: Values
   schema: TemplateSchema
   matter: Record<string, string>
+  attachments: Attachment[]
   canDelete: boolean
   canRevert: boolean
 }
@@ -36,8 +38,6 @@ type Props = {
 const TEXT_DELAY_MS = 1200 // save after this pause in typing; blur saves at once
 const POLL_MS = 15000
 
-const W = (w: number) => ({ '--w': w }) as React.CSSProperties
-const pad = (n: number) => String(n).padStart(2, '0')
 const empty = (v: Value | null | undefined) => v == null || (Array.isArray(v) ? v.length === 0 : v === '')
 
 export function ChecklistForm(p: Props) {
@@ -51,6 +51,8 @@ export function ChecklistForm(p: Props) {
   const [historyError, setHistoryError] = useState<string | null>(null)
   const [copyMsg, setCopyMsg] = useState('')
   const [renaming, setRenaming] = useState(false)
+  const [pdfBusy, setPdfBusy] = useState(false)
+  const [pdfError, setPdfError] = useState<string | null>(null)
 
   const [saver] = useState(() => new SaveQueue(p.instanceId, setStatus))
   const focused = useRef<string | null>(null)
@@ -171,158 +173,6 @@ export function ChecklistForm(p: Props) {
     if (checked && o.autofill && empty(values[o.autofill.target])) setField(o.autofill.target, o.autofill.value, 0)
   }
 
-  const isChecked = (key: string, opt: string) => {
-    const v = shown[key]
-    return Array.isArray(v) ? v.includes(opt) : v === opt
-  }
-
-  // ---------- rendering (markup mirrors the reference HTML's field()) ----------
-  const renderRow = (r: Row, i: number, lockMatter = false) => {
-    switch (r.type) {
-      case 'subhead':
-        return <div key={i} className="subhead">{r.text}</div>
-      case 'tip':
-        return <NoteHtml key={i} className="note" html={r.html} />
-      case 'warn':
-        return <NoteHtml key={i} className="note warn" html={r.html} />
-      case 'explain':
-        return (
-          <div key={i} className="explain">
-            {r.items.map(([b, t]) => (
-              <div key={b}>
-                <b>{b}</b>
-                <p>{t}</p>
-              </div>
-            ))}
-          </div>
-        )
-      case 'settled':
-        return (
-          <div key={i} className="settled">
-            <b>What &quot;Settled&quot; means.</b> {r.text}
-          </div>
-        )
-      case 'tasks':
-        return (
-          <div key={r.key} className="chips steplist">
-            {r.options.map((o) => (
-              <label key={o.key} className="chip">
-                <input
-                  type="checkbox"
-                  checked={isChecked(r.key, o.key)}
-                  onChange={(e) => toggle(r.key, r.options, true, o, e.target.checked)}
-                />
-                <span className="box"></span>
-                {o.label}
-              </label>
-            ))}
-          </div>
-        )
-      case 'table':
-        return (
-          <div key={r.key} className="tbl">
-            <table>
-              <thead>
-                <tr>
-                  {r.cols.map((c, ci) => (
-                    <th key={ci}>{c}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {r.rows.map((rowLabel, ri) => (
-                  <tr key={ri}>
-                    <td>{rowLabel}</td>
-                    {r.cols.slice(1).map((c, ci) => {
-                      const k = cellKey(r.key, ri + 1, ci + 1)
-                      return (
-                        <td key={ci}>
-                          <input
-                            type="text"
-                            aria-label={`${rowLabel} ${c}`}
-                            inputMode={ci + 1 === r.sum ? 'decimal' : undefined}
-                            {...textProps(k)}
-                          />
-                        </td>
-                      )
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-              {r.sum != null ? (
-                <tfoot>
-                  <tr>
-                    <td>{r.totLabel || 'Total'}</td>
-                    {r.cols.slice(1).map((_, ci) => (
-                      <td key={ci}>{ci + 1 === r.sum ? totals.tables[r.key] : ''}</td>
-                    ))}
-                  </tr>
-                </tfoot>
-              ) : null}
-            </table>
-          </div>
-        )
-      case 'computed':
-        return (
-          <div key={r.key} className={`fld${r.w <= 1 ? ' w1' : ''}`} style={W(r.w)}>
-            <label htmlFor={`f-${r.key}`}>{r.label}</label>
-            <input type="text" id={`f-${r.key}`} readOnly className="auto" value={totals.auto[r.auto]} />
-          </div>
-        )
-      case 'text': {
-        const fromCase = lockMatter && MATTER_FROM_CASE.has(r.key)
-        return (
-          <div key={r.key} className={`fld${r.w <= 1 ? ' w1' : ''}`} style={W(r.w)}>
-            <label htmlFor={`f-${r.key}`}>{r.label}</label>
-            {fromCase ? (
-              <input
-                type="text"
-                id={`f-${r.key}`}
-                readOnly
-                value={(shown[r.key] as string) ?? ''}
-                title="From the matter. Change it with Edit matter details on the matter page."
-              />
-            ) : (
-              <input type="text" id={`f-${r.key}`} {...textProps(r.key)} />
-            )}
-            {r.hint ? <div className="hint">{r.hint}</div> : null}
-          </div>
-        )
-      }
-      case 'textarea':
-        return (
-          <div key={r.key} className="fld" style={W(6)}>
-            <label htmlFor={`f-${r.key}`}>{r.label}</label>
-            <textarea id={`f-${r.key}`} rows={r.rows} {...textProps(r.key)} />
-            {r.hint ? <div className="hint">{r.hint}</div> : null}
-          </div>
-        )
-      case 'choice': {
-        const fromCase = lockMatter && MATTER_FROM_CASE.has(r.key)
-        return (
-          <div key={r.key} className={`fld${r.w <= 1 ? ' w1' : ''}`} style={W(r.w)} role="group" aria-label={r.label}>
-            <span className="lbl">{r.label}</span>
-            <div className="chips">
-              {r.options.map((o) => (
-                <label key={o.key} className={`chip${r.multi ? '' : ' round'}`}>
-                  <input
-                    type="checkbox"
-                    checked={isChecked(r.key, o.key)}
-                    disabled={fromCase}
-                    onChange={(e) => toggle(r.key, r.options, r.multi, o, e.target.checked)}
-                  />
-                  <span className="box"></span>
-                  {o.label}
-                </label>
-              ))}
-            </div>
-            {r.hint ? <div className="hint">{r.hint}</div> : null}
-          </div>
-        )
-      }
-    }
-  }
-
   // ---------- panels ----------
   const openSummary = () => {
     setCopyMsg('')
@@ -344,6 +194,40 @@ export function ChecklistForm(p: Props) {
       }
     }
   }
+  // Saves anything still typing first: the PDF is made from the saved list.
+  const downloadPdf = async () => {
+    setPdfError(null)
+    setPdfBusy(true)
+    try {
+      if (!(await saver.flushAll())) {
+        setPdfError('Some changes have not saved yet, so the PDF would miss them. Try again in a moment.')
+        return
+      }
+      const res = await fetch(`/l/${instanceId}/pdf`, { cache: 'no-store' })
+      if (!res.ok || !(res.headers.get('content-type') ?? '').includes('application/pdf')) {
+        setPdfError(
+          res.redirected
+            ? 'You are signed out. Sign in again in a new tab, then try again.'
+            : 'We could not make the PDF. Try again, or use Print and save as PDF.',
+        )
+        return
+      }
+      const name = /filename="([^"]+)"/.exec(res.headers.get('content-disposition') ?? '')?.[1] ?? 'checklist.pdf'
+      const url = URL.createObjectURL(await res.blob())
+      const a = document.createElement('a')
+      a.href = url
+      a.download = name
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 60000)
+    } catch {
+      setPdfError('We could not reach the server to make the PDF. Try again.')
+    } finally {
+      setPdfBusy(false)
+    }
+  }
+
   const refreshHistory = async () => {
     setHistoryError(null)
     const res = await loadHistory(instanceId)
@@ -413,27 +297,19 @@ export function ChecklistForm(p: Props) {
           {notice}
         </p>
       ) : null}
+      {pdfError ? (
+        <p className="formerr noprint" role="alert">
+          {pdfError}
+        </p>
+      ) : null}
 
-      <article
-        className="sheet active"
-        id={schema.slug}
-        style={{ '--accent': `var(--${schema.accent})`, '--accent-tint': `var(--${schema.accent}-tint)` } as React.CSSProperties}
-      >
-        <div className="sheethead">
-          <div>
-            <div className="code">{schema.code}</div>
-            <h2>{schema.title} Checklist</h2>
-            <p className="sub">{schema.sub}</p>
-            <div className="legend">
-              <span>
-                <i className="r"></i>Pick one
-              </span>
-              <span>
-                <i></i>Check all that apply
-              </span>
-            </div>
-          </div>
-          <div className="actions">
+      <Sheet
+        schema={schema}
+        shown={shown}
+        totals={totals}
+        bind={{ text: textProps, toggle }}
+        actions={
+          <>
             <span className={`savestate ${status.kind}`} aria-live="polite">
               {statusText}
             </span>
@@ -443,48 +319,22 @@ export function ChecklistForm(p: Props) {
             <button className="btn" type="button" onClick={() => window.print()}>
               Print
             </button>
+            <button className="btn" type="button" onClick={downloadPdf} disabled={pdfBusy}>
+              {pdfBusy ? 'Preparing PDF...' : 'Download PDF'}
+            </button>
             <button className="btn quiet" type="button" onClick={openHistory}>
               History
             </button>
-          </div>
-        </div>
+          </>
+        }
+      />
 
-        <section className="matter">
-          <div className="ttl">Matter</div>
-          <div className="grid">{schema.matter.map((r, i) => renderRow(r, i, true))}</div>
-        </section>
-
-        <section className="first">
-          <div className="ttl">Do these first</div>
-          <div className="tasks chips">
-            {schema.first.options.map((o) => (
-              <label key={o.key} className="chip task">
-                <input
-                  type="checkbox"
-                  checked={isChecked('first', o.key)}
-                  onChange={(e) => toggle('first', schema.first.options, true, o, e.target.checked)}
-                />
-                <span className="box"></span>
-                {o.label}
-              </label>
-            ))}
-          </div>
-        </section>
-
-        {schema.sections.map((sec) => (
-          <section key={sec.key} className="sec">
-            <div className="sechead">
-              <span className="n">{pad(sec.n)}</span>
-              <h3>{sec.title}</h3>
-            </div>
-            <div className="grid">{sec.rows.map((r, i) => renderRow(r, i))}</div>
-          </section>
-        ))}
-
-        <section className="signoff">
-          <div className="grid">{schema.signoff.map((r, i) => renderRow(r, i))}</div>
-        </section>
-      </article>
+      <Photos
+        instanceId={instanceId}
+        initial={p.attachments}
+        canDelete={p.canDelete}
+        style={{ '--accent': `var(--${schema.accent})`, '--accent-tint': `var(--${schema.accent}-tint)` } as React.CSSProperties}
+      />
 
       {p.canDelete ? (
         <ActionForm action={deleteInstance} confirm={`Delete "${label}"? It is kept in the delete log.`} className="noprint">

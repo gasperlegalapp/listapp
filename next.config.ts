@@ -10,6 +10,16 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // The PDF route reads these at runtime; make sure Vercel ships them with it.
+  // (@sparticuz/chromium and puppeteer-core are external by default.)
+  outputFileTracingIncludes: {
+    '/l/*/pdf': [
+      './styles/checklists.css',
+      './styles/app.css',
+      './lib/pdf/fonts/*.woff2',
+      './node_modules/@sparticuz/chromium/bin/**',
+    ],
+  },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
