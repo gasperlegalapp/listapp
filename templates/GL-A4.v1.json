@@ -1,0 +1,1485 @@
+{
+  "format": 1,
+  "code": "GL-A4",
+  "slug": "pet",
+  "title": "Pet",
+  "sub": "One sheet per animal. We keep this current for as long as the animal is our responsibility.",
+  "accent": "stamp",
+  "matter": [
+    {
+      "type": "text",
+      "key": "m_f01",
+      "label": "Matter / case name",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "m_f02",
+      "label": "Case no.",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "m_f03",
+      "label": "County",
+      "w": 2
+    },
+    {
+      "type": "choice",
+      "key": "m_f04",
+      "label": "Matter type",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardianship"
+        },
+        {
+          "key": "opt2",
+          "label": "Estate"
+        },
+        {
+          "key": "opt3",
+          "label": "Trust"
+        },
+        {
+          "key": "opt4",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "key": "m_f05",
+      "label": "Our role",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardian of estate"
+        },
+        {
+          "key": "opt2",
+          "label": "Fiduciary / administrator"
+        },
+        {
+          "key": "opt3",
+          "label": "Counsel"
+        },
+        {
+          "key": "opt4",
+          "label": "Trustee"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "m_f06",
+      "label": "Ward / decedent",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "m_f07",
+      "label": "Date of death or appointment",
+      "w": 2,
+      "hint": "This is the valuation date for the inventory."
+    },
+    {
+      "type": "text",
+      "key": "m_f08",
+      "label": "Assigned staff",
+      "w": 2
+    }
+  ],
+  "first": {
+    "type": "tasks",
+    "key": "first",
+    "label": "Do first (done)",
+    "options": [
+      {
+        "key": "opt1",
+        "label": "Confirm the animal is safe, fed, and has water today"
+      },
+      {
+        "key": "opt2",
+        "label": "Know exactly who is caring for it right now"
+      },
+      {
+        "key": "opt3",
+        "label": "Never leave an animal alone in a vacant home"
+      },
+      {
+        "key": "opt4",
+        "label": "Find the vet records and any medications"
+      },
+      {
+        "key": "opt5",
+        "label": "Keep every receipt for food, boarding, and vet care"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "key": "s01",
+      "n": 1,
+      "title": "Identify the animal",
+      "rows": [
+        {
+          "type": "text",
+          "key": "s01_f01",
+          "label": "Pet's name",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s01_f02",
+          "label": "Species",
+          "w": 4,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Dog"
+            },
+            {
+              "key": "opt2",
+              "label": "Cat"
+            },
+            {
+              "key": "opt3",
+              "label": "Bird"
+            },
+            {
+              "key": "opt4",
+              "label": "Fish"
+            },
+            {
+              "key": "opt5",
+              "label": "Reptile"
+            },
+            {
+              "key": "opt6",
+              "label": "Small animal"
+            },
+            {
+              "key": "opt7",
+              "label": "Horse / livestock"
+            },
+            {
+              "key": "opt8",
+              "label": "Other"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f03",
+          "label": "Breed",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f04",
+          "label": "Color and markings",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f05",
+          "label": "Approx. weight",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f06",
+          "label": "Age or birth date",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s01_f07",
+          "label": "Sex",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Male"
+            },
+            {
+              "key": "opt2",
+              "label": "Female"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s01_f08",
+          "label": "Spayed / neutered",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s01_f09",
+          "label": "Microchip",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f10",
+          "label": "Chip number and registry",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s01_f11",
+          "label": "Chip owner info updated",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s01_f12",
+          "label": "County dog license",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f13",
+          "label": "License / rabies tag no.",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s01_f14",
+          "label": "Photo taken",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "s02",
+      "n": 2,
+      "title": "Where it is and who's caring for it",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s02_f01",
+          "label": "Where the pet is now",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "At the home"
+            },
+            {
+              "key": "opt2",
+              "label": "With family / friend"
+            },
+            {
+              "key": "opt3",
+              "label": "Boarding"
+            },
+            {
+              "key": "opt4",
+              "label": "At the vet"
+            },
+            {
+              "key": "opt5",
+              "label": "Shelter"
+            },
+            {
+              "key": "opt6",
+              "label": "With the ward"
+            },
+            {
+              "key": "opt7",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f02",
+          "label": "Caregiver name and relationship",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s02_f03",
+          "label": "Caregiver phone",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s02_f04",
+          "label": "Caring for it since",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s02_f05",
+          "label": "Agreed to continue until",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s02_f06",
+          "label": "Address",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s02_f07",
+          "label": "Who is paying for care",
+          "w": 4,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Estate / guardianship"
+            },
+            {
+              "key": "opt2",
+              "label": "Caregiver"
+            },
+            {
+              "key": "opt3",
+              "label": "Family"
+            },
+            {
+              "key": "opt4",
+              "label": "Other"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s02_f08",
+          "label": "Being reimbursed",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f09",
+          "label": "Food, diet, and feeding schedule",
+          "w": 6
+        },
+        {
+          "type": "text",
+          "key": "s02_f10",
+          "label": "Where the supplies are (food, leash, crate, litter, records)",
+          "w": 6
+        }
+      ]
+    },
+    {
+      "key": "s03",
+      "n": 3,
+      "title": "Health and vet",
+      "rows": [
+        {
+          "type": "text",
+          "key": "s03_f01",
+          "label": "Vet clinic",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s03_f02",
+          "label": "Vet phone",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s03_f03",
+          "label": "Last visit",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s03_f04",
+          "label": "Vaccines current",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s03_f05",
+          "label": "Records obtained",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "key": "s03_t1",
+          "cols": [
+            "Medication",
+            "Dose",
+            "When given",
+            "Refill due"
+          ],
+          "rows": [
+            "1",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "type": "textarea",
+          "key": "s03_f06",
+          "label": "Health conditions and special needs",
+          "rows": 2
+        },
+        {
+          "type": "choice",
+          "key": "s03_f07",
+          "label": "Pet insurance",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f08",
+          "label": "Company and policy",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s03_f09",
+          "label": "Unpaid vet bill",
+          "w": 2
+        }
+      ]
+    },
+    {
+      "key": "s04",
+      "n": 4,
+      "title": "Behavior and safety",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s04_f01",
+          "label": "Temperament",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Friendly"
+            },
+            {
+              "key": "opt2",
+              "label": "Shy"
+            },
+            {
+              "key": "opt3",
+              "label": "Fearful"
+            },
+            {
+              "key": "opt4",
+              "label": "Aggressive"
+            },
+            {
+              "key": "opt5",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f02",
+          "label": "Bite or attack history",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f03",
+          "label": "Escape risk",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f04",
+          "label": "House-trained",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f05",
+          "label": "Gets along with",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Dogs"
+            },
+            {
+              "key": "opt2",
+              "label": "Cats"
+            },
+            {
+              "key": "opt3",
+              "label": "Children"
+            },
+            {
+              "key": "opt4",
+              "label": "Strangers"
+            },
+            {
+              "key": "opt5",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "key": "s04_f06",
+          "label": "Handling notes for the next caregiver",
+          "rows": 2
+        },
+        {
+          "type": "warn",
+          "html": "Any bite history or aggression goes to the attorney before the animal is placed with anyone. It's a liability issue for the estate or guardianship."
+        }
+      ]
+    },
+    {
+      "key": "s05",
+      "n": 5,
+      "title": "Wishes and the plan",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s05_f01",
+          "label": "Will or trust says what happens to the pet",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f02",
+          "label": "Caregiver named in the documents",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s05_f03",
+          "label": "Ward's or decedent's known wishes",
+          "w": 6
+        },
+        {
+          "type": "choice",
+          "key": "s05_f04",
+          "label": "Facility allows pets or visits",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ],
+          "hint": "Guardianship only. Visits with a pet can matter a great deal to a ward."
+        },
+        {
+          "type": "text",
+          "key": "s05_f05",
+          "label": "New owner name and phone",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s05_f06",
+          "label": "Date transferred",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s05_f07",
+          "label": "Records, chip, and supplies handed over",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "s06",
+      "n": 6,
+      "title": "Custody, plan, and status",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s06_f01",
+          "label": "Is the pet in our custody or care",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Partly"
+            },
+            {
+              "key": "opt3",
+              "label": "No"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "subhead",
+          "text": "If not, steps to get control"
+        },
+        {
+          "type": "tasks",
+          "key": "s06_f02",
+          "label": "Steps done",
+          "options": [
+            {
+              "key": "opt1",
+              "label": "With a safe caregiver"
+            },
+            {
+              "key": "opt2",
+              "label": "Vet records obtained"
+            },
+            {
+              "key": "opt3",
+              "label": "Care costs set up for payment or reimbursement"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s06_f03",
+          "label": "Date started / last follow-up",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s06_f04",
+          "label": "Who controls it now, if not us",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s06_f05",
+          "label": "Who decides the next step",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Guardian / fiduciary decides"
+            },
+            {
+              "key": "opt2",
+              "label": "Needs court approval"
+            },
+            {
+              "key": "opt3",
+              "label": "Someone else controls it"
+            },
+            {
+              "key": "opt4",
+              "label": "Ask attorney"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s06_f06",
+          "label": "Disposition",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Stay with ward"
+            },
+            {
+              "key": "opt2",
+              "label": "Stay with current caregiver"
+            },
+            {
+              "key": "opt3",
+              "label": "Rehome to family / next of kin"
+            },
+            {
+              "key": "opt4",
+              "label": "Rehome through rescue"
+            },
+            {
+              "key": "opt5",
+              "label": "Surrender to shelter"
+            },
+            {
+              "key": "opt6",
+              "label": "Undecided"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s06_f07",
+          "label": "Status",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Not started"
+            },
+            {
+              "key": "opt2",
+              "label": "In progress"
+            },
+            {
+              "key": "opt3",
+              "label": "Waiting on institution / third party"
+            },
+            {
+              "key": "opt4",
+              "label": "Waiting on court"
+            },
+            {
+              "key": "opt5",
+              "label": "Settled"
+            }
+          ]
+        },
+        {
+          "type": "settled",
+          "text": "Settled means the pet is permanently placed, records and chip are transferred, every expense is paid or reimbursed, and we will never need to deal with it again."
+        },
+        {
+          "type": "text",
+          "key": "s06_f08",
+          "label": "Date settled",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s06_f09",
+          "label": "How it was settled",
+          "w": 4
+        }
+      ]
+    },
+    {
+      "key": "s07",
+      "n": 7,
+      "title": "Records",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s07_f01",
+          "label": "Do we have records",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Some"
+            },
+            {
+              "key": "opt3",
+              "label": "None yet"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f02",
+          "label": "What we have",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Vet records"
+            },
+            {
+              "key": "opt2",
+              "label": "Vaccination certificates"
+            },
+            {
+              "key": "opt3",
+              "label": "Microchip registration"
+            },
+            {
+              "key": "opt4",
+              "label": "License"
+            },
+            {
+              "key": "opt5",
+              "label": "Receipts"
+            },
+            {
+              "key": "opt6",
+              "label": "Photos"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f03",
+          "label": "Where they are",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Hard file"
+            },
+            {
+              "key": "opt2",
+              "label": "Scanned into Actionstep"
+            },
+            {
+              "key": "opt3",
+              "label": "Institution portal only"
+            },
+            {
+              "key": "opt4",
+              "label": "Not yet obtained"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s07_f04",
+          "label": "Records still needed, and from whom",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s07_f05",
+          "label": "Date requested",
+          "w": 2
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "type": "textarea",
+      "key": "w_f01",
+      "label": "Red flags and anything urgent",
+      "rows": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f02",
+      "label": "Next step",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "w_f03",
+      "label": "Who owns it",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f04",
+      "label": "Due",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f05",
+      "label": "Completed by",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f06",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f07",
+      "label": "Attorney reviewed",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f08",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f09",
+      "label": "Entered in BusinessMap",
+      "w": 2,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "w_f10",
+      "label": "Date entered",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f11",
+      "label": "Photos / documents uploaded",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        },
+        {
+          "key": "opt2",
+          "label": "None to upload"
+        }
+      ]
+    }
+  ],
+  "keys": {
+    "m_f01": {
+      "t": "text"
+    },
+    "m_f02": {
+      "t": "text"
+    },
+    "m_f03": {
+      "t": "text"
+    },
+    "m_f04": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f06": {
+      "t": "text"
+    },
+    "m_f07": {
+      "t": "text"
+    },
+    "m_f08": {
+      "t": "text"
+    },
+    "first": {
+      "t": "many",
+      "n": 5
+    },
+    "s01_f01": {
+      "t": "text"
+    },
+    "s01_f02": {
+      "t": "one",
+      "n": 8
+    },
+    "s01_f03": {
+      "t": "text"
+    },
+    "s01_f04": {
+      "t": "text"
+    },
+    "s01_f05": {
+      "t": "text"
+    },
+    "s01_f06": {
+      "t": "text"
+    },
+    "s01_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s01_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s01_f09": {
+      "t": "one",
+      "n": 3
+    },
+    "s01_f10": {
+      "t": "text"
+    },
+    "s01_f11": {
+      "t": "one",
+      "n": 3
+    },
+    "s01_f12": {
+      "t": "one",
+      "n": 3
+    },
+    "s01_f13": {
+      "t": "text"
+    },
+    "s01_f14": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f01": {
+      "t": "one",
+      "n": 7
+    },
+    "s02_f02": {
+      "t": "text"
+    },
+    "s02_f03": {
+      "t": "text"
+    },
+    "s02_f04": {
+      "t": "text"
+    },
+    "s02_f05": {
+      "t": "text"
+    },
+    "s02_f06": {
+      "t": "text"
+    },
+    "s02_f07": {
+      "t": "one",
+      "n": 4
+    },
+    "s02_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f09": {
+      "t": "text"
+    },
+    "s02_f10": {
+      "t": "text"
+    },
+    "s03_f01": {
+      "t": "text"
+    },
+    "s03_f02": {
+      "t": "text"
+    },
+    "s03_f03": {
+      "t": "text"
+    },
+    "s03_f04": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_t1_r1_c1": {
+      "t": "text"
+    },
+    "s03_t1_r1_c2": {
+      "t": "text"
+    },
+    "s03_t1_r1_c3": {
+      "t": "text"
+    },
+    "s03_t1_r2_c1": {
+      "t": "text"
+    },
+    "s03_t1_r2_c2": {
+      "t": "text"
+    },
+    "s03_t1_r2_c3": {
+      "t": "text"
+    },
+    "s03_t1_r3_c1": {
+      "t": "text"
+    },
+    "s03_t1_r3_c2": {
+      "t": "text"
+    },
+    "s03_t1_r3_c3": {
+      "t": "text"
+    },
+    "s03_f06": {
+      "t": "text"
+    },
+    "s03_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_f08": {
+      "t": "text"
+    },
+    "s03_f09": {
+      "t": "text"
+    },
+    "s04_f01": {
+      "t": "one",
+      "n": 5
+    },
+    "s04_f02": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f03": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f04": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f05": {
+      "t": "many",
+      "n": 5
+    },
+    "s04_f06": {
+      "t": "text"
+    },
+    "s05_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f02": {
+      "t": "text"
+    },
+    "s05_f03": {
+      "t": "text"
+    },
+    "s05_f04": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f05": {
+      "t": "text"
+    },
+    "s05_f06": {
+      "t": "text"
+    },
+    "s05_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s06_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s06_f02": {
+      "t": "many",
+      "n": 3
+    },
+    "s06_f03": {
+      "t": "text"
+    },
+    "s06_f04": {
+      "t": "text"
+    },
+    "s06_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "s06_f06": {
+      "t": "one",
+      "n": 6
+    },
+    "s06_f07": {
+      "t": "one",
+      "n": 5
+    },
+    "s06_f08": {
+      "t": "text"
+    },
+    "s06_f09": {
+      "t": "text"
+    },
+    "s07_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f02": {
+      "t": "many",
+      "n": 6
+    },
+    "s07_f03": {
+      "t": "many",
+      "n": 4
+    },
+    "s07_f04": {
+      "t": "text"
+    },
+    "s07_f05": {
+      "t": "text"
+    },
+    "w_f01": {
+      "t": "text"
+    },
+    "w_f02": {
+      "t": "text"
+    },
+    "w_f03": {
+      "t": "text"
+    },
+    "w_f04": {
+      "t": "text"
+    },
+    "w_f05": {
+      "t": "text"
+    },
+    "w_f06": {
+      "t": "text"
+    },
+    "w_f07": {
+      "t": "text"
+    },
+    "w_f08": {
+      "t": "text"
+    },
+    "w_f09": {
+      "t": "one",
+      "n": 1
+    },
+    "w_f10": {
+      "t": "text"
+    },
+    "w_f11": {
+      "t": "one",
+      "n": 2
+    }
+  }
+}

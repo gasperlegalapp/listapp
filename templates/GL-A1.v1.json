@@ -1,0 +1,2906 @@
+{
+  "format": 1,
+  "code": "GL-A1",
+  "slug": "re",
+  "title": "Real Estate",
+  "sub": "One sheet per property. Houses, condos, mobile homes, rental property, and vacant land.",
+  "accent": "ok",
+  "matter": [
+    {
+      "type": "text",
+      "key": "m_f01",
+      "label": "Matter / case name",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "m_f02",
+      "label": "Case no.",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "m_f03",
+      "label": "County",
+      "w": 2
+    },
+    {
+      "type": "choice",
+      "key": "m_f04",
+      "label": "Matter type",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardianship"
+        },
+        {
+          "key": "opt2",
+          "label": "Estate"
+        },
+        {
+          "key": "opt3",
+          "label": "Trust"
+        },
+        {
+          "key": "opt4",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "key": "m_f05",
+      "label": "Our role",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardian of estate"
+        },
+        {
+          "key": "opt2",
+          "label": "Fiduciary / administrator"
+        },
+        {
+          "key": "opt3",
+          "label": "Counsel"
+        },
+        {
+          "key": "opt4",
+          "label": "Trustee"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "m_f06",
+      "label": "Ward / decedent",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "m_f07",
+      "label": "Date of death or appointment",
+      "w": 2,
+      "hint": "This is the valuation date for the inventory."
+    },
+    {
+      "type": "text",
+      "key": "m_f08",
+      "label": "Assigned staff",
+      "w": 2
+    }
+  ],
+  "first": {
+    "type": "tasks",
+    "key": "first",
+    "label": "Do first (done)",
+    "options": [
+      {
+        "key": "opt1",
+        "label": "Secure the property: keys in hand, doors and windows locked"
+      },
+      {
+        "key": "opt2",
+        "label": "Confirm insurance is active and the insurer knows the home is vacant"
+      },
+      {
+        "key": "opt3",
+        "label": "Check for people or animals inside before anyone leaves"
+      },
+      {
+        "key": "opt4",
+        "label": "Photograph or video every room before anything is moved"
+      },
+      {
+        "key": "opt5",
+        "label": "Secure firearms, cash, jewelry, medications, and original documents (attorney directs how)"
+      },
+      {
+        "key": "opt6",
+        "label": "Keep heat on in cold months or confirm the home is winterized"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "key": "s01",
+      "n": 1,
+      "title": "Property identification",
+      "rows": [
+        {
+          "type": "text",
+          "key": "s01_f01",
+          "label": "Street address",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s01_f02",
+          "label": "City, state, ZIP",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f03",
+          "label": "County",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f04",
+          "label": "Parcel number(s)",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s01_f05",
+          "label": "Auditor's value and tax year",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s01_f06",
+          "label": "Property type",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Single-family"
+            },
+            {
+              "key": "opt2",
+              "label": "Condo"
+            },
+            {
+              "key": "opt3",
+              "label": "Multi-family"
+            },
+            {
+              "key": "opt4",
+              "label": "Mobile / manufactured"
+            },
+            {
+              "key": "opt5",
+              "label": "Vacant land"
+            },
+            {
+              "key": "opt6",
+              "label": "Commercial"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f07",
+          "label": "Title holder(s), exactly as on the deed",
+          "w": 6
+        },
+        {
+          "type": "choice",
+          "key": "s01_f08",
+          "label": "How it's titled",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Sole name"
+            },
+            {
+              "key": "opt2",
+              "label": "Joint with survivorship"
+            },
+            {
+              "key": "opt3",
+              "label": "TOD designation recorded"
+            },
+            {
+              "key": "opt4",
+              "label": "Trust-owned"
+            },
+            {
+              "key": "opt5",
+              "label": "Life estate"
+            },
+            {
+              "key": "opt6",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f09",
+          "label": "TOD beneficiary / other owners",
+          "w": 6
+        },
+        {
+          "type": "tip",
+          "html": "<b>Before the first visit:</b> pull the county auditor and recorder records. A recorded transfer-on-death affidavit (R.C. 5302.22) or survivorship deed can mean the property passes outside probate. Flag it to the attorney before anything else is planned."
+        }
+      ]
+    },
+    {
+      "key": "s02",
+      "n": 2,
+      "title": "Access and security",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s02_f01",
+          "label": "Keys obtained",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f02",
+          "label": "How many keys, and where they're kept",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s02_f03",
+          "label": "Who else has a key",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s02_f04",
+          "label": "Garage opener, mailbox, gate, outbuilding keys",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s02_f05",
+          "label": "Lockbox installed",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f06",
+          "label": "Where the lockbox code is kept (not the code)",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s02_f07",
+          "label": "Locks changed",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Not needed"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f08",
+          "label": "Date changed and by whom",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s02_f09",
+          "label": "Alarm / security system",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "None"
+            },
+            {
+              "key": "opt2",
+              "label": "Active"
+            },
+            {
+              "key": "opt3",
+              "label": "Inactive"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s02_f10",
+          "label": "Alarm company and phone",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s02_f11",
+          "label": "Neighbor or contact watching the property (name and phone)",
+          "w": 6
+        }
+      ]
+    },
+    {
+      "key": "s03",
+      "n": 3,
+      "title": "Occupancy",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s03_f01",
+          "label": "Who is living there",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Vacant"
+            },
+            {
+              "key": "opt2",
+              "label": "The ward"
+            },
+            {
+              "key": "opt3",
+              "label": "Family member"
+            },
+            {
+              "key": "opt4",
+              "label": "Tenant"
+            },
+            {
+              "key": "opt5",
+              "label": "Unauthorized occupant"
+            },
+            {
+              "key": "opt6",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f02",
+          "label": "Occupant name(s) and relationship",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s03_f03",
+          "label": "Phone",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s03_f04",
+          "label": "Written lease",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f05",
+          "label": "Rent amount and due date",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s03_f06",
+          "label": "Rent paid to",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s03_f07",
+          "label": "Rent currently being paid",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s03_f08",
+          "label": "Security deposit amount and who holds it",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s03_f09",
+          "label": "Could the ward return home?",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            },
+            {
+              "key": "opt4",
+              "label": "N/A (estate)"
+            }
+          ],
+          "hint": "Guardianship only. This changes the whole plan for the house."
+        },
+        {
+          "type": "warn",
+          "html": "<b>Never</b> tell an occupant to leave, change the locks on an occupied home, or promise anyone they can stay. Get the facts and bring them to the attorney. In an estate, a surviving spouse may have a right to remain in the home (R.C. 2106.10)."
+        }
+      ]
+    },
+    {
+      "key": "s04",
+      "n": 4,
+      "title": "Insurance",
+      "rows": [
+        {
+          "type": "text",
+          "key": "s04_f01",
+          "label": "Insurance company",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s04_f02",
+          "label": "Policy number",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s04_f03",
+          "label": "Agent name and phone",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s04_f04",
+          "label": "Policy status",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Active"
+            },
+            {
+              "key": "opt2",
+              "label": "Lapsed"
+            },
+            {
+              "key": "opt3",
+              "label": "Cancelled"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s04_f05",
+          "label": "Premium and paid through",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s04_f06",
+          "label": "Named insured",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s04_f07",
+          "label": "Insurer notified of death / guardianship",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s04_f08",
+          "label": "Date notified and by whom",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s04_f09",
+          "label": "Insurer told the home is vacant",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f10",
+          "label": "Vacant-dwelling policy needed",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f11",
+          "label": "Named insured is the estate / guardianship",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s04_f12",
+          "label": "Flood or other coverage",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "html": "<b>Whose name the insurance is in:</b> always the estate or the guardianship. Never the attorney personally, never Gasper Legal, never a staff member. A fiduciary can be named only in their fiduciary capacity, for example \"Jane Doe, Administrator of the Estate of John Doe,\" so they carry no personal responsibility. If a policy lists anyone individually, flag it to the attorney."
+        },
+        {
+          "type": "warn",
+          "html": "Many homeowner policies restrict or drop coverage once a home sits vacant for a set period, often 30 to 60 days. Get the agent's answer in writing and calendar the date."
+        }
+      ]
+    },
+    {
+      "key": "s05",
+      "n": 5,
+      "title": "Mortgage, liens, taxes, and association",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s05_f01",
+          "label": "Mortgage",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f02",
+          "label": "Lender / servicer",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s05_f03",
+          "label": "Loan no. (last 4 only)",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s05_f04",
+          "label": "Monthly payment",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s05_f05",
+          "label": "Loan status",
+          "w": 4,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Current"
+            },
+            {
+              "key": "opt2",
+              "label": "Behind"
+            },
+            {
+              "key": "opt3",
+              "label": "Foreclosure filed"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f06",
+          "label": "Payoff amount and as-of date",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s05_f07",
+          "label": "Taxes and insurance escrowed",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s05_f08",
+          "label": "Reverse mortgage",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s05_f09",
+          "label": "HELOC or second mortgage",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s05_f10",
+          "label": "Other liens",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Tax lien"
+            },
+            {
+              "key": "opt2",
+              "label": "Judgment"
+            },
+            {
+              "key": "opt3",
+              "label": "Mechanic's"
+            },
+            {
+              "key": "opt4",
+              "label": "Medicaid"
+            },
+            {
+              "key": "opt5",
+              "label": "None known"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f11",
+          "label": "Lien details",
+          "w": 6
+        },
+        {
+          "type": "choice",
+          "key": "s05_f12",
+          "label": "Real estate taxes",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Current"
+            },
+            {
+              "key": "opt2",
+              "label": "Delinquent"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f13",
+          "label": "Amount owed and next due date",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s05_f14",
+          "label": "HOA / condo association",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "N/A"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s05_f15",
+          "label": "Association name and contact",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s05_f16",
+          "label": "Dues, and current or behind",
+          "w": 2
+        },
+        {
+          "type": "warn",
+          "html": "<b>Reverse mortgages</b> come due on a strict timeline after death or a permanent move out. Flag to the attorney the same day you learn of one."
+        }
+      ]
+    },
+    {
+      "key": "s06",
+      "n": 6,
+      "title": "Utilities and mail",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s06_t1",
+          "cols": [
+            "Utility",
+            "Provider",
+            "Account in whose name",
+            "On / off",
+            "Current / past due",
+            "Who's paying"
+          ],
+          "rows": [
+            "Electric",
+            "Gas",
+            "Water / sewer",
+            "Trash",
+            "Internet / phone / cable",
+            "Propane / oil"
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s06_f01",
+          "label": "Winterized",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Not needed"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s06_f02",
+          "label": "Date and by whom",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s06_f03",
+          "label": "Mail forwarded",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "To firm"
+            },
+            {
+              "key": "opt2",
+              "label": "To family"
+            },
+            {
+              "key": "opt3",
+              "label": "No"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s06_f04",
+          "label": "USPS forward filed (date)",
+          "w": 3
+        }
+      ]
+    },
+    {
+      "key": "s07",
+      "n": 7,
+      "title": "Condition: exterior and grounds",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s07_f01",
+          "label": "Overall exterior",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Good"
+            },
+            {
+              "key": "opt2",
+              "label": "Fair"
+            },
+            {
+              "key": "opt3",
+              "label": "Poor"
+            },
+            {
+              "key": "opt4",
+              "label": "Unsafe"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s07_f02",
+          "label": "Roof",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s07_f03",
+          "label": "Siding / exterior walls",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s07_f04",
+          "label": "Windows and doors",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s07_f05",
+          "label": "Yard",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Maintained"
+            },
+            {
+              "key": "opt2",
+              "label": "Overgrown"
+            },
+            {
+              "key": "opt3",
+              "label": "Needs service"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s07_f06",
+          "label": "Lawn and snow service arranged with",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s07_f07",
+          "label": "Fence",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "None"
+            },
+            {
+              "key": "opt2",
+              "label": "Good"
+            },
+            {
+              "key": "opt3",
+              "label": "Damaged"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f08",
+          "label": "Pool / hot tub",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "None"
+            },
+            {
+              "key": "opt2",
+              "label": "Secured"
+            },
+            {
+              "key": "opt3",
+              "label": "Not secured"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f09",
+          "label": "Outbuildings",
+          "w": 2,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "None"
+            },
+            {
+              "key": "opt2",
+              "label": "Shed"
+            },
+            {
+              "key": "opt3",
+              "label": "Detached garage"
+            },
+            {
+              "key": "opt4",
+              "label": "Barn"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f10",
+          "label": "Signs of break-in or vandalism",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s07_f11",
+          "label": "Code violation or notice posted",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "key": "s07_f12",
+          "label": "Exterior damage, hazards, trees, drainage, anything else",
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "key": "s08",
+      "n": 8,
+      "title": "Condition: interior",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s08_f01",
+          "label": "Overall interior",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Good"
+            },
+            {
+              "key": "opt2",
+              "label": "Fair"
+            },
+            {
+              "key": "opt3",
+              "label": "Poor"
+            },
+            {
+              "key": "opt4",
+              "label": "Uninhabitable"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f02",
+          "label": "Water leaks / damage",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f03",
+          "label": "Mold",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f04",
+          "label": "Pests / rodents",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f05",
+          "label": "Furnace / A/C works",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f06",
+          "label": "Water heater works",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f07",
+          "label": "Smoke / CO detectors work",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f08",
+          "label": "Plumbing issues",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f09",
+          "label": "Electrical issues",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f10",
+          "label": "Odor / biohazard",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f11",
+          "label": "Clutter level",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Normal"
+            },
+            {
+              "key": "opt2",
+              "label": "Heavy"
+            },
+            {
+              "key": "opt3",
+              "label": "Hoarding"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f12",
+          "label": "Hazards found",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Firearms"
+            },
+            {
+              "key": "opt2",
+              "label": "Ammunition"
+            },
+            {
+              "key": "opt3",
+              "label": "Medications"
+            },
+            {
+              "key": "opt4",
+              "label": "Sharps"
+            },
+            {
+              "key": "opt5",
+              "label": "Oxygen tanks"
+            },
+            {
+              "key": "opt6",
+              "label": "Chemicals"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "key": "s08_f13",
+          "label": "Repairs needed and rough cost, if known",
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "key": "s09",
+      "n": 9,
+      "title": "Contents and personal property",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s09_f01",
+          "label": "How full is the home",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Empty"
+            },
+            {
+              "key": "opt2",
+              "label": "Lightly furnished"
+            },
+            {
+              "key": "opt3",
+              "label": "Fully furnished"
+            },
+            {
+              "key": "opt4",
+              "label": "Excessive"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s09_f02",
+          "label": "What's there, roughly",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Furniture"
+            },
+            {
+              "key": "opt2",
+              "label": "Appliances"
+            },
+            {
+              "key": "opt3",
+              "label": "Electronics"
+            },
+            {
+              "key": "opt4",
+              "label": "Jewelry"
+            },
+            {
+              "key": "opt5",
+              "label": "Cash"
+            },
+            {
+              "key": "opt6",
+              "label": "Firearms"
+            },
+            {
+              "key": "opt7",
+              "label": "Art / collectibles"
+            },
+            {
+              "key": "opt8",
+              "label": "Tools / equipment"
+            },
+            {
+              "key": "opt9",
+              "label": "Clothing"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "key": "s09_f03",
+          "label": "Items that look valuable (describe)",
+          "rows": 2
+        },
+        {
+          "type": "choice",
+          "key": "s09_f04",
+          "label": "Documents found",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Will / trust"
+            },
+            {
+              "key": "opt2",
+              "label": "Deeds"
+            },
+            {
+              "key": "opt3",
+              "label": "Vehicle titles"
+            },
+            {
+              "key": "opt4",
+              "label": "Bank / brokerage statements"
+            },
+            {
+              "key": "opt5",
+              "label": "Tax returns"
+            },
+            {
+              "key": "opt6",
+              "label": "Insurance policies"
+            },
+            {
+              "key": "opt7",
+              "label": "Checkbooks"
+            },
+            {
+              "key": "opt8",
+              "label": "Stock certificates"
+            },
+            {
+              "key": "opt9",
+              "label": "Safe deposit key"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s09_f05",
+          "label": "Where the documents were taken and stored",
+          "w": 6
+        },
+        {
+          "type": "choice",
+          "key": "s09_f06",
+          "label": "Vehicles on the property",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes (start a GL-A2 for each)"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s09_f07",
+          "label": "Pets on the property",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes (start a GL-A4 for each)"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s09_f08",
+          "label": "Photos / video taken",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s09_f09",
+          "label": "Date and where saved",
+          "w": 4
+        },
+        {
+          "type": "subhead",
+          "text": "Items removed from the home"
+        },
+        {
+          "type": "table",
+          "key": "s09_t1",
+          "cols": [
+            "Item",
+            "Removed by",
+            "Date",
+            "Where it is now"
+          ],
+          "rows": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s09_f10",
+          "label": "Family requests for items (note them, promise nothing)",
+          "w": 6
+        }
+      ]
+    },
+    {
+      "key": "s10",
+      "n": 10,
+      "title": "Title, value, and sale",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s10_f01",
+          "label": "Title search ordered",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s10_f02",
+          "label": "Title company and date ordered",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s10_f03",
+          "label": "Date received",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s10_f04",
+          "label": "Liens or issues found",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s10_f05",
+          "label": "Value source",
+          "w": 4,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Auditor"
+            },
+            {
+              "key": "opt2",
+              "label": "Appraisal"
+            },
+            {
+              "key": "opt3",
+              "label": "Realtor CMA"
+            },
+            {
+              "key": "opt4",
+              "label": "Court appraiser"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s10_f06",
+          "label": "Value and date",
+          "w": 2
+        },
+        {
+          "type": "choice",
+          "key": "s10_f07",
+          "label": "Land sale filed",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Not needed"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s10_f08",
+          "label": "Land sale case no.",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s10_f09",
+          "label": "Date filed",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s10_f10",
+          "label": "Lienholder / heir consents and service status",
+          "w": 6
+        },
+        {
+          "type": "text",
+          "key": "s10_f11",
+          "label": "Listing agent and phone",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s10_f12",
+          "label": "Listed date and price",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s10_f13",
+          "label": "Purchase contract (buyer, price, date)",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s10_f14",
+          "label": "Court approval of sale (date)",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s10_f15",
+          "label": "Closing date",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s10_f16",
+          "label": "Net proceeds deposited to",
+          "w": 4
+        },
+        {
+          "type": "warn",
+          "html": "Do not list the property, sign a listing agreement, or accept an offer until the attorney confirms the court authority is in place."
+        }
+      ]
+    },
+    {
+      "key": "s11",
+      "n": 11,
+      "title": "Control, plan, and status",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s11_f01",
+          "label": "Do we have control of it",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Partly"
+            },
+            {
+              "key": "opt3",
+              "label": "No"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "subhead",
+          "text": "If not, steps to get control"
+        },
+        {
+          "type": "tasks",
+          "key": "s11_f02",
+          "label": "Steps done",
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Keys in hand"
+            },
+            {
+              "key": "opt2",
+              "label": "Locks changed (if needed)"
+            },
+            {
+              "key": "opt3",
+              "label": "Insurance in the estate / guardianship's name"
+            },
+            {
+              "key": "opt4",
+              "label": "Utilities moved to the fiduciary"
+            },
+            {
+              "key": "opt5",
+              "label": "Mail and tax bills sent to the firm"
+            },
+            {
+              "key": "opt6",
+              "label": "Occupant situation resolved"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s11_f03",
+          "label": "Date started / last follow-up",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s11_f04",
+          "label": "Who controls it now, if not us",
+          "w": 4
+        },
+        {
+          "type": "choice",
+          "key": "s11_f05",
+          "label": "Who decides the next step",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Guardian / fiduciary decides"
+            },
+            {
+              "key": "opt2",
+              "label": "Needs court approval"
+            },
+            {
+              "key": "opt3",
+              "label": "Someone else controls it"
+            },
+            {
+              "key": "opt4",
+              "label": "Ask attorney"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s11_f06",
+          "label": "Disposition",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Ward living there"
+            },
+            {
+              "key": "opt2",
+              "label": "Keep and maintain"
+            },
+            {
+              "key": "opt3",
+              "label": "Sell"
+            },
+            {
+              "key": "opt4",
+              "label": "Rent it out"
+            },
+            {
+              "key": "opt5",
+              "label": "Transfer / distribute to next of kin"
+            },
+            {
+              "key": "opt6",
+              "label": "Certificate of transfer"
+            },
+            {
+              "key": "opt7",
+              "label": "Leave alone (not ours)"
+            },
+            {
+              "key": "opt8",
+              "label": "Undecided"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s11_f07",
+          "label": "Status",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Not started"
+            },
+            {
+              "key": "opt2",
+              "label": "In progress"
+            },
+            {
+              "key": "opt3",
+              "label": "Waiting on institution / third party"
+            },
+            {
+              "key": "opt4",
+              "label": "Waiting on court"
+            },
+            {
+              "key": "opt5",
+              "label": "Settled"
+            }
+          ]
+        },
+        {
+          "type": "settled",
+          "text": "Settled means we are 100% done with this asset. Nothing is left to do and we will never need to touch it again. Usually it has been sold, cashed out, distributed to next of kin, or confirmed as not ours to manage. If any follow-up remains, it is not settled."
+        },
+        {
+          "type": "text",
+          "key": "s11_f08",
+          "label": "Date settled",
+          "w": 2
+        },
+        {
+          "type": "text",
+          "key": "s11_f09",
+          "label": "How it was settled",
+          "w": 4
+        }
+      ]
+    },
+    {
+      "key": "s12",
+      "n": 12,
+      "title": "Records",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s12_f01",
+          "label": "Do we have records",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Some"
+            },
+            {
+              "key": "opt3",
+              "label": "None yet"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s12_f02",
+          "label": "What we have",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Deed"
+            },
+            {
+              "key": "opt2",
+              "label": "Tax bills"
+            },
+            {
+              "key": "opt3",
+              "label": "Insurance declarations"
+            },
+            {
+              "key": "opt4",
+              "label": "Mortgage statements"
+            },
+            {
+              "key": "opt5",
+              "label": "Utility bills"
+            },
+            {
+              "key": "opt6",
+              "label": "HOA documents"
+            },
+            {
+              "key": "opt7",
+              "label": "Lease"
+            },
+            {
+              "key": "opt8",
+              "label": "Title search"
+            },
+            {
+              "key": "opt9",
+              "label": "Appraisal / CMA"
+            },
+            {
+              "key": "opt10",
+              "label": "Photos"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s12_f03",
+          "label": "Where they are",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Hard file"
+            },
+            {
+              "key": "opt2",
+              "label": "Scanned into Actionstep"
+            },
+            {
+              "key": "opt3",
+              "label": "Institution portal only"
+            },
+            {
+              "key": "opt4",
+              "label": "Not yet obtained"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s12_f04",
+          "label": "Records still needed, and from whom",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s12_f05",
+          "label": "Date requested",
+          "w": 2
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "type": "textarea",
+      "key": "w_f01",
+      "label": "Red flags and anything urgent",
+      "rows": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f02",
+      "label": "Next step",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "w_f03",
+      "label": "Who owns it",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f04",
+      "label": "Due",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f05",
+      "label": "Completed by",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f06",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f07",
+      "label": "Attorney reviewed",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f08",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f09",
+      "label": "Entered in BusinessMap",
+      "w": 2,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "w_f10",
+      "label": "Date entered",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f11",
+      "label": "Photos / documents uploaded",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        },
+        {
+          "key": "opt2",
+          "label": "None to upload"
+        }
+      ]
+    }
+  ],
+  "keys": {
+    "m_f01": {
+      "t": "text"
+    },
+    "m_f02": {
+      "t": "text"
+    },
+    "m_f03": {
+      "t": "text"
+    },
+    "m_f04": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f06": {
+      "t": "text"
+    },
+    "m_f07": {
+      "t": "text"
+    },
+    "m_f08": {
+      "t": "text"
+    },
+    "first": {
+      "t": "many",
+      "n": 6
+    },
+    "s01_f01": {
+      "t": "text"
+    },
+    "s01_f02": {
+      "t": "text"
+    },
+    "s01_f03": {
+      "t": "text"
+    },
+    "s01_f04": {
+      "t": "text"
+    },
+    "s01_f05": {
+      "t": "text"
+    },
+    "s01_f06": {
+      "t": "one",
+      "n": 6
+    },
+    "s01_f07": {
+      "t": "text"
+    },
+    "s01_f08": {
+      "t": "many",
+      "n": 6
+    },
+    "s01_f09": {
+      "t": "text"
+    },
+    "s02_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f02": {
+      "t": "text"
+    },
+    "s02_f03": {
+      "t": "text"
+    },
+    "s02_f04": {
+      "t": "text"
+    },
+    "s02_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f06": {
+      "t": "text"
+    },
+    "s02_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s02_f08": {
+      "t": "text"
+    },
+    "s02_f09": {
+      "t": "one",
+      "n": 4
+    },
+    "s02_f10": {
+      "t": "text"
+    },
+    "s02_f11": {
+      "t": "text"
+    },
+    "s03_f01": {
+      "t": "many",
+      "n": 6
+    },
+    "s03_f02": {
+      "t": "text"
+    },
+    "s03_f03": {
+      "t": "text"
+    },
+    "s03_f04": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_f05": {
+      "t": "text"
+    },
+    "s03_f06": {
+      "t": "text"
+    },
+    "s03_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s03_f08": {
+      "t": "text"
+    },
+    "s03_f09": {
+      "t": "one",
+      "n": 4
+    },
+    "s04_f01": {
+      "t": "text"
+    },
+    "s04_f02": {
+      "t": "text"
+    },
+    "s04_f03": {
+      "t": "text"
+    },
+    "s04_f04": {
+      "t": "one",
+      "n": 4
+    },
+    "s04_f05": {
+      "t": "text"
+    },
+    "s04_f06": {
+      "t": "text"
+    },
+    "s04_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f08": {
+      "t": "text"
+    },
+    "s04_f09": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f10": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f11": {
+      "t": "one",
+      "n": 3
+    },
+    "s04_f12": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f02": {
+      "t": "text"
+    },
+    "s05_f03": {
+      "t": "text"
+    },
+    "s05_f04": {
+      "t": "text"
+    },
+    "s05_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "s05_f06": {
+      "t": "text"
+    },
+    "s05_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f09": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f10": {
+      "t": "many",
+      "n": 5
+    },
+    "s05_f11": {
+      "t": "text"
+    },
+    "s05_f12": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f13": {
+      "t": "text"
+    },
+    "s05_f14": {
+      "t": "one",
+      "n": 3
+    },
+    "s05_f15": {
+      "t": "text"
+    },
+    "s05_f16": {
+      "t": "text"
+    },
+    "s06_t1_r1_c1": {
+      "t": "text"
+    },
+    "s06_t1_r1_c2": {
+      "t": "text"
+    },
+    "s06_t1_r1_c3": {
+      "t": "text"
+    },
+    "s06_t1_r1_c4": {
+      "t": "text"
+    },
+    "s06_t1_r1_c5": {
+      "t": "text"
+    },
+    "s06_t1_r2_c1": {
+      "t": "text"
+    },
+    "s06_t1_r2_c2": {
+      "t": "text"
+    },
+    "s06_t1_r2_c3": {
+      "t": "text"
+    },
+    "s06_t1_r2_c4": {
+      "t": "text"
+    },
+    "s06_t1_r2_c5": {
+      "t": "text"
+    },
+    "s06_t1_r3_c1": {
+      "t": "text"
+    },
+    "s06_t1_r3_c2": {
+      "t": "text"
+    },
+    "s06_t1_r3_c3": {
+      "t": "text"
+    },
+    "s06_t1_r3_c4": {
+      "t": "text"
+    },
+    "s06_t1_r3_c5": {
+      "t": "text"
+    },
+    "s06_t1_r4_c1": {
+      "t": "text"
+    },
+    "s06_t1_r4_c2": {
+      "t": "text"
+    },
+    "s06_t1_r4_c3": {
+      "t": "text"
+    },
+    "s06_t1_r4_c4": {
+      "t": "text"
+    },
+    "s06_t1_r4_c5": {
+      "t": "text"
+    },
+    "s06_t1_r5_c1": {
+      "t": "text"
+    },
+    "s06_t1_r5_c2": {
+      "t": "text"
+    },
+    "s06_t1_r5_c3": {
+      "t": "text"
+    },
+    "s06_t1_r5_c4": {
+      "t": "text"
+    },
+    "s06_t1_r5_c5": {
+      "t": "text"
+    },
+    "s06_t1_r6_c1": {
+      "t": "text"
+    },
+    "s06_t1_r6_c2": {
+      "t": "text"
+    },
+    "s06_t1_r6_c3": {
+      "t": "text"
+    },
+    "s06_t1_r6_c4": {
+      "t": "text"
+    },
+    "s06_t1_r6_c5": {
+      "t": "text"
+    },
+    "s06_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s06_f02": {
+      "t": "text"
+    },
+    "s06_f03": {
+      "t": "one",
+      "n": 4
+    },
+    "s06_f04": {
+      "t": "text"
+    },
+    "s07_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s07_f02": {
+      "t": "text"
+    },
+    "s07_f03": {
+      "t": "text"
+    },
+    "s07_f04": {
+      "t": "text"
+    },
+    "s07_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f06": {
+      "t": "text"
+    },
+    "s07_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f09": {
+      "t": "many",
+      "n": 4
+    },
+    "s07_f10": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f11": {
+      "t": "one",
+      "n": 3
+    },
+    "s07_f12": {
+      "t": "text"
+    },
+    "s08_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s08_f02": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f03": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f04": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f06": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f09": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f10": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f11": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_f12": {
+      "t": "many",
+      "n": 6
+    },
+    "s08_f13": {
+      "t": "text"
+    },
+    "s09_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s09_f02": {
+      "t": "many",
+      "n": 9
+    },
+    "s09_f03": {
+      "t": "text"
+    },
+    "s09_f04": {
+      "t": "many",
+      "n": 9
+    },
+    "s09_f05": {
+      "t": "text"
+    },
+    "s09_f06": {
+      "t": "one",
+      "n": 2
+    },
+    "s09_f07": {
+      "t": "one",
+      "n": 2
+    },
+    "s09_f08": {
+      "t": "one",
+      "n": 3
+    },
+    "s09_f09": {
+      "t": "text"
+    },
+    "s09_t1_r1_c1": {
+      "t": "text"
+    },
+    "s09_t1_r1_c2": {
+      "t": "text"
+    },
+    "s09_t1_r1_c3": {
+      "t": "text"
+    },
+    "s09_t1_r2_c1": {
+      "t": "text"
+    },
+    "s09_t1_r2_c2": {
+      "t": "text"
+    },
+    "s09_t1_r2_c3": {
+      "t": "text"
+    },
+    "s09_t1_r3_c1": {
+      "t": "text"
+    },
+    "s09_t1_r3_c2": {
+      "t": "text"
+    },
+    "s09_t1_r3_c3": {
+      "t": "text"
+    },
+    "s09_t1_r4_c1": {
+      "t": "text"
+    },
+    "s09_t1_r4_c2": {
+      "t": "text"
+    },
+    "s09_t1_r4_c3": {
+      "t": "text"
+    },
+    "s09_f10": {
+      "t": "text"
+    },
+    "s10_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s10_f02": {
+      "t": "text"
+    },
+    "s10_f03": {
+      "t": "text"
+    },
+    "s10_f04": {
+      "t": "text"
+    },
+    "s10_f05": {
+      "t": "many",
+      "n": 4
+    },
+    "s10_f06": {
+      "t": "text"
+    },
+    "s10_f07": {
+      "t": "one",
+      "n": 3
+    },
+    "s10_f08": {
+      "t": "text"
+    },
+    "s10_f09": {
+      "t": "text"
+    },
+    "s10_f10": {
+      "t": "text"
+    },
+    "s10_f11": {
+      "t": "text"
+    },
+    "s10_f12": {
+      "t": "text"
+    },
+    "s10_f13": {
+      "t": "text"
+    },
+    "s10_f14": {
+      "t": "text"
+    },
+    "s10_f15": {
+      "t": "text"
+    },
+    "s10_f16": {
+      "t": "text"
+    },
+    "s11_f01": {
+      "t": "one",
+      "n": 4
+    },
+    "s11_f02": {
+      "t": "many",
+      "n": 6
+    },
+    "s11_f03": {
+      "t": "text"
+    },
+    "s11_f04": {
+      "t": "text"
+    },
+    "s11_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "s11_f06": {
+      "t": "one",
+      "n": 8
+    },
+    "s11_f07": {
+      "t": "one",
+      "n": 5
+    },
+    "s11_f08": {
+      "t": "text"
+    },
+    "s11_f09": {
+      "t": "text"
+    },
+    "s12_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s12_f02": {
+      "t": "many",
+      "n": 10
+    },
+    "s12_f03": {
+      "t": "many",
+      "n": 4
+    },
+    "s12_f04": {
+      "t": "text"
+    },
+    "s12_f05": {
+      "t": "text"
+    },
+    "w_f01": {
+      "t": "text"
+    },
+    "w_f02": {
+      "t": "text"
+    },
+    "w_f03": {
+      "t": "text"
+    },
+    "w_f04": {
+      "t": "text"
+    },
+    "w_f05": {
+      "t": "text"
+    },
+    "w_f06": {
+      "t": "text"
+    },
+    "w_f07": {
+      "t": "text"
+    },
+    "w_f08": {
+      "t": "text"
+    },
+    "w_f09": {
+      "t": "one",
+      "n": 1
+    },
+    "w_f10": {
+      "t": "text"
+    },
+    "w_f11": {
+      "t": "one",
+      "n": 2
+    }
+  }
+}

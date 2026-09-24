@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "templates:import": "tsx scripts/import-templates.ts",
-    "test:db": "bash scripts/test-db.sh"
+    "test:db": "bash scripts/test-db.sh",
+    "test:e2e": "node tests/e2e/auth.e2e.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
@@ -17,7 +18,8 @@
     "next": "^16.3.6",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "resend": "^6.28.1"
+    "resend": "^6.28.1",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",
@@ -25,6 +27,8 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.6",
+    "playwright": "^1.56.1",
+    "supabase": "^2.117.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   }

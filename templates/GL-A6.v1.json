@@ -1,0 +1,1779 @@
+{
+  "format": 1,
+  "code": "GL-A6",
+  "slug": "bud",
+  "title": "Monthly Budget",
+  "sub": "One per ward. Build it at appointment and update it whenever something changes. Every amount is monthly: divide yearly bills by 12.",
+  "accent": "plum",
+  "matter": [
+    {
+      "type": "text",
+      "key": "m_f01",
+      "label": "Matter / case name",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "m_f02",
+      "label": "Case no.",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "m_f03",
+      "label": "County",
+      "w": 2
+    },
+    {
+      "type": "choice",
+      "key": "m_f04",
+      "label": "Matter type",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardianship"
+        },
+        {
+          "key": "opt2",
+          "label": "Estate"
+        },
+        {
+          "key": "opt3",
+          "label": "Trust"
+        },
+        {
+          "key": "opt4",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "key": "m_f05",
+      "label": "Our role",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Guardian of estate"
+        },
+        {
+          "key": "opt2",
+          "label": "Fiduciary / administrator"
+        },
+        {
+          "key": "opt3",
+          "label": "Counsel"
+        },
+        {
+          "key": "opt4",
+          "label": "Trustee"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "m_f06",
+      "label": "Ward / decedent",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "m_f07",
+      "label": "Date of death or appointment",
+      "w": 2,
+      "hint": "This is the valuation date for the inventory."
+    },
+    {
+      "type": "text",
+      "key": "m_f08",
+      "label": "Assigned staff",
+      "w": 2
+    }
+  ],
+  "first": {
+    "type": "tasks",
+    "key": "first",
+    "label": "Do first (done)",
+    "options": [
+      {
+        "key": "opt1",
+        "label": "Find every recurring bill: mail, bank statements, autopays"
+      },
+      {
+        "key": "opt2",
+        "label": "Catch anything past due or facing a shutoff"
+      },
+      {
+        "key": "opt3",
+        "label": "Confirm where the ward lives now and what it costs"
+      },
+      {
+        "key": "opt4",
+        "label": "Ask the ward what matters to them: spending money, activities, habits"
+      },
+      {
+        "key": "opt5",
+        "label": "Check with the attorney whether expenses need court approval before we pay"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "key": "s01",
+      "n": 1,
+      "title": "Living situation",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s01_f01",
+          "label": "Where the ward lives",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Own home"
+            },
+            {
+              "key": "opt2",
+              "label": "Renting"
+            },
+            {
+              "key": "opt3",
+              "label": "Nursing facility"
+            },
+            {
+              "key": "opt4",
+              "label": "Assisted living"
+            },
+            {
+              "key": "opt5",
+              "label": "Group home"
+            },
+            {
+              "key": "opt6",
+              "label": "With family"
+            },
+            {
+              "key": "opt7",
+              "label": "Other"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s01_f02",
+          "label": "Medicaid",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Pending"
+            },
+            {
+              "key": "opt4",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s01_f03",
+          "label": "Budget for (month and year)",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s01_f04",
+          "label": "Facility or landlord name",
+          "w": 6
+        }
+      ]
+    },
+    {
+      "key": "s02",
+      "n": 2,
+      "title": "Monthly income",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s02_t1",
+          "cols": [
+            "Source",
+            "Gross $",
+            "Net $",
+            "Deposited to"
+          ],
+          "rows": [
+            "Social Security",
+            "Pension",
+            "VA",
+            "Annuity / IRA",
+            "Rental",
+            "Other"
+          ],
+          "sum": 2,
+          "kind": "inc",
+          "totLabel": "Total net"
+        },
+        {
+          "type": "tip",
+          "html": "Each source gets its own GL-A5 Income sheet with the details."
+        }
+      ]
+    },
+    {
+      "key": "s03",
+      "n": 3,
+      "title": "Housing",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s03_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Rent",
+            "Mortgage",
+            "Facility / assisted living",
+            "Property taxes (if not escrowed)",
+            "HOA / condo dues",
+            "Repairs and upkeep",
+            "Lawn and snow"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s04",
+      "n": 4,
+      "title": "Utilities and phone",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s04_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Electric",
+            "Gas",
+            "Water / sewer",
+            "Trash",
+            "Internet",
+            "Cable / streaming TV",
+            "Landline",
+            "Cell phone"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s05",
+      "n": 5,
+      "title": "Health care",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s05_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Medicare Part B",
+            "Medicare Part D",
+            "Medigap supplement",
+            "Medicare Advantage",
+            "Other health insurance",
+            "Dental / vision",
+            "Copays and deductibles",
+            "Prescriptions",
+            "Over-the-counter medicine",
+            "Medical supplies / equipment",
+            "Glasses / hearing aids",
+            "Medicaid patient liability"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s06",
+      "n": 6,
+      "title": "Other insurance",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s06_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Homeowner's / renter's",
+            "Auto",
+            "Life",
+            "Long-term care",
+            "Other"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s07",
+      "n": 7,
+      "title": "Transportation",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s07_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Car payment",
+            "Gas",
+            "Maintenance / repairs",
+            "Registration",
+            "Rides / medical transport"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s08",
+      "n": 8,
+      "title": "Personal needs",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s08_f01",
+          "label": "Personal spending allowance",
+          "w": 4,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Medicaid personal needs allowance ($75 / month)",
+              "autofill": {
+                "target": "s08_t1_r4_c1",
+                "value": "75"
+              }
+            },
+            {
+              "key": "opt2",
+              "label": "Custom amount"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s08_f02",
+          "label": "Smokes or vapes",
+          "w": 2,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "key": "s08_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Groceries / food",
+            "Eating out",
+            "Toiletries",
+            "Personal spending allowance",
+            "Tobacco / vaping",
+            "Salon / barber",
+            "Clothing, shoes, coats (set aside)",
+            "Laundry",
+            "Subscriptions / magazines",
+            "Entertainment / activities",
+            "Gifts / holidays",
+            "Church / donations"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        },
+        {
+          "type": "text",
+          "key": "s08_f03",
+          "label": "Coming up: seasonal or one-time needs (winter coat, shoes, glasses)",
+          "w": 6
+        }
+      ]
+    },
+    {
+      "key": "s09",
+      "n": 9,
+      "title": "Pet care",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s09_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Food",
+            "Grooming",
+            "Vet",
+            "Medications",
+            "Boarding / sitter",
+            "License"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        },
+        {
+          "type": "tip",
+          "html": "Each pet also gets a GL-A4 Pet sheet."
+        }
+      ]
+    },
+    {
+      "key": "s10",
+      "n": 10,
+      "title": "Debts and guardianship costs",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s10_t1",
+          "cols": [
+            "Expense",
+            "Monthly $",
+            "Paid to",
+            "How paid",
+            "Notes"
+          ],
+          "rows": [
+            "Credit card(s)",
+            "Loan payments",
+            "Guardian bond premium",
+            "Court costs",
+            "Tax preparation",
+            "Other"
+          ],
+          "sum": 1,
+          "kind": "exp"
+        }
+      ]
+    },
+    {
+      "key": "s11",
+      "n": 11,
+      "title": "One-time and special purchases",
+      "rows": [
+        {
+          "type": "table",
+          "key": "s11_t1",
+          "cols": [
+            "Item",
+            "Estimated $",
+            "Needed by",
+            "Court approval needed"
+          ],
+          "rows": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "sum": 1,
+          "kind": "one",
+          "totLabel": "Total one-time"
+        },
+        {
+          "type": "choice",
+          "key": "s11_f01",
+          "label": "Pre-need funeral / burial plan in place",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Unknown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "s12",
+      "n": 12,
+      "title": "Summary",
+      "rows": [
+        {
+          "type": "computed",
+          "key": "s12_f01",
+          "label": "Total monthly net income",
+          "w": 2,
+          "auto": "income"
+        },
+        {
+          "type": "computed",
+          "key": "s12_f02",
+          "label": "Total monthly expenses",
+          "w": 2,
+          "auto": "expenses"
+        },
+        {
+          "type": "computed",
+          "key": "s12_f03",
+          "label": "Monthly surplus or shortfall",
+          "w": 2,
+          "auto": "diff"
+        },
+        {
+          "type": "text",
+          "key": "s12_f04",
+          "label": "Reserve / cushion set aside",
+          "w": 3
+        },
+        {
+          "type": "choice",
+          "key": "s12_f05",
+          "label": "Court approval needed for this budget",
+          "w": 3,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "No"
+            },
+            {
+              "key": "opt3",
+              "label": "Ask attorney"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s12_f06",
+          "label": "Application to expend filed (date)",
+          "w": 3
+        },
+        {
+          "type": "text",
+          "key": "s12_f07",
+          "label": "Approved (date)",
+          "w": 3
+        },
+        {
+          "type": "warn",
+          "html": "A shortfall goes to the attorney right away. And don't start any new recurring payment until the attorney confirms the court authority is in place."
+        }
+      ]
+    },
+    {
+      "key": "s13",
+      "n": 13,
+      "title": "Records",
+      "rows": [
+        {
+          "type": "choice",
+          "key": "s13_f01",
+          "label": "Do we have records",
+          "w": 6,
+          "multi": false,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Yes"
+            },
+            {
+              "key": "opt2",
+              "label": "Some"
+            },
+            {
+              "key": "opt3",
+              "label": "None yet"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s13_f02",
+          "label": "What we have",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Bills"
+            },
+            {
+              "key": "opt2",
+              "label": "Lease / facility agreement"
+            },
+            {
+              "key": "opt3",
+              "label": "Insurance declarations"
+            },
+            {
+              "key": "opt4",
+              "label": "Receipts"
+            },
+            {
+              "key": "opt5",
+              "label": "Bank statements"
+            },
+            {
+              "key": "opt6",
+              "label": "Court-approved budget"
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "key": "s13_f03",
+          "label": "Where they are",
+          "w": 6,
+          "multi": true,
+          "options": [
+            {
+              "key": "opt1",
+              "label": "Hard file"
+            },
+            {
+              "key": "opt2",
+              "label": "Scanned into Actionstep"
+            },
+            {
+              "key": "opt3",
+              "label": "Institution portal only"
+            },
+            {
+              "key": "opt4",
+              "label": "Not yet obtained"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "key": "s13_f04",
+          "label": "Records still needed, and from whom",
+          "w": 4
+        },
+        {
+          "type": "text",
+          "key": "s13_f05",
+          "label": "Date requested",
+          "w": 2
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "type": "textarea",
+      "key": "w_f01",
+      "label": "Red flags and anything urgent",
+      "rows": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f02",
+      "label": "Next step",
+      "w": 3
+    },
+    {
+      "type": "text",
+      "key": "w_f03",
+      "label": "Who owns it",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f04",
+      "label": "Due",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f05",
+      "label": "Completed by",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f06",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "text",
+      "key": "w_f07",
+      "label": "Attorney reviewed",
+      "w": 2
+    },
+    {
+      "type": "text",
+      "key": "w_f08",
+      "label": "Date",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f09",
+      "label": "Entered in BusinessMap",
+      "w": 2,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "key": "w_f10",
+      "label": "Date entered",
+      "w": 1
+    },
+    {
+      "type": "choice",
+      "key": "w_f11",
+      "label": "Photos / documents uploaded",
+      "w": 3,
+      "multi": false,
+      "options": [
+        {
+          "key": "opt1",
+          "label": "Yes"
+        },
+        {
+          "key": "opt2",
+          "label": "None to upload"
+        }
+      ]
+    }
+  ],
+  "keys": {
+    "m_f01": {
+      "t": "text"
+    },
+    "m_f02": {
+      "t": "text"
+    },
+    "m_f03": {
+      "t": "text"
+    },
+    "m_f04": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f05": {
+      "t": "one",
+      "n": 4
+    },
+    "m_f06": {
+      "t": "text"
+    },
+    "m_f07": {
+      "t": "text"
+    },
+    "m_f08": {
+      "t": "text"
+    },
+    "first": {
+      "t": "many",
+      "n": 5
+    },
+    "s01_f01": {
+      "t": "one",
+      "n": 7
+    },
+    "s01_f02": {
+      "t": "one",
+      "n": 4
+    },
+    "s01_f03": {
+      "t": "text"
+    },
+    "s01_f04": {
+      "t": "text"
+    },
+    "s02_t1_r1_c1": {
+      "t": "text"
+    },
+    "s02_t1_r1_c2": {
+      "t": "text"
+    },
+    "s02_t1_r1_c3": {
+      "t": "text"
+    },
+    "s02_t1_r2_c1": {
+      "t": "text"
+    },
+    "s02_t1_r2_c2": {
+      "t": "text"
+    },
+    "s02_t1_r2_c3": {
+      "t": "text"
+    },
+    "s02_t1_r3_c1": {
+      "t": "text"
+    },
+    "s02_t1_r3_c2": {
+      "t": "text"
+    },
+    "s02_t1_r3_c3": {
+      "t": "text"
+    },
+    "s02_t1_r4_c1": {
+      "t": "text"
+    },
+    "s02_t1_r4_c2": {
+      "t": "text"
+    },
+    "s02_t1_r4_c3": {
+      "t": "text"
+    },
+    "s02_t1_r5_c1": {
+      "t": "text"
+    },
+    "s02_t1_r5_c2": {
+      "t": "text"
+    },
+    "s02_t1_r5_c3": {
+      "t": "text"
+    },
+    "s02_t1_r6_c1": {
+      "t": "text"
+    },
+    "s02_t1_r6_c2": {
+      "t": "text"
+    },
+    "s02_t1_r6_c3": {
+      "t": "text"
+    },
+    "s03_t1_r1_c1": {
+      "t": "text"
+    },
+    "s03_t1_r1_c2": {
+      "t": "text"
+    },
+    "s03_t1_r1_c3": {
+      "t": "text"
+    },
+    "s03_t1_r1_c4": {
+      "t": "text"
+    },
+    "s03_t1_r2_c1": {
+      "t": "text"
+    },
+    "s03_t1_r2_c2": {
+      "t": "text"
+    },
+    "s03_t1_r2_c3": {
+      "t": "text"
+    },
+    "s03_t1_r2_c4": {
+      "t": "text"
+    },
+    "s03_t1_r3_c1": {
+      "t": "text"
+    },
+    "s03_t1_r3_c2": {
+      "t": "text"
+    },
+    "s03_t1_r3_c3": {
+      "t": "text"
+    },
+    "s03_t1_r3_c4": {
+      "t": "text"
+    },
+    "s03_t1_r4_c1": {
+      "t": "text"
+    },
+    "s03_t1_r4_c2": {
+      "t": "text"
+    },
+    "s03_t1_r4_c3": {
+      "t": "text"
+    },
+    "s03_t1_r4_c4": {
+      "t": "text"
+    },
+    "s03_t1_r5_c1": {
+      "t": "text"
+    },
+    "s03_t1_r5_c2": {
+      "t": "text"
+    },
+    "s03_t1_r5_c3": {
+      "t": "text"
+    },
+    "s03_t1_r5_c4": {
+      "t": "text"
+    },
+    "s03_t1_r6_c1": {
+      "t": "text"
+    },
+    "s03_t1_r6_c2": {
+      "t": "text"
+    },
+    "s03_t1_r6_c3": {
+      "t": "text"
+    },
+    "s03_t1_r6_c4": {
+      "t": "text"
+    },
+    "s03_t1_r7_c1": {
+      "t": "text"
+    },
+    "s03_t1_r7_c2": {
+      "t": "text"
+    },
+    "s03_t1_r7_c3": {
+      "t": "text"
+    },
+    "s03_t1_r7_c4": {
+      "t": "text"
+    },
+    "s04_t1_r1_c1": {
+      "t": "text"
+    },
+    "s04_t1_r1_c2": {
+      "t": "text"
+    },
+    "s04_t1_r1_c3": {
+      "t": "text"
+    },
+    "s04_t1_r1_c4": {
+      "t": "text"
+    },
+    "s04_t1_r2_c1": {
+      "t": "text"
+    },
+    "s04_t1_r2_c2": {
+      "t": "text"
+    },
+    "s04_t1_r2_c3": {
+      "t": "text"
+    },
+    "s04_t1_r2_c4": {
+      "t": "text"
+    },
+    "s04_t1_r3_c1": {
+      "t": "text"
+    },
+    "s04_t1_r3_c2": {
+      "t": "text"
+    },
+    "s04_t1_r3_c3": {
+      "t": "text"
+    },
+    "s04_t1_r3_c4": {
+      "t": "text"
+    },
+    "s04_t1_r4_c1": {
+      "t": "text"
+    },
+    "s04_t1_r4_c2": {
+      "t": "text"
+    },
+    "s04_t1_r4_c3": {
+      "t": "text"
+    },
+    "s04_t1_r4_c4": {
+      "t": "text"
+    },
+    "s04_t1_r5_c1": {
+      "t": "text"
+    },
+    "s04_t1_r5_c2": {
+      "t": "text"
+    },
+    "s04_t1_r5_c3": {
+      "t": "text"
+    },
+    "s04_t1_r5_c4": {
+      "t": "text"
+    },
+    "s04_t1_r6_c1": {
+      "t": "text"
+    },
+    "s04_t1_r6_c2": {
+      "t": "text"
+    },
+    "s04_t1_r6_c3": {
+      "t": "text"
+    },
+    "s04_t1_r6_c4": {
+      "t": "text"
+    },
+    "s04_t1_r7_c1": {
+      "t": "text"
+    },
+    "s04_t1_r7_c2": {
+      "t": "text"
+    },
+    "s04_t1_r7_c3": {
+      "t": "text"
+    },
+    "s04_t1_r7_c4": {
+      "t": "text"
+    },
+    "s04_t1_r8_c1": {
+      "t": "text"
+    },
+    "s04_t1_r8_c2": {
+      "t": "text"
+    },
+    "s04_t1_r8_c3": {
+      "t": "text"
+    },
+    "s04_t1_r8_c4": {
+      "t": "text"
+    },
+    "s05_t1_r1_c1": {
+      "t": "text"
+    },
+    "s05_t1_r1_c2": {
+      "t": "text"
+    },
+    "s05_t1_r1_c3": {
+      "t": "text"
+    },
+    "s05_t1_r1_c4": {
+      "t": "text"
+    },
+    "s05_t1_r2_c1": {
+      "t": "text"
+    },
+    "s05_t1_r2_c2": {
+      "t": "text"
+    },
+    "s05_t1_r2_c3": {
+      "t": "text"
+    },
+    "s05_t1_r2_c4": {
+      "t": "text"
+    },
+    "s05_t1_r3_c1": {
+      "t": "text"
+    },
+    "s05_t1_r3_c2": {
+      "t": "text"
+    },
+    "s05_t1_r3_c3": {
+      "t": "text"
+    },
+    "s05_t1_r3_c4": {
+      "t": "text"
+    },
+    "s05_t1_r4_c1": {
+      "t": "text"
+    },
+    "s05_t1_r4_c2": {
+      "t": "text"
+    },
+    "s05_t1_r4_c3": {
+      "t": "text"
+    },
+    "s05_t1_r4_c4": {
+      "t": "text"
+    },
+    "s05_t1_r5_c1": {
+      "t": "text"
+    },
+    "s05_t1_r5_c2": {
+      "t": "text"
+    },
+    "s05_t1_r5_c3": {
+      "t": "text"
+    },
+    "s05_t1_r5_c4": {
+      "t": "text"
+    },
+    "s05_t1_r6_c1": {
+      "t": "text"
+    },
+    "s05_t1_r6_c2": {
+      "t": "text"
+    },
+    "s05_t1_r6_c3": {
+      "t": "text"
+    },
+    "s05_t1_r6_c4": {
+      "t": "text"
+    },
+    "s05_t1_r7_c1": {
+      "t": "text"
+    },
+    "s05_t1_r7_c2": {
+      "t": "text"
+    },
+    "s05_t1_r7_c3": {
+      "t": "text"
+    },
+    "s05_t1_r7_c4": {
+      "t": "text"
+    },
+    "s05_t1_r8_c1": {
+      "t": "text"
+    },
+    "s05_t1_r8_c2": {
+      "t": "text"
+    },
+    "s05_t1_r8_c3": {
+      "t": "text"
+    },
+    "s05_t1_r8_c4": {
+      "t": "text"
+    },
+    "s05_t1_r9_c1": {
+      "t": "text"
+    },
+    "s05_t1_r9_c2": {
+      "t": "text"
+    },
+    "s05_t1_r9_c3": {
+      "t": "text"
+    },
+    "s05_t1_r9_c4": {
+      "t": "text"
+    },
+    "s05_t1_r10_c1": {
+      "t": "text"
+    },
+    "s05_t1_r10_c2": {
+      "t": "text"
+    },
+    "s05_t1_r10_c3": {
+      "t": "text"
+    },
+    "s05_t1_r10_c4": {
+      "t": "text"
+    },
+    "s05_t1_r11_c1": {
+      "t": "text"
+    },
+    "s05_t1_r11_c2": {
+      "t": "text"
+    },
+    "s05_t1_r11_c3": {
+      "t": "text"
+    },
+    "s05_t1_r11_c4": {
+      "t": "text"
+    },
+    "s05_t1_r12_c1": {
+      "t": "text"
+    },
+    "s05_t1_r12_c2": {
+      "t": "text"
+    },
+    "s05_t1_r12_c3": {
+      "t": "text"
+    },
+    "s05_t1_r12_c4": {
+      "t": "text"
+    },
+    "s06_t1_r1_c1": {
+      "t": "text"
+    },
+    "s06_t1_r1_c2": {
+      "t": "text"
+    },
+    "s06_t1_r1_c3": {
+      "t": "text"
+    },
+    "s06_t1_r1_c4": {
+      "t": "text"
+    },
+    "s06_t1_r2_c1": {
+      "t": "text"
+    },
+    "s06_t1_r2_c2": {
+      "t": "text"
+    },
+    "s06_t1_r2_c3": {
+      "t": "text"
+    },
+    "s06_t1_r2_c4": {
+      "t": "text"
+    },
+    "s06_t1_r3_c1": {
+      "t": "text"
+    },
+    "s06_t1_r3_c2": {
+      "t": "text"
+    },
+    "s06_t1_r3_c3": {
+      "t": "text"
+    },
+    "s06_t1_r3_c4": {
+      "t": "text"
+    },
+    "s06_t1_r4_c1": {
+      "t": "text"
+    },
+    "s06_t1_r4_c2": {
+      "t": "text"
+    },
+    "s06_t1_r4_c3": {
+      "t": "text"
+    },
+    "s06_t1_r4_c4": {
+      "t": "text"
+    },
+    "s06_t1_r5_c1": {
+      "t": "text"
+    },
+    "s06_t1_r5_c2": {
+      "t": "text"
+    },
+    "s06_t1_r5_c3": {
+      "t": "text"
+    },
+    "s06_t1_r5_c4": {
+      "t": "text"
+    },
+    "s07_t1_r1_c1": {
+      "t": "text"
+    },
+    "s07_t1_r1_c2": {
+      "t": "text"
+    },
+    "s07_t1_r1_c3": {
+      "t": "text"
+    },
+    "s07_t1_r1_c4": {
+      "t": "text"
+    },
+    "s07_t1_r2_c1": {
+      "t": "text"
+    },
+    "s07_t1_r2_c2": {
+      "t": "text"
+    },
+    "s07_t1_r2_c3": {
+      "t": "text"
+    },
+    "s07_t1_r2_c4": {
+      "t": "text"
+    },
+    "s07_t1_r3_c1": {
+      "t": "text"
+    },
+    "s07_t1_r3_c2": {
+      "t": "text"
+    },
+    "s07_t1_r3_c3": {
+      "t": "text"
+    },
+    "s07_t1_r3_c4": {
+      "t": "text"
+    },
+    "s07_t1_r4_c1": {
+      "t": "text"
+    },
+    "s07_t1_r4_c2": {
+      "t": "text"
+    },
+    "s07_t1_r4_c3": {
+      "t": "text"
+    },
+    "s07_t1_r4_c4": {
+      "t": "text"
+    },
+    "s07_t1_r5_c1": {
+      "t": "text"
+    },
+    "s07_t1_r5_c2": {
+      "t": "text"
+    },
+    "s07_t1_r5_c3": {
+      "t": "text"
+    },
+    "s07_t1_r5_c4": {
+      "t": "text"
+    },
+    "s08_f01": {
+      "t": "one",
+      "n": 2
+    },
+    "s08_f02": {
+      "t": "one",
+      "n": 3
+    },
+    "s08_t1_r1_c1": {
+      "t": "text"
+    },
+    "s08_t1_r1_c2": {
+      "t": "text"
+    },
+    "s08_t1_r1_c3": {
+      "t": "text"
+    },
+    "s08_t1_r1_c4": {
+      "t": "text"
+    },
+    "s08_t1_r2_c1": {
+      "t": "text"
+    },
+    "s08_t1_r2_c2": {
+      "t": "text"
+    },
+    "s08_t1_r2_c3": {
+      "t": "text"
+    },
+    "s08_t1_r2_c4": {
+      "t": "text"
+    },
+    "s08_t1_r3_c1": {
+      "t": "text"
+    },
+    "s08_t1_r3_c2": {
+      "t": "text"
+    },
+    "s08_t1_r3_c3": {
+      "t": "text"
+    },
+    "s08_t1_r3_c4": {
+      "t": "text"
+    },
+    "s08_t1_r4_c1": {
+      "t": "text"
+    },
+    "s08_t1_r4_c2": {
+      "t": "text"
+    },
+    "s08_t1_r4_c3": {
+      "t": "text"
+    },
+    "s08_t1_r4_c4": {
+      "t": "text"
+    },
+    "s08_t1_r5_c1": {
+      "t": "text"
+    },
+    "s08_t1_r5_c2": {
+      "t": "text"
+    },
+    "s08_t1_r5_c3": {
+      "t": "text"
+    },
+    "s08_t1_r5_c4": {
+      "t": "text"
+    },
+    "s08_t1_r6_c1": {
+      "t": "text"
+    },
+    "s08_t1_r6_c2": {
+      "t": "text"
+    },
+    "s08_t1_r6_c3": {
+      "t": "text"
+    },
+    "s08_t1_r6_c4": {
+      "t": "text"
+    },
+    "s08_t1_r7_c1": {
+      "t": "text"
+    },
+    "s08_t1_r7_c2": {
+      "t": "text"
+    },
+    "s08_t1_r7_c3": {
+      "t": "text"
+    },
+    "s08_t1_r7_c4": {
+      "t": "text"
+    },
+    "s08_t1_r8_c1": {
+      "t": "text"
+    },
+    "s08_t1_r8_c2": {
+      "t": "text"
+    },
+    "s08_t1_r8_c3": {
+      "t": "text"
+    },
+    "s08_t1_r8_c4": {
+      "t": "text"
+    },
+    "s08_t1_r9_c1": {
+      "t": "text"
+    },
+    "s08_t1_r9_c2": {
+      "t": "text"
+    },
+    "s08_t1_r9_c3": {
+      "t": "text"
+    },
+    "s08_t1_r9_c4": {
+      "t": "text"
+    },
+    "s08_t1_r10_c1": {
+      "t": "text"
+    },
+    "s08_t1_r10_c2": {
+      "t": "text"
+    },
+    "s08_t1_r10_c3": {
+      "t": "text"
+    },
+    "s08_t1_r10_c4": {
+      "t": "text"
+    },
+    "s08_t1_r11_c1": {
+      "t": "text"
+    },
+    "s08_t1_r11_c2": {
+      "t": "text"
+    },
+    "s08_t1_r11_c3": {
+      "t": "text"
+    },
+    "s08_t1_r11_c4": {
+      "t": "text"
+    },
+    "s08_t1_r12_c1": {
+      "t": "text"
+    },
+    "s08_t1_r12_c2": {
+      "t": "text"
+    },
+    "s08_t1_r12_c3": {
+      "t": "text"
+    },
+    "s08_t1_r12_c4": {
+      "t": "text"
+    },
+    "s08_f03": {
+      "t": "text"
+    },
+    "s09_t1_r1_c1": {
+      "t": "text"
+    },
+    "s09_t1_r1_c2": {
+      "t": "text"
+    },
+    "s09_t1_r1_c3": {
+      "t": "text"
+    },
+    "s09_t1_r1_c4": {
+      "t": "text"
+    },
+    "s09_t1_r2_c1": {
+      "t": "text"
+    },
+    "s09_t1_r2_c2": {
+      "t": "text"
+    },
+    "s09_t1_r2_c3": {
+      "t": "text"
+    },
+    "s09_t1_r2_c4": {
+      "t": "text"
+    },
+    "s09_t1_r3_c1": {
+      "t": "text"
+    },
+    "s09_t1_r3_c2": {
+      "t": "text"
+    },
+    "s09_t1_r3_c3": {
+      "t": "text"
+    },
+    "s09_t1_r3_c4": {
+      "t": "text"
+    },
+    "s09_t1_r4_c1": {
+      "t": "text"
+    },
+    "s09_t1_r4_c2": {
+      "t": "text"
+    },
+    "s09_t1_r4_c3": {
+      "t": "text"
+    },
+    "s09_t1_r4_c4": {
+      "t": "text"
+    },
+    "s09_t1_r5_c1": {
+      "t": "text"
+    },
+    "s09_t1_r5_c2": {
+      "t": "text"
+    },
+    "s09_t1_r5_c3": {
+      "t": "text"
+    },
+    "s09_t1_r5_c4": {
+      "t": "text"
+    },
+    "s09_t1_r6_c1": {
+      "t": "text"
+    },
+    "s09_t1_r6_c2": {
+      "t": "text"
+    },
+    "s09_t1_r6_c3": {
+      "t": "text"
+    },
+    "s09_t1_r6_c4": {
+      "t": "text"
+    },
+    "s10_t1_r1_c1": {
+      "t": "text"
+    },
+    "s10_t1_r1_c2": {
+      "t": "text"
+    },
+    "s10_t1_r1_c3": {
+      "t": "text"
+    },
+    "s10_t1_r1_c4": {
+      "t": "text"
+    },
+    "s10_t1_r2_c1": {
+      "t": "text"
+    },
+    "s10_t1_r2_c2": {
+      "t": "text"
+    },
+    "s10_t1_r2_c3": {
+      "t": "text"
+    },
+    "s10_t1_r2_c4": {
+      "t": "text"
+    },
+    "s10_t1_r3_c1": {
+      "t": "text"
+    },
+    "s10_t1_r3_c2": {
+      "t": "text"
+    },
+    "s10_t1_r3_c3": {
+      "t": "text"
+    },
+    "s10_t1_r3_c4": {
+      "t": "text"
+    },
+    "s10_t1_r4_c1": {
+      "t": "text"
+    },
+    "s10_t1_r4_c2": {
+      "t": "text"
+    },
+    "s10_t1_r4_c3": {
+      "t": "text"
+    },
+    "s10_t1_r4_c4": {
+      "t": "text"
+    },
+    "s10_t1_r5_c1": {
+      "t": "text"
+    },
+    "s10_t1_r5_c2": {
+      "t": "text"
+    },
+    "s10_t1_r5_c3": {
+      "t": "text"
+    },
+    "s10_t1_r5_c4": {
+      "t": "text"
+    },
+    "s10_t1_r6_c1": {
+      "t": "text"
+    },
+    "s10_t1_r6_c2": {
+      "t": "text"
+    },
+    "s10_t1_r6_c3": {
+      "t": "text"
+    },
+    "s10_t1_r6_c4": {
+      "t": "text"
+    },
+    "s11_t1_r1_c1": {
+      "t": "text"
+    },
+    "s11_t1_r1_c2": {
+      "t": "text"
+    },
+    "s11_t1_r1_c3": {
+      "t": "text"
+    },
+    "s11_t1_r2_c1": {
+      "t": "text"
+    },
+    "s11_t1_r2_c2": {
+      "t": "text"
+    },
+    "s11_t1_r2_c3": {
+      "t": "text"
+    },
+    "s11_t1_r3_c1": {
+      "t": "text"
+    },
+    "s11_t1_r3_c2": {
+      "t": "text"
+    },
+    "s11_t1_r3_c3": {
+      "t": "text"
+    },
+    "s11_t1_r4_c1": {
+      "t": "text"
+    },
+    "s11_t1_r4_c2": {
+      "t": "text"
+    },
+    "s11_t1_r4_c3": {
+      "t": "text"
+    },
+    "s11_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s12_f04": {
+      "t": "text"
+    },
+    "s12_f05": {
+      "t": "one",
+      "n": 3
+    },
+    "s12_f06": {
+      "t": "text"
+    },
+    "s12_f07": {
+      "t": "text"
+    },
+    "s13_f01": {
+      "t": "one",
+      "n": 3
+    },
+    "s13_f02": {
+      "t": "many",
+      "n": 6
+    },
+    "s13_f03": {
+      "t": "many",
+      "n": 4
+    },
+    "s13_f04": {
+      "t": "text"
+    },
+    "s13_f05": {
+      "t": "text"
+    },
+    "w_f01": {
+      "t": "text"
+    },
+    "w_f02": {
+      "t": "text"
+    },
+    "w_f03": {
+      "t": "text"
+    },
+    "w_f04": {
+      "t": "text"
+    },
+    "w_f05": {
+      "t": "text"
+    },
+    "w_f06": {
+      "t": "text"
+    },
+    "w_f07": {
+      "t": "text"
+    },
+    "w_f08": {
+      "t": "text"
+    },
+    "w_f09": {
+      "t": "one",
+      "n": 1
+    },
+    "w_f10": {
+      "t": "text"
+    },
+    "w_f11": {
+      "t": "one",
+      "n": 2
+    }
+  }
+}
