@@ -1,6 +1,7 @@
 import 'server-only'
 import { cache } from 'react'
 import { redirect } from 'next/navigation'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import { env } from '@/lib/env'
 
@@ -14,45 +15,58 @@ export type Profile = {
   active: boolean
 }
 
-type Options = {
-  // Let a signed-in user without an authenticator reach the enrollment page
-  // even when MFA_REQUIRED is on.
-  allowMissingMfa?: boolean
-}
+type Me = Profile & { mfa_enrolled: boolean }
 
-// Server-side gate for every authenticated page and server action. The proxy
-// already bounced signed-out visitors; this re-checks, loads the profile
-// through RLS, and enforces deactivation and MFA. Postgres enforces the same
-// rules again in RLS, so a bug here fails closed.
-export function requireUser(opts: Options = {}) {
-  return loadUser(!!opts.allowMissingMfa)
-}
+export type AuthResult =
+  | { ok: true; supabase: SupabaseClient; profile: Profile; aal: string }
+  | { ok: false; reason: 'signed-out' | 'inactive' | 'mfa' | 'mfa-setup' }
 
-// Cached per request, keyed on a primitive so the layout and the page share
-// one lookup.
-const loadUser = cache(async (allowMissingMfa: boolean) => {
+// Who is calling, without redirecting. Server actions that autosave use this
+// so a lapsed session returns an error the form can show, instead of
+// navigating away mid-typing. Cached per request.
+export const getAuth = cache(async (allowMissingMfa: boolean = false): Promise<AuthResult> => {
   const supabase = await createClient()
-  const { data: claimsData } = await supabase.auth.getClaims()
+  const { data: claimsData, error: claimsError } = await supabase.auth.getClaims()
   const claims = claimsData?.claims
-  if (!claims) redirect('/login')
+  if (!claims) {
+    if (claimsError) console.warn('auth: no valid session', { code: claimsError.code, message: claimsError.message })
+    return { ok: false, reason: 'signed-out' }
+  }
 
-  // Passing the token makes Supabase check enrolled factors with the auth
-  // server instead of trusting the user object cached in the cookie.
-  const { data: sessionData } = await supabase.auth.getSession()
-  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel(sessionData.session?.access_token)
-  if (!aal) redirect('/auth/signout?reason=expired')
-  if (aal.nextLevel === 'aal2' && aal.currentLevel !== 'aal2') redirect('/login/mfa')
-  if (env.mfaRequired && !allowMissingMfa && aal.nextLevel !== 'aal2') redirect('/account/security?required=1')
+  const { data: me, error } = await supabase.rpc('whoami').maybeSingle<Me>()
+  if (error) {
+    // Not a sign-in problem; do not log the person out over it.
+    console.error('auth: whoami failed', { code: error.code, message: error.message })
+    throw new Error('We could not load your account. Reload the page to try again.')
+  }
+  if (!me || !me.active) return { ok: false, reason: 'inactive' }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('id, full_name, email, role, active')
-    .eq('id', claims.sub)
-    .maybeSingle<Profile>()
-  if (!profile || !profile.active) redirect('/auth/signout?reason=inactive')
+  const aal = typeof claims.aal === 'string' ? claims.aal : 'aal1'
+  if (me.mfa_enrolled && aal !== 'aal2') return { ok: false, reason: 'mfa' }
+  if (env.mfaRequired && !allowMissingMfa && !me.mfa_enrolled) return { ok: false, reason: 'mfa-setup' }
 
-  return { supabase, profile, claims }
+  const { mfa_enrolled: _, ...profile } = me
+  void _
+  return { ok: true, supabase, profile: profile as Profile, aal }
 })
+
+// Server-side gate for every authenticated page. The proxy already bounced
+// signed-out visitors; this re-checks, loads the profile through RLS, and
+// enforces deactivation and MFA. Postgres enforces the same rules again in
+// RLS, so a bug here fails closed.
+export async function requireUser(opts: { allowMissingMfa?: boolean } = {}) {
+  const auth = await getAuth(!!opts.allowMissingMfa)
+  if (!auth.ok) {
+    if (auth.reason === 'signed-out') redirect('/login')
+    if (auth.reason === 'inactive') {
+      console.warn('auth: refused inactive or unknown profile')
+      redirect('/auth/signout?reason=inactive')
+    }
+    if (auth.reason === 'mfa') redirect('/login/mfa')
+    redirect('/account/security?required=1')
+  }
+  return { supabase: auth.supabase, profile: auth.profile }
+}
 
 export async function requireRole(...roles: Role[]) {
   const ctx = await requireUser()
